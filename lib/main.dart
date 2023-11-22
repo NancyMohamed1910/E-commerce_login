@@ -3,6 +3,7 @@
 import 'package:e_commerce/services/preference.services.dart';
 import 'package:e_commerce/view/screens/homePage.dart';
 import 'package:e_commerce/view/screens/logIn.dart';
+import 'package:e_commerce/view/screens/signUp.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
@@ -26,11 +27,13 @@ class _MyAppState extends State<MyApp> {
   }
 
   Widget startPage() {
-    bool flag = PreferenceServices.prefs?.getBool("isLogin") ?? false;
+    bool? flag = PreferenceServices.prefs?.getBool("isLogin") ?? false;
     if (flag == true)
       return HomePage();
-    else
+    else if (flag == false)
       return LoginScreen();
+    else
+      return SignUpScreen();
   }
 
   Widget build(BuildContext context) {

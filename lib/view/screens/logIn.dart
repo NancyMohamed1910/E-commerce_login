@@ -26,63 +26,61 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       body: Container(
         padding: const EdgeInsets.all(16.0),
-        child: Form(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              TextFormField(
-                controller: emailController,
-                decoration: const InputDecoration(labelText: 'Email'),
-              ),
-              const SizedBox(height: 16.0),
-              TextFormField(
-                controller: passwordController,
-                decoration: const InputDecoration(labelText: 'Password'),
-                obscureText: true,
-              ),
-              const SizedBox(height: 16.0),
-              ElevatedButton(
-                onPressed: () {
-                  //await PreferenceServices.init();
-                  PreferenceServices.prefs
-                      ?.setString("email", "$emailController.text");
-                  PreferenceServices.prefs
-                      ?.setString("password", "$passwordController.text");
-                  PreferenceServices.prefs?.setBool("isLogin", true);
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const HomePage()),
-                  );
-                },
-                child: const Text('Login'),
-              ),
-              const SizedBox(height: 16.0),
-              Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  //crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    GestureDetector(
-                      onTap: forgetPassword,
-                      child: RichText(
-                        text: const TextSpan(
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: 'Forget Password ?',
-                              style: TextStyle(
-                                  fontWeight: FontWeight.normal,
-                                  color: Colors.red,
-                                  fontSize: 15),
-                            ),
-                          ],
-                        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            TextFormField(
+              controller: emailController,
+              decoration: const InputDecoration(labelText: 'Email'),
+            ),
+            const SizedBox(height: 16.0),
+            TextFormField(
+              controller: passwordController,
+              decoration: const InputDecoration(labelText: 'Password'),
+              obscureText: true,
+            ),
+            const SizedBox(height: 16.0),
+            ElevatedButton(
+              onPressed: () {
+                //PreferenceServices.init();
+                PreferenceServices.prefs
+                    ?.setString("email", "$emailController.text");
+                PreferenceServices.prefs
+                    ?.setString("password", "$passwordController.text");
+                PreferenceServices.prefs?.setBool("isLogin", true);
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomePage()),
+                );
+              },
+              child: const Text('Login'),
+            ),
+            const SizedBox(height: 16.0),
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                //crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  GestureDetector(
+                    onTap: forgetPassword,
+                    child: RichText(
+                      text: const TextSpan(
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: 'Forget Password ?',
+                            style: TextStyle(
+                                fontWeight: FontWeight.normal,
+                                color: Colors.red,
+                                fontSize: 15),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
