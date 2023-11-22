@@ -1,3 +1,4 @@
+import 'package:e_commerce/services/preference.services.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce/view/screens/homePage.dart';
 
@@ -9,6 +10,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,16 +31,24 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               TextFormField(
+                controller: emailController,
                 decoration: const InputDecoration(labelText: 'Email'),
               ),
               const SizedBox(height: 16.0),
               TextFormField(
+                controller: passwordController,
                 decoration: const InputDecoration(labelText: 'Password'),
                 obscureText: true,
               ),
               const SizedBox(height: 16.0),
               ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
+                  await PreferenceServices.init();
+                  PreferenceServices.prefs
+                      ?.setString("email", "$emailController.text");
+                  PreferenceServices.prefs
+                      ?.setString("password", "$passwordController.text");
+                  PreferenceServices.prefs?.setBool("isLogin", true);
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => const HomePage()),
