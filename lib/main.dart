@@ -7,7 +7,7 @@ import 'package:e_commerce/view/screens/signUp.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
-  //await PreferenceServices.init();
+  await PreferenceServices.init();
   runApp(const MyApp());
 }
 
@@ -22,18 +22,17 @@ class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
   @override
   void initState() {
-    PreferenceServices.init();
+    //PreferenceServices.init();
     super.initState();
   }
 
   Widget startPage() {
     bool? flag = PreferenceServices.prefs?.getBool("isLogin") ?? false;
-    if (flag == true)
+    if (flag == true) {
       return HomePage();
-    else if (flag == false)
+    } else {
       return LoginScreen();
-    else
-      return SignUpScreen();
+    }
   }
 
   Widget build(BuildContext context) {
