@@ -42,8 +42,8 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               const SizedBox(height: 16.0),
               ElevatedButton(
-                onPressed: () async {
-                  await PreferenceServices.init();
+                onPressed: () {
+                  //await PreferenceServices.init();
                   PreferenceServices.prefs
                       ?.setString("email", "$emailController.text");
                   PreferenceServices.prefs
