@@ -1,19 +1,29 @@
-import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class PreferenceServices {
+class PreferenceSrevice {
   static SharedPreferences? _prefs;
-
-  /// note we create only one instance ,just only one
   static Future<void> init() async {
     try {
       _prefs = await SharedPreferences.getInstance();
-      //print('------init pref-----------');
-      debugPrint('-----init pref from debug print----');
+      print('init prefernce');
     } catch (e) {
-      //print('>>>>>>error $e');
+      print('>>>>> error in configration of preference $e <<<<<<');
     }
   }
 
+  ///---------note using get to encapsulate _prefs to be sure that only preference will be created
   static SharedPreferences? get prefs => _prefs;
+
+  //--we can write get
+  /*
+  static SharedPreferences? get() {
+    return _prefs;
+  }
+  */
+  static Future<void> set(String user, String password, bool islogin) async {
+    await _prefs?.setString('User', user);
+    await _prefs?.setString('Password', password);
+    await _prefs?.setBool('isLogin', true);
+    print('hi from set');
+  }
 }

@@ -1,13 +1,13 @@
 //import 'package:e_commerce/view/screens/signUp.dart';
 
 import 'package:e_commerce/services/preference.services.dart';
-import 'package:e_commerce/view/screens/homePage.dart';
-import 'package:e_commerce/view/screens/logIn.dart';
-import 'package:e_commerce/view/screens/signUp.dart';
+import 'package:e_commerce/view/screens/home_page.dart';
+import 'package:e_commerce/view/screens/login_page.dart';
+
 import 'package:flutter/material.dart';
 
 void main() async {
-  await PreferenceServices.init();
+  await PreferenceSrevice.init();
   runApp(const MyApp());
 }
 
@@ -27,11 +27,11 @@ class _MyAppState extends State<MyApp> {
   }
 
   Widget startPage() {
-    bool? flag = PreferenceServices.prefs?.getBool("isLogin") ?? false;
+    bool? flag = PreferenceSrevice.prefs?.getBool("isLogin") ?? false;
     if (flag == true) {
-      return HomePage();
+      return const HomePage();
     } else {
-      return LoginScreen();
+      return LoginPage();
     }
   }
 
