@@ -3,14 +3,14 @@ import 'package:e_commerce/dataseeder/widget.dataseeder.dart';
 import 'package:e_commerce/view/widgets/bottumNavigationBar.widgets.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class MasterPage extends StatefulWidget {
+  const MasterPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<MasterPage> createState() => _MasterPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _MasterPageState extends State<MasterPage> {
   var _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {

@@ -3,6 +3,7 @@
 import 'package:e_commerce/services/preference.services.dart';
 import 'package:e_commerce/view/screens/home_page.dart';
 import 'package:e_commerce/view/screens/login_page.dart';
+import 'package:e_commerce/view/screens/master_page.dart';
 
 import 'package:flutter/material.dart';
 
@@ -29,7 +30,7 @@ class _MyAppState extends State<MyApp> {
   Widget startPage() {
     bool? flag = PreferenceSrevice.prefs?.getBool("isLogin") ?? false;
     if (flag == true) {
-      return const HomePage();
+      return const MasterPage();
     } else {
       return LoginPage();
     }
