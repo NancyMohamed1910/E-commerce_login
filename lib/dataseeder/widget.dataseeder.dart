@@ -15,4 +15,11 @@ class WidgetData {
     Icon(Icons.person, size: 150),
     Icon(Icons.shopping_cart, size: 150)
   ];
+  static const List<Widget> CarouselChild = <Widget>[
+    Text('carousel child 1'),
+    Text('carousel child 2'),
+    Text('carousel child 3'),
+    Text('carousel child 4'),
+    Text('carousel child 5'),
+  ];
 }
