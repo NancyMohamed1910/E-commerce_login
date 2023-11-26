@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_commerce/dataseeder/widget.dataseeder.dart';
 import 'package:e_commerce/view/widgets/carouselSlider.widgets.dart';
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:e_commerce/view/widgets/dotsIndicator.widgets.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -26,16 +27,9 @@ class _HomePageState extends State<HomePage> {
               setState(() {});
             },
             widget: WidgetData.CarouselChild),
-        DotsIndicator(
-          dotsCount: 5,
-          position: currentPositon,
-          decorator: DotsDecorator(
-            size: const Size.square(9.0),
-            activeSize: const Size(18.0, 9.0),
-            activeShape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0)),
-          ),
-        )
+        DotsIndicatorWidget(
+            dotsCount: WidgetData.CarouselChild.length,
+            positionIndex: currentPositon)
       ],
     ));
   }
