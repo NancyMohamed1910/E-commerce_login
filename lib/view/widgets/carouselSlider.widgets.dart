@@ -3,7 +3,11 @@ import 'package:e_commerce/dataseeder/widget.dataseeder.dart';
 import 'package:flutter/material.dart';
 
 class CarouselSliderWidget extends StatefulWidget {
-  const CarouselSliderWidget({super.key});
+  final List<Widget>? widget;
+//var pageIndex = 0;
+  final void Function(int index) onchangePage;
+  CarouselSliderWidget(
+      {super.key, required this.onchangePage, required this.widget});
 
   @override
   State<CarouselSliderWidget> createState() => _CarouselSliderWidgetState();
@@ -11,6 +15,12 @@ class CarouselSliderWidget extends StatefulWidget {
 
 class _CarouselSliderWidgetState extends State<CarouselSliderWidget> {
   @override
+  void initState() {
+    // TODO: implement initState
+    //var index = 0;
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
     return CarouselSlider(
       options: CarouselOptions(
@@ -27,8 +37,14 @@ class _CarouselSliderWidgetState extends State<CarouselSliderWidget> {
         enlargeCenterPage: true,
         enlargeFactor: 0.3,
         onPageChanged: (index, _) {
+          widget.onchangePage.call(index);
+        } /* (index, _) {
           print('index: ${index}');
-        },
+          setState(() {
+            
+          });
+        },*/
+        ,
         scrollDirection: Axis.horizontal,
       ),
       //items: [1, 2, 3, 4, 5].map((i) {

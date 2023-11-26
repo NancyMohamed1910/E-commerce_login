@@ -1,4 +1,5 @@
 import 'package:e_commerce/view/screens/home_page.dart';
+import 'package:e_commerce/view/screens/master_page.dart';
 import 'package:e_commerce/view/widgets/text_field.widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -104,7 +105,7 @@ class _SignupPageState extends State<SignupPage> {
                       onPressed: () {
                         if ((formKey.currentState?.validate() ?? false)) {
                           Navigator.pushReplacement(context,
-                              MaterialPageRoute(builder: (_) => HomePage()));
+                              MaterialPageRoute(builder: (_) => MasterPage()));
                         }
                       },
                       child: Text('Save'),

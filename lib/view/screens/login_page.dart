@@ -1,5 +1,6 @@
 import 'package:e_commerce/services/preference.services.dart';
 import 'package:e_commerce/view/screens/home_page.dart';
+import 'package:e_commerce/view/screens/master_page.dart';
 import 'package:e_commerce/view/widgets/signup.widgets.dart';
 import 'package:e_commerce/view/widgets/text_field.widgets.dart';
 
@@ -86,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                           await PreferenceSrevice.set(mailController.text,
                               passwordController.text, true);
                           Navigator.pushReplacement(context,
-                              MaterialPageRoute(builder: (_) => HomePage()));
+                              MaterialPageRoute(builder: (_) => MasterPage()));
                         }
                       },
                       child: Text('Login'),
