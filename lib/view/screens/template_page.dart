@@ -11,18 +11,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  
+  var _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      //body: Center(child: WidgetData.myWidget.elementAt(selected)),
 
-      
+      bottomNavigationBar: BottomNavigationBarWidget(selectedIndex: 0),
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [Text('home page
-        ')],
+        children: [WidgetData.myWidget[_selectedIndex]],
       )),
     );
   }

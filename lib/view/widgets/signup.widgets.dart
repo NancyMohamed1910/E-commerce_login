@@ -31,7 +31,7 @@ class _SignupRowState extends State<SignupRow> {
                   //color: Colors.red,
                   fontSize: 14,
                   fontWeight: FontWeight.w200)),
-          style: ElevatedButton.styleFrom(minimumSize: Size(100, 50)),
+          style: ElevatedButton.styleFrom(minimumSize: const Size(100, 50)),
         ),
       ],
     );

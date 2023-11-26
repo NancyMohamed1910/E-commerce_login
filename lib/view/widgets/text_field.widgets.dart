@@ -66,9 +66,9 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
   Widget? checkIcon(String label, bool hide) {
     if (label == 'Password') {
       if (hide == true) {
-        return Icon(Icons.visibility_off);
+        return const Icon(Icons.visibility_off);
       } else {
-        return Icon(Icons.visibility);
+        return const Icon(Icons.visibility);
       }
     } else
       return widget.icon;

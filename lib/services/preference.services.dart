@@ -5,7 +5,7 @@ class PreferenceSrevice {
   static Future<void> init() async {
     try {
       _prefs = await SharedPreferences.getInstance();
-      print('init prefernce');
+      //print('init prefernce');
     } catch (e) {
       print('>>>>> error in configration of preference $e <<<<<<');
     }
@@ -24,6 +24,6 @@ class PreferenceSrevice {
     await _prefs?.setString('User', user);
     await _prefs?.setString('Password', password);
     await _prefs?.setBool('isLogin', true);
-    print('hi from set');
+    //print('hi from set');
   }
 }
