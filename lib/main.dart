@@ -1,7 +1,6 @@
 //import 'package:e_commerce/view/screens/signUp.dart';
 
 import 'package:e_commerce/services/preference.services.dart';
-import 'package:e_commerce/view/screens/home_page.dart';
 import 'package:e_commerce/view/screens/login_page.dart';
 import 'package:e_commerce/view/screens/master_page.dart';
 
@@ -39,7 +38,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'E-Commerce',
+        debugShowCheckedModeBanner: false,
+        title: 'Nancy Shop',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,

@@ -1,8 +1,18 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:e_commerce/utils/colors.util.dart';
 import 'package:flutter/material.dart';
+import 'package:line_icons/line_icons.dart';
 
 class BottomNavigationBarWidget extends StatefulWidget {
   late int selectedIndex;
-  BottomNavigationBarWidget({super.key, required this.selectedIndex});
+  late int itemCount;
+  final void Function(int index) onTap;
+
+  BottomNavigationBarWidget(
+      {super.key,
+      required this.selectedIndex,
+      required this.itemCount,
+      required this.onTap});
 
   @override
   State<BottomNavigationBarWidget> createState() =>
@@ -11,54 +21,62 @@ class BottomNavigationBarWidget extends StatefulWidget {
 
 class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
   @override
-  void initState() {
-    // var selectedIndex = 0;
-
-    super.initState();
-  }
-
-  void onItemSelected(int index) {
-    setState(() {
-      widget.selectedIndex = index;
-    });
-  }
-
-  @override
-  var _selectedIndex = 0;
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: (index) {
+    return AnimatedBottomNavigationBar.builder(
+      height: 50,
+      onTap: (index) {
+        widget.onTap.call(index);
+      },
+      /* (index) {
           _selectedIndex = index;
           setState(() {});
         },
-        type: BottomNavigationBarType.shifting,
-        selectedIconTheme: IconThemeData(size: 35),
-        unselectedIconTheme: IconThemeData(size: 20),
-        //type:BottomNavigationBarType.fixed,
-        //  backgroundColor: Colors.blue, //with type shiffted not work
-        //onTap: onItemSelected,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'home',
-            backgroundColor: Colors.blue,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.category),
-            label: 'categories',
-            backgroundColor: Colors.blue,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'profile',
-            backgroundColor: Colors.blue,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'cart',
-            backgroundColor: Colors.blue,
-          ),
-        ]);
+        */
+      backgroundColor: Colors.black.withOpacity(.002),
+      elevation: 0,
+      gapLocation: GapLocation.none,
+      notchSmoothness: NotchSmoothness.smoothEdge,
+      leftCornerRadius: 15,
+      rightCornerRadius: 15,
+      activeIndex: widget.selectedIndex,
+      itemCount: widget.itemCount,
+      tabBuilder: ((index, isActive) {
+        return Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              index == 0
+                  ? LineIcons.home
+                  : index == 1
+                      ? LineIcons.search
+                      : index == 2
+                          ? LineIcons.shoppingCart
+                          : index == 3
+                              ? LineIcons.user
+                              : LineIcons.bars,
+              size: 25,
+              color:
+                  isActive ? ColorsUtil.activeIconColor : ColorsUtil.iconColor,
+            ),
+            Text(
+              index == 0
+                  ? 'Home'
+                  : index == 1
+                      ? 'Search'
+                      : index == 2
+                          ? 'cart'
+                          : index == 3
+                              ? 'Profile'
+                              : 'More',
+              style: TextStyle(
+                color: isActive
+                    ? ColorsUtil.activeIconColor
+                    : ColorsUtil.iconColor,
+              ),
+            )
+          ],
+        );
+      }),
+    );
   }
 }
