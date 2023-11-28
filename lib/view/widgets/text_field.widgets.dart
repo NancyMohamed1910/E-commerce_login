@@ -40,26 +40,30 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
         return null;
       },
       decoration: InputDecoration(
-          hintText: widget.label,
-          label: Text(widget.label),
-          //fillColor: const Color.fromARGB(255, 238, 233, 233),
-          filled: true,
-          isDense: true,
-          suffixIcon: InkWell(
-            onTap: () {
-              if (widget.label == 'Password') {
-                widget.isHide = !widget.isHide;
-                setState(() {});
-              }
-            },
-            child: checkIcon(widget.label, widget.isHide),
-            /*
+        hintText: widget.label,
+        label: Text(widget.label),
+        //fillColor: const Color.fromARGB(255, 238, 233, 233),
+        //filled: true,
+        filled: false,
+        //isDense: true,
+        isDense: false,
+        //suffixIcon: InkWell(
+        prefixIcon: InkWell(
+          onTap: () {
+            if (widget.label == 'Password') {
+              widget.isHide = !widget.isHide;
+              setState(() {});
+            }
+          },
+          child: checkIcon(widget.label, widget.isHide),
+          /*
               child: widget.isHide
                   ? const Icon(Icons.visibility_off)
                   : widget.icon
 */
-          ),
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(15))),
+        ),
+        //border: OutlineInputBorder(borderRadius: BorderRadius.circular(15))
+      ),
     );
   }
 

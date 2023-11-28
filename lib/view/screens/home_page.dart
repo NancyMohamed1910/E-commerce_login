@@ -3,6 +3,7 @@ import 'package:e_commerce/dataseeder/widget.dataseeder.dart';
 import 'package:e_commerce/view/widgets/carouselSlider.widgets.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:e_commerce/view/widgets/dotsIndicator.widgets.dart';
+import 'package:e_commerce/view/widgets/headline.widgets.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,6 +21,7 @@ class _HomePageState extends State<HomePage> {
         child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
+        HeadlineWidget(title: 'Caregories'),
         CarouselSliderWidget(
             onchangePage: (index) {
               currentPositon = index;

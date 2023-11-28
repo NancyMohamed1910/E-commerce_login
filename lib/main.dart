@@ -1,7 +1,8 @@
 //import 'package:e_commerce/view/screens/signUp.dart';
 
 import 'package:e_commerce/services/preference.services.dart';
-import 'package:e_commerce/view/screens/login_page.dart';
+import 'package:e_commerce/utils/theme.utils.dart';
+import 'package:e_commerce/view/screens/main_page.dart';
 import 'package:e_commerce/view/screens/master_page.dart';
 
 import 'package:flutter/material.dart';
@@ -31,7 +32,8 @@ class _MyAppState extends State<MyApp> {
     if (flag == true) {
       return const MasterPage();
     } else {
-      return LoginPage();
+      //return LoginPage();
+      return const MainPage();
     }
   }
 
@@ -40,11 +42,9 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Nancy Shop',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
+        theme: ThemeUtils.themeData,
         //home: LoginScreen());
         home: startPage());
+    //home: MainPage());
   }
 }
