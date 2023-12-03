@@ -14,12 +14,6 @@ class PreferenceSrevice {
   ///---------note using get to encapsulate _prefs to be sure that only preference will be created
   static SharedPreferences? get prefs => _prefs;
 
-  //--we can write get
-  /*
-  static SharedPreferences? get() {
-    return _prefs;
-  }
-  */
   static Future<void> set(String user, String password, bool islogin) async {
     await _prefs?.setString('User', user);
     await _prefs?.setString('Password', password);

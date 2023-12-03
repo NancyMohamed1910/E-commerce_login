@@ -1,12 +1,13 @@
 import 'package:e_commerce/services/preference.services.dart';
 import 'package:e_commerce/utils/colors.util.dart';
-import 'package:e_commerce/view/screens/home_page.dart';
-import 'package:e_commerce/view/screens/master_page.dart';
+import 'package:e_commerce/view/pages/home_page.dart';
+import 'package:e_commerce/view/pages/master_page.dart';
 import 'package:e_commerce/view/widgets/AppBar_EX.widgets.dart';
 
 import 'package:e_commerce/view/widgets/headline.widgets.dart';
 import 'package:e_commerce/view/widgets/signup.widgets.dart';
 import 'package:e_commerce/view/widgets/text_field.widgets.dart';
+import 'package:line_icons/line_icons.dart';
 
 import 'package:flutter/material.dart';
 
@@ -60,16 +61,16 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         TextFieldWidget(
-                          icon: const Icon(Icons.mail),
+                          icon: const Icon(LineIcons.user),
                           label: 'USER NAME/EMAIL',
                           controller: mailController,
                           isHide: false,
                         ),
-                        const SizedBox(
+/*const SizedBox(
                           height: 20,
-                        ),
+                        ),*/
                         TextFieldWidget(
-                          icon: const Icon(Icons.visibility_off),
+                          icon: const Icon(LineIcons.lock),
                           label: 'PASSWORD',
                           controller: passwordController,
                           isHide: true,

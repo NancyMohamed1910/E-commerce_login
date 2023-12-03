@@ -1,5 +1,6 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:line_icons/line_icons.dart';
 
 class TextFieldWidget extends StatefulWidget {
   TextFieldWidget(
@@ -30,11 +31,11 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
         }
 
         if ((EmailValidator.validate(widget.controller.text) == false) &&
-            (widget.label == 'Email')) {
+            (widget.label == 'USER NAME/EMAIL')) {
           return 'Enter valid ' + widget.label;
         }
         if ((widget.controller.text.length < 6) &&
-            (widget.label == 'Password')) {
+            (widget.label == 'PASSWORD')) {
           return widget.label + ' must be 8 ';
         }
         return null;
@@ -42,37 +43,26 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
       decoration: InputDecoration(
         hintText: widget.label,
         label: Text(widget.label),
-        //fillColor: const Color.fromARGB(255, 238, 233, 233),
-        //filled: true,
-        filled: false,
-        //isDense: true,
-        isDense: false,
-        //suffixIcon: InkWell(
+        isDense: true,
         prefixIcon: InkWell(
           onTap: () {
-            if (widget.label == 'Password') {
+            if (widget.label == 'PASSWORD') {
               widget.isHide = !widget.isHide;
               setState(() {});
             }
           },
           child: checkIcon(widget.label, widget.isHide),
-          /*
-              child: widget.isHide
-                  ? const Icon(Icons.visibility_off)
-                  : widget.icon
-*/
         ),
-        //border: OutlineInputBorder(borderRadius: BorderRadius.circular(15))
       ),
     );
   }
 
   Widget? checkIcon(String label, bool hide) {
-    if (label == 'Password') {
+    if (label == 'PASSWORD') {
       if (hide == true) {
-        return const Icon(Icons.visibility_off);
+        return const Icon(LineIcons.lock);
       } else {
-        return const Icon(Icons.visibility);
+        return const Icon(LineIcons.lockOpen);
       }
     } else
       return widget.icon;

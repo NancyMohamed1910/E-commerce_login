@@ -27,11 +27,6 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
       onTap: (index) {
         widget.onTap.call(index);
       },
-      /* (index) {
-          _selectedIndex = index;
-          setState(() {});
-        },
-        */
       backgroundColor: Colors.black.withOpacity(.002),
       elevation: 0,
       gapLocation: GapLocation.none,

@@ -1,7 +1,7 @@
-import 'package:e_commerce/view/screens/forgotPassword_page.dart';
-import 'package:e_commerce/view/screens/home_page.dart';
-import 'package:e_commerce/view/screens/login_page.dart';
-import 'package:e_commerce/view/screens/signup_page.dart';
+import 'package:e_commerce/view/pages/forgotPassword_page.dart';
+import 'package:e_commerce/view/pages/home_page.dart';
+import 'package:e_commerce/view/pages/login_page.dart';
+import 'package:e_commerce/view/pages/signup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 

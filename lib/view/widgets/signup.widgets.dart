@@ -1,4 +1,4 @@
-import 'package:e_commerce/view/screens/signup_page.dart';
+import 'package:e_commerce/view/pages/signup_page.dart';
 import 'package:flutter/material.dart';
 
 class SignupRow extends StatefulWidget {

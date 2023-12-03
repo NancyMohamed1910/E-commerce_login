@@ -1,7 +1,13 @@
-import 'package:e_commerce/dataseeder/widget.dataseeder.dart';
+import 'dart:convert';
+
+import 'package:e_commerce/seeder/data.seeder.dart';
+import 'package:e_commerce/seeder/widgetdata.seeder.dart';
+import 'package:e_commerce/models/categories.model.dart';
+import 'package:e_commerce/models/products.model.dart';
 import 'package:e_commerce/view/widgets/AppBar_EX.widgets.dart';
 import 'package:e_commerce/view/widgets/bottumNavigationBar.widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class MasterPage extends StatefulWidget {
   const MasterPage({super.key});
@@ -12,6 +18,13 @@ class MasterPage extends StatefulWidget {
 
 class _MasterPageState extends State<MasterPage> {
   int _selectedIndex = 0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    DataSeeder.loadData();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

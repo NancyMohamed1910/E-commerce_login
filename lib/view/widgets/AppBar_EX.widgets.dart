@@ -18,7 +18,8 @@ class AppBarEx {
                 ),
               ),
               Positioned(
-                  bottom: 0,
+                  bottom: 10,
+                  left: 10,
                   child: Badge(
                     backgroundColor: ColorsUtil.badgeColor,
                     label: Text('5'),
@@ -35,7 +36,8 @@ class AppBarEx {
                 ),
               ),
               Positioned(
-                  bottom: 0,
+                  bottom: 8,
+                  left: 10,
                   child: Badge(
                     backgroundColor: ColorsUtil.badgeColor,
                     label: Text('5'),
