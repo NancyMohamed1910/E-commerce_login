@@ -41,9 +41,15 @@ class _HomePageState extends State<HomePage> {
         if (_isLoading)
           CircularProgressIndicator()
         else
-          CarouselSliderWidget(items: [
-            ...DataSeeder.adverties.map((e) => e.imagePath.toString())
-          ]),
+          CarouselSliderWidget(
+              items: [
+                ...DataSeeder.adverties.map((e) => e.imagePath.toString())
+              ],
+              onchangePage: (index) {
+                currentPositon = index;
+                print('index: ${index}');
+                setState(() {});
+              }),
 
         // CategoriesRowHome(),
 
