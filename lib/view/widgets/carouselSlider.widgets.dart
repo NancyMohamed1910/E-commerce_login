@@ -43,14 +43,12 @@ class _CarouselSliderWidgetState extends State<CarouselSliderWidget> {
           items: widget.items.map((i) {
             return Builder(
               builder: (BuildContext context) {
+                print(widget.items);
                 return Container(
                     width: MediaQuery.of(context).size.width,
                     margin: EdgeInsets.symmetric(horizontal: 5.0),
-                    decoration: BoxDecoration(color: Colors.amber),
-                    child: Text(
-                      'text $i',
-                      style: TextStyle(fontSize: 16.0),
-                    ));
+                    decoration: BoxDecoration(color: Colors.blue),
+                    child: Image.asset(i));
               },
             );
           }).toList(),
@@ -69,7 +67,6 @@ class _CarouselSliderWidgetState extends State<CarouselSliderWidget> {
     );
   }
 }
-
 
 
 

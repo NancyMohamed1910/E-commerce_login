@@ -11,7 +11,7 @@ class DataSeeder {
   static List<CategoryData> categories = [];
   static List<AdvertiesData> adverties = [];
   static void loadData() async {
-    await Future.delayed(const Duration(seconds: 5));
+    //await Future.delayed(const Duration(seconds: 5));
     var response = await rootBundle.loadString(
         'assets/data/data.json'); //load data from json file as String
     _data = jsonDecode(response);
@@ -26,6 +26,6 @@ class DataSeeder {
         .toList();
     //print('products: $products');
     //print('categories:$categories');
-    //print('advertisw:$adverties);
+    print('----------------adverties-------:$adverties');
   }
 }

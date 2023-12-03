@@ -38,16 +38,19 @@ class _HomePageState extends State<HomePage> {
         SizedBox(
           height: 20,
         ),
-        CarouselSliderWidget(
-            items: DataSeeder.adverties.map((e) => e.toString()).toList()),
+        if (_isLoading)
+          CircularProgressIndicator()
+        else
+          CarouselSliderWidget(items: [
+            ...DataSeeder.adverties.map((e) => e.imagePath.toString())
+          ]),
 
         // CategoriesRowHome(),
 
-        /* if (_isLoading)
-          CircularProgressIndicator()
-        else
-          ...DataSeeder.products.map((e) => Text(e.name ?? 'No name')).toList()
-      */
+        // if (_isLoading)
+        // CircularProgressIndicator()
+        //else
+        //...DataSeeder.products.map((e) => Text(e.name ?? 'No name')).toList()
       ],
     ));
   }
