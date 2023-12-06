@@ -10,9 +10,8 @@ class ForgotPasswordPage extends StatefulWidget {
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Center(
+    return const Center(
       child: Text('forgot password'),
-    ));
+    );
   }
 }

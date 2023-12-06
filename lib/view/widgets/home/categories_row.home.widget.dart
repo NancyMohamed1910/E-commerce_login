@@ -1,14 +1,13 @@
 import 'package:e_commerce/view/widgets/home/category_item_row.home.widget.dart';
 import 'package:flutter/material.dart';
-import 'package:line_icons/line_icon.dart';
 
 class CategoriesRowHome extends StatelessWidget {
   const CategoriesRowHome({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
+    return const Padding(
+      padding: EdgeInsets.symmetric(vertical: 8),
       child: Row(
         children: [
           CategoryItemRowWidget(
@@ -20,7 +19,7 @@ class CategoriesRowHome extends StatelessWidget {
             shadowColor: Color(0xfffee0e1),
             title: 'Apparel',
           ),
-          const SizedBox(
+          SizedBox(
             width: 20,
           ),
           CategoryItemRowWidget(
@@ -32,19 +31,19 @@ class CategoriesRowHome extends StatelessWidget {
             shadowColor: Color(0xffe1efff),
             title: 'Beauty',
           ),
-          const SizedBox(
+          SizedBox(
             width: 20,
           ),
           CategoryItemRowWidget(
             gradientColors: [
-              Color(0xff97f34d),
+              Color.fromARGB(255, 111, 121, 102),
               Color(0xff42c441),
             ],
             imagePath: 'assets/images/shoes.png',
             shadowColor: Color(0xffd1f6db),
             title: 'Shoes',
           ),
-          const SizedBox(
+          SizedBox(
             width: 20,
           ),
           CategoryItemRowWidget(

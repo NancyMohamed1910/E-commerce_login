@@ -1,5 +1,4 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 
 class CarouselSliderWidget extends StatefulWidget {
@@ -44,17 +43,75 @@ class _CarouselSliderWidgetState extends State<CarouselSliderWidget> {
           items: widget.items.map((i) {
             return Builder(
               builder: (BuildContext context) {
-                print(widget.items);
+                //print(widget.items);
                 return Container(
-                    width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.symmetric(horizontal: 5.0),
-                    decoration: BoxDecoration(color: Colors.blue),
-                    child: Image.asset(i));
+                    clipBehavior: Clip.hardEdge,
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                    child: Stack(children: [
+                      Image.asset(i,
+                          height: 184,
+                          // width: 325,
+                          width: double.infinity,
+                          fit: BoxFit.fill),
+                      const Positioned(
+                          left: 40,
+                          top: 15,
+                          child: Text(
+                            'For all your summer\r clothing needs',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w300),
+                          )),
+                      /*Positioned(
+                        top: 50,
+                        left: 15,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            shape: const StadiumBorder(),
+                            elevation: 0,
+                            backgroundColor: Colors.white,
+                            shadowColor: Color.fromARGB(255, 105, 105, 4),
+                            fixedSize: const Size(121, 39),
+                          ),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              //mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Text(
+                                  'SEE MORE',
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontStyle: FontStyle.normal,
+                                    color: Color(0xff727c8e),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                                Container(
+                                  width: 30,
+                                  height: 30,
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Color(0xffff6969),
+                                  ),
+                                  child: const Icon(
+                                    Icons.keyboard_arrow_right,
+                                    color: Colors.white,
+                                    size: 20,
+                                  ),
+                                ),
+                              ]),
+                        ),
+                      )*/
+                    ]));
               },
             );
           }).toList(),
         ),
-        DotsIndicator(
+        /* DotsIndicator(
           dotsCount: 5,
           position: currentPosition,
           decorator: DotsDecorator(
@@ -63,7 +120,7 @@ class _CarouselSliderWidgetState extends State<CarouselSliderWidget> {
             activeShape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(5.0)),
           ),
-        )
+        )*/
       ],
     );
   }

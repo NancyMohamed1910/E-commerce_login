@@ -1,4 +1,3 @@
-import 'package:e_commerce/view/pages/home_page.dart';
 import 'package:e_commerce/view/pages/master_page.dart';
 import 'package:e_commerce/view/widgets/text_field.widgets.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +26,6 @@ class _SignupPageState extends State<SignupPage> {
     addressController = TextEditingController();
     mailController = TextEditingController();
     passwordController = TextEditingController();
-    // TODO: implement initState
     super.initState();
   }
 
@@ -39,84 +37,83 @@ class _SignupPageState extends State<SignupPage> {
     mailController.dispose();
     passwordController.dispose();
 
-    // TODO: implement dispose
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Form(
-            key: formKey,
-            child: SingleChildScrollView(
-              child: SafeArea(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextFieldWidget(
-                      icon: Icon(Icons.person),
-                      label: 'Name',
-                      controller: nameController,
-                      isHide: false,
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    TextFieldWidget(
-                      icon: Icon(Icons.phone),
-                      label: 'Phone',
-                      controller: phoneController,
-                      isHide: false,
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    TextFieldWidget(
-                      icon: Icon(Icons.home),
-                      label: 'Address',
-                      controller: addressController,
-                      isHide: false,
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    TextFieldWidget(
-                      icon: Icon(Icons.mail),
-                      label: 'Email',
-                      controller: mailController,
-                      isHide: false,
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    TextFieldWidget(
-                      icon: Icon(Icons.visibility_off),
-                      label: 'Password',
-                      controller: passwordController,
-                      isHide: true,
-                    ),
-                    SizedBox(
-                      height: 50,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        if ((formKey.currentState?.validate() ?? false)) {
-                          Navigator.pushReplacement(context,
-                              MaterialPageRoute(builder: (_) => MasterPage()));
-                        }
-                      },
-                      child: Text('Save'),
-                      style:
-                          ElevatedButton.styleFrom(minimumSize: Size(300, 50)),
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                  ],
-                ),
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Form(
+          key: formKey,
+          child: SingleChildScrollView(
+            child: SafeArea(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextFieldWidget(
+                    icon: const Icon(Icons.person),
+                    label: 'Name',
+                    controller: nameController,
+                    isHide: false,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TextFieldWidget(
+                    icon: const Icon(Icons.phone),
+                    label: 'Phone',
+                    controller: phoneController,
+                    isHide: false,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TextFieldWidget(
+                    icon: const Icon(Icons.home),
+                    label: 'Address',
+                    controller: addressController,
+                    isHide: false,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TextFieldWidget(
+                    icon: const Icon(Icons.mail),
+                    label: 'Email',
+                    controller: mailController,
+                    isHide: false,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TextFieldWidget(
+                    icon: const Icon(Icons.visibility_off),
+                    label: 'Password',
+                    controller: passwordController,
+                    isHide: true,
+                  ),
+                  const SizedBox(
+                    height: 50,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      if ((formKey.currentState?.validate() ?? false)) {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => const MasterPage()));
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                        minimumSize: const Size(300, 50)),
+                    child: const Text('Save'),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                ],
               ),
             ),
           ),

@@ -2,36 +2,81 @@
   "products" : [
     {
         "id" : "1",
-        "name" : "bag",
-        "categoryId" : "1",
-        "description" : "good material",
-        "prict" : 20,
-        "quantity" : 12
+        "name" : "Ankle Boots",
+        "categoryId" : "2",
+        "description" : "Faux Sued Ankle Boots",
+        "price" : 49.99,
+        "quantity" : 12,
+        "review":4.9,
+        "imagePath":"assets/images/women_shoes.png"
+        
     },
     {
         "id" : "2",
-        "name" : "shoes",
+        "name" : "Backpack",
+        "categoryId" : "2",
+        "description" : "Faux Sued Backpack",
+        "price" : 20.58,
+        "quantity" : 6,
+        "review":3.9,
+        "imagePath":"assets/images/backpack.png"
+    },
+    {
+        "id" : "3",
+        "name" : "Red Scarf",
         "categoryId" : "1",
-        "description" : "good material",
-        "prict" : 33,
-        "quantity" : 5
+        "description" : "Faux Sued Red Scarf",
+        "price" : 11,
+        "quantity" : 16,
+        "review":5,
+        "imagePath":"assets/images/scarf.png"
+    },
+    {
+        "id" : "4",
+        "name" : "Ankle Boots",
+        "categoryId" : "2",
+        "description" : "Faux Sued Ankle Boots",
+        "price" : 49.99,
+        "quantity" : 12,
+        "review":4.9,
+        "imagePath":"assets/images/women_shoes.png"
+    },
+    {
+        "id" : "5",
+        "name" : "Backpack",
+        "categoryId" : "2",
+        "description" : "Faux Sued Backpack",
+        "price" : 20.58,
+        "quantity" : 6,
+        "review":3.9,
+        "imagePath":"assets/images/backpack.png"
+    },
+    {
+        "id" : "6",
+        "name" : "Red Scarf",
+        "categoryId" : "1",
+        "description" : "Faux Sued Red Scarf",
+        "price" : 11,
+        "quantity" : 16,
+        "review":5,
+         "imagePath":"assets/images/scarf.png"
     }
     ],  
   "categories" : [
     {
         "id" : "1",
         "title" : "new clothes",
-        "description" : "clother Category"
+        "description" : "clothes Category"
     },
     {
         "id" : "2",
-        "title" : "Assets",
-        "description" : "assets Category"
+        "title" : "Shoes",
+        "description" : "Shoes Category"
     }
     ],
 "advertise":[
    { "id":"1","imagePath":"assets/images/Base.png","description":"Clothes"},
-   { "id":"1","imagePath":"assets/images/cover.png","description":"assets"}
+   { "id":"1","imagePath":"assets/images/Base2.png","description":"assets"}
 
 ]
 }

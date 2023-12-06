@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:line_icons/line_icons.dart';
 
 class BottomNavigationBarWidget extends StatefulWidget {
-  late int selectedIndex;
-  late int itemCount;
+  final int selectedIndex;
+  final int itemCount;
   final void Function(int index) onTap;
 
-  BottomNavigationBarWidget(
+  const BottomNavigationBarWidget(
       {super.key,
       required this.selectedIndex,
       required this.itemCount,
@@ -23,7 +23,7 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
   @override
   Widget build(BuildContext context) {
     return AnimatedBottomNavigationBar.builder(
-      height: 50,
+      height: 49,
       onTap: (index) {
         widget.onTap.call(index);
       },

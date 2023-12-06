@@ -15,23 +15,23 @@ class _SignupRowState extends State<SignupRow> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Do't have acount?",
+        const Text("Do't have acount?",
             style: TextStyle(
                 color: Colors.red, fontSize: 14, fontWeight: FontWeight.w200)),
-        SizedBox(
+        const SizedBox(
           width: 10,
         ),
         ElevatedButton(
           onPressed: () {
             Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (_) => SignupPage()));
+                context, MaterialPageRoute(builder: (_) => const SignupPage()));
           },
-          child: Text('SignUP',
+          style: ElevatedButton.styleFrom(minimumSize: const Size(100, 50)),
+          child: const Text('SignUP',
               style: TextStyle(
                   //color: Colors.red,
                   fontSize: 14,
                   fontWeight: FontWeight.w200)),
-          style: ElevatedButton.styleFrom(minimumSize: const Size(100, 50)),
         ),
       ],
     );

@@ -5,6 +5,10 @@ class ProductData {
   String? name;
   double? price;
   int? quantity;
+  double? review;
+  //List<String>? colors;
+  //List<String>? size;
+  String? imagePath;
 
   ProductData();
   ProductData.fromJson(Map<String, dynamic> jsondata) {
@@ -14,6 +18,10 @@ class ProductData {
     name = jsondata['name'];
     price = jsondata['price'];
     quantity = jsondata['quantity'];
+    review = jsondata['review'] as double;
+    // colors = jsondata['colors'] as List<String>;
+    // size = jsondata['size'] as List<String>;
+    imagePath = jsondata['imagePath'];
   }
   Map<String, dynamic> toJson() {
     return {
@@ -22,7 +30,11 @@ class ProductData {
       "description": description,
       "name": name,
       "price": price,
-      "quantity": quantity
+      "quantity": quantity,
+      "review": review,
+      // "colors": colors,
+      // "size": size,
+      "imagePath": imagePath,
     };
   }
 }

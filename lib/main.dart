@@ -30,10 +30,10 @@ class _MyAppState extends State<MyApp> {
   Widget startPage() {
     bool? flag = PreferenceSrevice.prefs?.getBool("isLogin") ?? false;
     if (flag == true) {
-      return const MasterPage();
+      return MasterPage();
     } else {
       //return LoginPage();
-      return const MainPage();
+      return MainPage();
     }
   }
 

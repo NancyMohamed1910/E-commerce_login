@@ -1,18 +1,13 @@
 import 'package:e_commerce/services/preference.services.dart';
 import 'package:e_commerce/utils/colors.util.dart';
-import 'package:e_commerce/view/pages/home_page.dart';
 import 'package:e_commerce/view/pages/master_page.dart';
-import 'package:e_commerce/view/widgets/AppBar_EX.widgets.dart';
-
-import 'package:e_commerce/view/widgets/headline.widgets.dart';
-import 'package:e_commerce/view/widgets/signup.widgets.dart';
 import 'package:e_commerce/view/widgets/text_field.widgets.dart';
 import 'package:line_icons/line_icons.dart';
 
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
-  LoginPage({super.key});
+  const LoginPage({super.key});
   //late TextEditingController txtController;
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -34,6 +29,14 @@ class _LoginPageState extends State<LoginPage> {
     super.initState();
   }
 
+  void onPress() async {
+    if ((formKey.currentState?.validate() ?? false)) {
+      PreferenceSrevice.set(mailController.text, passwordController.text, true);
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (_) => const MasterPage()));
+    }
+  }
+
   @override
   void dispose() {
     mailController.dispose();
@@ -47,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
     return Column(
       children: [
         Container(
-          margin: EdgeInsets.all(30),
+          margin: const EdgeInsets.all(30),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20), color: Colors.white),
           child: Center(
@@ -93,24 +96,15 @@ class _LoginPageState extends State<LoginPage> {
         ),
         ElevatedButton(
           onPressed: () async {
-            //print(mailController.text);
-            //    print(passwordController.text);
-            if ((formKey.currentState?.validate() ?? false)) {
-              //    print('hi from login button');
-
-              await PreferenceSrevice.set(
-                  mailController.text, passwordController.text, true);
-              Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (_) => MasterPage()));
-            }
+            onPress();
           },
-          child: Text(
+          style: ElevatedButton.styleFrom(
+              minimumSize: const Size(650, 60),
+              backgroundColor: ColorsUtil.buttonColor),
+          child: const Text(
             'LOG IN',
             style: TextStyle(color: Color(0xffFFFFFF), fontSize: 12),
           ),
-          style: ElevatedButton.styleFrom(
-              minimumSize: Size(650, 60),
-              backgroundColor: ColorsUtil.buttonColor),
         ),
       ],
     );

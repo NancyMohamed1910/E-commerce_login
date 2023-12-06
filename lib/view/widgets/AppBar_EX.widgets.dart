@@ -3,26 +3,19 @@ import 'package:flutter/material.dart';
 
 class AppBarEx {
   static PreferredSizeWidget get getAppBar => AppBar(
-        toolbarHeight: 70,
+        //toolbarHeight: 49,
         actions: [
           Stack(
             children: [
               IconButton(
-                onPressed: () {},
-                icon: Transform.flip(
-                  flipX: true,
-                  child: Icon(
-                    Icons.chat_bubble_outline,
-                    color: ColorsUtil.iconColor,
-                  ),
-                ),
-              ),
+                  onPressed: () {},
+                  icon: Image.asset('assets/images/Messages.png')),
               Positioned(
-                  bottom: 10,
+                  bottom: 6,
                   left: 10,
                   child: Badge(
                     backgroundColor: ColorsUtil.badgeColor,
-                    label: Text('5'),
+                    label: const Text('5'),
                   ))
             ],
           ),
@@ -36,11 +29,11 @@ class AppBarEx {
                 ),
               ),
               Positioned(
-                  bottom: 8,
+                  bottom: 6,
                   left: 10,
                   child: Badge(
                     backgroundColor: ColorsUtil.badgeColor,
-                    label: Text('5'),
+                    label: const Text('3'),
                   ))
             ],
           ),

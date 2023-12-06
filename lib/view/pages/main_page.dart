@@ -3,7 +3,7 @@ import 'package:e_commerce/seeder/widgetdata.seeder.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+  MainPage({super.key});
 
   @override
   State<MainPage> createState() => _MainPageState();

@@ -1,4 +1,4 @@
-import 'package:e_commerce/view/pages/forgotPassword_page.dart';
+import 'package:e_commerce/view/pages/forgotpassword_page.dart';
 import 'package:e_commerce/view/pages/home_page.dart';
 import 'package:e_commerce/view/pages/login_page.dart';
 import 'package:e_commerce/view/pages/signup_page.dart';
@@ -18,16 +18,37 @@ class WidgetData {
   ];
 
   static List<Widget> myLoginWidget = <Widget>[
-    SignupPage(),
-    LoginPage(),
-    ForgotPasswordPage()
+    const SignupPage(),
+    const LoginPage(),
+    const ForgotPasswordPage()
   ];
 
-  static const List<Widget> CarouselChild = <Widget>[
-    Text('carousel child 1'),
-    Text('carousel child 2'),
-    Text('carousel child 3'),
-    Text('carousel child 4'),
-    Text('carousel child 5'),
+  static const List productColors = [
+    0xffED5199,
+    0xffFF8C69,
+    0xff67B5F7,
+    0xffFFFFFF,
+    0xffC9C9C9,
+    0xff3E3A3A,
+    0xffED5199,
+    0xffFF8C69,
+    0xff67B5F7,
+    0xffFFFFFF,
+    0xffC9C9C9,
+    0xff3E3A3A
+  ];
+  static const List<String> prodctSize = [
+    "4.5",
+    "5",
+    "6",
+    "7.5",
+    "8",
+    "8.5",
+    "9",
+    "9.5",
+    "10",
+    "10.5",
+    "11",
+    "11.5"
   ];
 }
