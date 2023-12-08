@@ -22,7 +22,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
       child: Container(
         color: Color(0xffF5F6F8),
         child: Padding(
-          padding: const EdgeInsets.only(left: 15),
+          padding: const EdgeInsets.only(left: 15, right: 15),
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.start,
             children: [
