@@ -16,6 +16,9 @@ class _ProductColorWidgetState extends State<ProductColorWidget> {
       padding: const EdgeInsets.only(left: 15),
       child: Column(
         children: [
+          SizedBox(
+            height: 15,
+          ),
           Container(
             alignment: Alignment.topLeft,
             child: Text(
@@ -30,7 +33,7 @@ class _ProductColorWidgetState extends State<ProductColorWidget> {
             ),
           ),
           SizedBox(
-            height: 15,
+            height: 10,
           ),
           ///////////////
           SizedBox(
@@ -50,9 +53,11 @@ class _ProductColorWidgetState extends State<ProductColorWidget> {
                       shape: CircleBorder(),
                     ),
                     child: (index == 0)
-                        ? Icon(
-                            Icons.check,
-                            color: Colors.white,
+                        ? Center(
+                            child: Icon(
+                              Icons.check,
+                              color: Colors.white,
+                            ),
                           )
                         : Text(''),
                   );

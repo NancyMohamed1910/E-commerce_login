@@ -64,9 +64,10 @@ class _CarouselSliderWidgetState extends State<CarouselSliderWidget> {
                                 fontSize: 16,
                                 fontWeight: FontWeight.w300),
                           )),
-                      /*Positioned(
-                        top: 50,
-                        left: 15,
+                      ////--------------------------------------------------
+                      Positioned(
+                        top: 70,
+                        left: 40,
                         child: ElevatedButton(
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
@@ -77,35 +78,46 @@ class _CarouselSliderWidgetState extends State<CarouselSliderWidget> {
                             fixedSize: const Size(121, 39),
                           ),
                           child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               //mainAxisSize: MainAxisSize.max,
                               children: [
-                                Text(
-                                  'SEE MORE',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontStyle: FontStyle.normal,
-                                    color: Color(0xff727c8e),
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 14,
+                                Expanded(
+                                  flex: 3,
+                                  child: SizedBox(
+                                    child: Text(
+                                      'SEE MORE',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontStyle: FontStyle.normal,
+                                        color: Color(0xff727c8e),
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 12,
+                                      ),
+                                    ),
                                   ),
                                 ),
-                                Container(
-                                  width: 30,
-                                  height: 30,
-                                  decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Color(0xffff6969),
-                                  ),
-                                  child: const Icon(
-                                    Icons.keyboard_arrow_right,
-                                    color: Colors.white,
-                                    size: 20,
+                                Expanded(
+                                  flex: 1,
+                                  child: SizedBox(
+                                    child: Container(
+                                      width: 30,
+                                      height: 30,
+                                      decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Color(0xffff6969),
+                                      ),
+                                      child: const Icon(
+                                        Icons.keyboard_arrow_right,
+                                        color: Colors.white,
+                                        size: 20,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ]),
                         ),
-                      )*/
+                      )
+                      /////----------------------------------------------
                     ]));
               },
             );

@@ -16,7 +16,7 @@ class ProductData {
     categoryId = jsondata['categoryId'];
     description = jsondata['description'];
     name = jsondata['name'];
-    price = jsondata['price'];
+    price = jsondata['price'] as double;
     quantity = jsondata['quantity'];
     review = jsondata['review'] as double;
     // colors = jsondata['colors'] as List<String>;

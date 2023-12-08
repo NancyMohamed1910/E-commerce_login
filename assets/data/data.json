@@ -26,9 +26,9 @@
         "name" : "Red Scarf",
         "categoryId" : "1",
         "description" : "Faux Sued Red Scarf",
-        "price" : 11,
+        "price" : 12.8,
         "quantity" : 16,
-        "review":5,
+        "review":4.9,
         "imagePath":"assets/images/scarf.png"
     },
     {
@@ -38,7 +38,7 @@
         "description" : "Faux Sued Ankle Boots",
         "price" : 49.99,
         "quantity" : 12,
-        "review":4.9,
+        "review":4.7,
         "imagePath":"assets/images/women_shoes.png"
     },
     {
@@ -56,9 +56,9 @@
         "name" : "Red Scarf",
         "categoryId" : "1",
         "description" : "Faux Sued Red Scarf",
-        "price" : 11,
+        "price" : 11.5,
         "quantity" : 16,
-        "review":5,
+        "review":3.5,
          "imagePath":"assets/images/scarf.png"
     }
     ],  

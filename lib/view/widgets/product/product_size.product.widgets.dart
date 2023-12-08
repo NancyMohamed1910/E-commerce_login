@@ -17,7 +17,7 @@ class _ProductSizeWidgetState extends State<ProductSizeWidget> {
       child: Column(
         children: [
           SizedBox(
-            height: 10,
+            height: 15,
           ),
           Container(
             alignment: Alignment.topLeft,
