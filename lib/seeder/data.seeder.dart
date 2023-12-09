@@ -10,6 +10,7 @@ class DataSeeder {
   static List<ProductData> products = [];
   static List<CategoryData> categories = [];
   static List<AdvertiesData> adverties = [];
+  //static List<ColorsData> colors = [];
   static void loadData() async {
     await Future.delayed(const Duration(seconds: 5));
     var response = await rootBundle.loadString(
@@ -25,6 +26,8 @@ class DataSeeder {
     adverties = (_data['advertise'] as List)
         .map((e) => AdvertiesData.fromJson(e))
         .toList();
+    // colors =
+    //  (_data.['colors'] as List).map((e) => ColorsData.fromJson(e)).toList();
     print('----------products----------: $products');
     print('-----------categories--------------:$categories');
     print('----------------adverties-------:$adverties');

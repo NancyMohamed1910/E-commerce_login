@@ -1,3 +1,6 @@
+import 'package:e_commerce/models/colors.models.dart';
+import 'package:e_commerce/models/sizes.model.dart';
+
 class ProductData {
   String? id;
   String? categoryId;
@@ -6,9 +9,9 @@ class ProductData {
   double? price;
   int? quantity;
   double? review;
-  //List<String>? colors;
-  //List<String>? size;
   String? imagePath;
+  List<ColorsData>? colors;
+  List<SizeData>? size;
 
   ProductData();
   ProductData.fromJson(Map<String, dynamic> jsondata) {
@@ -19,9 +22,13 @@ class ProductData {
     price = jsondata['price'] as double;
     quantity = jsondata['quantity'];
     review = jsondata['review'] as double;
-    // colors = jsondata['colors'] as List<String>;
-    // size = jsondata['size'] as List<String>;
+
     imagePath = jsondata['imagePath'];
+    colors = List<ColorsData>.from(
+        jsondata['colors'].map((e) => ColorsData.fromJson(e)));
+    size =
+        List<SizeData>.from(jsondata['size'].map((e) => SizeData.fromJson(e)));
+    print('--------colors--------------:$colors');
   }
   Map<String, dynamic> toJson() {
     return {
@@ -32,9 +39,9 @@ class ProductData {
       "price": price,
       "quantity": quantity,
       "review": review,
-      // "colors": colors,
-      // "size": size,
       "imagePath": imagePath,
+      "colors": colors?.map((e) => e.toJson()).toList(),
+      "size": size?.map((e) => e.toJson()).toList()
     };
   }
 }

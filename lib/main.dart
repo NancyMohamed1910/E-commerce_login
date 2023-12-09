@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 void main() async {
   await PreferenceSrevice.init();
   runApp(const MyApp());
-  
 }
 
 class MyApp extends StatefulWidget {

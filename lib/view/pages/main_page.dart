@@ -38,6 +38,7 @@ class _MainPageState extends State<MainPage> {
               itemCount: 3,
               tabBuilder: ((index, isActive) {
                 return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                       index == 0

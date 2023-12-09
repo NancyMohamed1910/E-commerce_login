@@ -1,3 +1,5 @@
+import 'package:e_commerce/models/colors.models.dart';
+import 'package:e_commerce/seeder/data.seeder.dart';
 import 'package:e_commerce/seeder/widgetdata.seeder.dart';
 import 'package:flutter/material.dart';
 
@@ -43,6 +45,8 @@ class _ProductColorWidgetState extends State<ProductColorWidget> {
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 itemCount: WidgetData.productColors.length,
+                //itemCount:
+                //  DataSeeder.products.map((e) => e.colors).toList().length,
                 itemBuilder: (_, index) {
                   return ElevatedButton(
                     onPressed: widget.onPressed,
@@ -52,14 +56,15 @@ class _ProductColorWidgetState extends State<ProductColorWidget> {
                       fixedSize: Size(40, 40),
                       shape: CircleBorder(),
                     ),
-                    child: (index == 0)
+                    child: Text(''),
+                    /* (index == 0)
                         ? Center(
                             child: Icon(
                               Icons.check,
                               color: Colors.white,
                             ),
                           )
-                        : Text(''),
+                        : Text(''),*/
                   );
                 }),
           ),

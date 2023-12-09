@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
         padding: const EdgeInsets.only(left: 15),
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           //crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             HeadlineWidget(title: 'Caregories'),
@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
             else
               CarouselSliderWidget(
                   items: [
-                    ...DataSeeder.adverties.map((e) => e.imagePath.toString())
+                    ...DataSeeder.adverties.map((e) => e.imagePath ?? '')
                   ],
                   onchangePage: (index) {
                     currentPositon = index;
