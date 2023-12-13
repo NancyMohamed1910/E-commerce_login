@@ -2,7 +2,7 @@ import 'package:e_commerce/models/colors.models.dart';
 import 'package:e_commerce/models/sizes.model.dart';
 
 class ProductData {
-  String? id;
+  int? id;
   String? categoryId;
   String? description;
   String? name;
@@ -15,7 +15,7 @@ class ProductData {
 
   ProductData();
   ProductData.fromJson(Map<String, dynamic> jsondata) {
-    id = jsondata['id'];
+    id = jsondata['id'] as int;
     categoryId = jsondata['categoryId'];
     description = jsondata['description'];
     name = jsondata['name'];

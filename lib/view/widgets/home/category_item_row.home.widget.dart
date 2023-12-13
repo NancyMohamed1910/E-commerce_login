@@ -1,4 +1,6 @@
+import 'package:e_commerce/providers/category.provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CategoryItemRowWidget extends StatelessWidget {
   final Color shadowColor;
@@ -52,12 +54,18 @@ class CategoryItemRowWidget extends StatelessWidget {
         const SizedBox(
           height: 7,
         ),
-        Text(
-          title,
-          style: const TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w400,
-              color: Color(0xff515C6F)),
+        Consumer<CategoryProvider>(
+          builder: (ctx, categorydata, _) {
+            var t = categorydata.getTitles.toString();
+            print('t------------:$t');
+            return Text(
+              '$t',
+              style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xff515C6F)),
+            );
+          },
         )
       ],
     );

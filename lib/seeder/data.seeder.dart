@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:e_commerce/models/adverties.models.dart';
 import 'package:e_commerce/models/categories.model.dart';
+import 'package:e_commerce/models/colors.models.dart';
 import 'package:e_commerce/models/products.model.dart';
 import 'package:flutter/services.dart';
 
@@ -26,10 +27,11 @@ class DataSeeder {
     adverties = (_data['advertise'] as List)
         .map((e) => AdvertiesData.fromJson(e))
         .toList();
-    // colors =
-    //  (_data.['colors'] as List).map((e) => ColorsData.fromJson(e)).toList();
+    //colors =
+    //   (_data['colors'] as List).map((e) => ColorsData.fromJson(e)).toList();
     print('----------products----------: $products');
     print('-----------categories--------------:$categories');
     print('----------------adverties-------:$adverties');
+    //print('>>>>>>>dataseeder  Colors>>>>>>>>$colors');
   }
 }
