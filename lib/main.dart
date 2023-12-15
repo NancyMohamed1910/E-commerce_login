@@ -1,7 +1,9 @@
 //import 'package:e_commerce/view/screens/signUp.dart';
+import 'package:e_commerce/providers/category.provider.dart';
 import 'package:e_commerce/seeder/data.seeder.dart';
 import 'package:e_commerce/view/pages/splash_page.dart';
 import 'package:get_it/get_it.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:e_commerce/services/preference.services.dart';
 import 'package:e_commerce/utils/theme.utils.dart';
@@ -11,8 +13,6 @@ import 'package:e_commerce/view/pages/master_page.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
-  // await PreferenceSrevice.init();
-  await DataSeeder.loadData;
   WidgetsFlutterBinding.ensureInitialized();
 
   var prefrenceInstance = await SharedPreferences.getInstance();
@@ -25,7 +25,15 @@ void main() async {
   } else {
     print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Error When Set prefrences');
   }
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    FutureProvider<List<String>?>(
+      create: (_) => CategoryProvider().getCategoriesTitle(),
+      initialData: null,
+      catchError: (_, err) {
+        return [];
+      },
+    )
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatefulWidget {
@@ -43,26 +51,12 @@ class _MyAppState extends State<MyApp> {
     super.initState();
   }
 
-/*
-  Widget startPage() {
-    bool? flag = PreferenceSrevice.prefs?.getBool("isLogin") ?? false;
-    if (flag == true) {
-      return MasterPage();
-    } else {
-      //return LoginPage();
-      return MainPage();
-    }
-  }
-*/
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Nancy Shop',
         theme: ThemeUtils.themeData,
-        //home: LoginScreen());
-        //home: startPage());
         home: SplashPage());
-    //home: MainPage());
   }
 }

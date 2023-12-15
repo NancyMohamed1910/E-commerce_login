@@ -2,7 +2,7 @@ import 'package:e_commerce/seeder/data.seeder.dart';
 import 'package:flutter/material.dart';
 
 class CategoryProvider {
-  Future<List<String>?> getTitle() async {
+  Future<List<String>?> getCategoriesTitle() async {
     await Future.delayed(const Duration(seconds: 15));
     print('hi from gettitle');
     List<String>? title =
