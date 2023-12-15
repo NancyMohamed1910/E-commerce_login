@@ -28,8 +28,8 @@ class DataSeeder {
     adverties = (_data['advertise'] as List)
         .map((e) => AdvertiesData.fromJson(e))
         .toList();
-    //colors =
-    //    (_data['colors'] as List).map((e) => ColorsData.fromJson(e)).toList();
+    // colors =
+    //  (_data.['colors'] as List).map((e) => ColorsData.fromJson(e)).toList();
     print('----------products----------: $products');
     print('-----------categories--------------:$categories');
     print('----------------adverties-------:$adverties');
