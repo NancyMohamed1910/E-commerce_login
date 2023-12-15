@@ -1,9 +1,15 @@
+import 'package:e_commerce/seeder/data.seeder.dart';
 import 'package:e_commerce/view/widgets/home/category_item_row.home.widget.dart';
 import 'package:flutter/material.dart';
 
-class CategoriesRowHome extends StatelessWidget {
+class CategoriesRowHome extends StatefulWidget {
   const CategoriesRowHome({super.key});
 
+  @override
+  State<CategoriesRowHome> createState() => _CategoriesRowHomeState();
+}
+
+class _CategoriesRowHomeState extends State<CategoriesRowHome> {
   @override
   Widget build(BuildContext context) {
     return const Padding(
