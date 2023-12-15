@@ -1,4 +1,5 @@
 import 'package:e_commerce/models/colors.models.dart';
+import 'package:e_commerce/models/products.model.dart';
 import 'package:e_commerce/seeder/data.seeder.dart';
 import 'package:e_commerce/seeder/widgetdata.seeder.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ class ProductColorWidget extends StatefulWidget {
 }
 
 class _ProductColorWidgetState extends State<ProductColorWidget> {
+  // int index = DataSeeder.products.map((e) => e.id) as int;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -45,8 +47,7 @@ class _ProductColorWidgetState extends State<ProductColorWidget> {
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 itemCount: WidgetData.productColors.length,
-                //itemCount:
-                //  DataSeeder.products.map((e) => e.colors).toList().length,
+                //itemCount: DataSeeder.products[index].colors?.length,
                 itemBuilder: (_, index) {
                   return ElevatedButton(
                     onPressed: widget.onPressed,
