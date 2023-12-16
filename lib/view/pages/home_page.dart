@@ -1,3 +1,4 @@
+import 'package:e_commerce/providers/product.providers.dart';
 import 'package:e_commerce/seeder/data.seeder.dart';
 import 'package:e_commerce/view/pages/productDetails_page.dart';
 
@@ -7,6 +8,7 @@ import 'package:e_commerce/view/widgets/headline.widgets.dart';
 import 'package:e_commerce/view/widgets/home/categories_row.home.widget.dart';
 import 'package:e_commerce/view/widgets/home/product_item.home.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -54,33 +56,49 @@ class _HomePageState extends State<HomePage> {
                   ],
                   onchangePage: (index) {
                     currentPositon = index;
-                    //print('index: ${index}');
+
                     setState(() {});
                   }),
             ////--------------------
-            SizedBox(
-              height: 140.0,
-              child: ListView.builder(
-                  physics: ClampingScrollPhysics(),
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: DataSeeder.products.length,
-                  itemBuilder: (BuildContext context, int index) =>
-                      ProductItemWidget(
-                        imagePath:
-                            DataSeeder.products[index].imagePath.toString(),
-                        label: DataSeeder.products[index].name.toString(),
-                        price:
-                            '\$' + DataSeeder.products[index].price.toString(),
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (_) =>
-                                      ProductDetailsPage(productIndex: index)));
-                        },
-                      )),
-            ),
+            Consumer<ProductProvider>(builder: (ctx, productValues, _) {
+              //    Provider.of<ProductProvider>(context, listen: false)
+              //       .getProductImage();
+
+              if (productValues == null) {
+                return CircularProgressIndicator();
+              } else if (productValues == '') {
+                return Text('No Data Found');
+              } else
+                return SizedBox(
+                  height: 140.0,
+                  child: ListView.builder(
+                      physics: ClampingScrollPhysics(),
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      // itemCount: DataSeeder.products.length,
+                      itemCount: productValues.getlength(),
+                      itemBuilder: (BuildContext context, int index) =>
+                          ProductItemWidget(
+                            imagePath:
+                                '${productValues.getProductImage(index)}' ?? '',
+                            // DataSeeder.products[index].imagePath.toString(),
+                            //label: DataSeeder.products[index].name.toString(),
+                            label:
+                                '${productValues.getProductTitle(index)}' ?? '',
+                            price: '\$' +
+                                    '${productValues.getProductPrice(index)}' ??
+                                '',
+                            //DataSeeder.products[index].price.toString(),
+                            onPressed: () {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (_) => ProductDetailsPage(
+                                          productIndex: index)));
+                            },
+                          )),
+                );
+            })
 
             ///---------------------
           ],

@@ -1,4 +1,6 @@
+import 'package:e_commerce/providers/product.providers.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProductItemWidget extends StatefulWidget {
   String imagePath;
@@ -20,46 +22,57 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ElevatedButton(
-        onPressed: widget.onPressed,
-        style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.all(8.0),
+        child: ElevatedButton(
+          onPressed: widget.onPressed,
+          style: ElevatedButton.styleFrom(
             elevation: 0,
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             backgroundColor: Colors.white,
             shadowColor: Color(0xffE7EAF0),
-            fixedSize: const Size(105, 135)),
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.asset(
-              widget.imagePath,
-              width: 75,
-              height: 70,
-            ),
-            Text(
-              widget.label,
-              textAlign: TextAlign.start,
-              style: TextStyle(
-                  fontWeight: FontWeight.w300,
-                  fontSize: 10,
-                  color: Color(0xff515c6f),
-                  fontStyle: FontStyle.normal),
-            ),
-            Text(
-              widget.price,
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 10,
-                  color: Color(0xff515c6f),
-                  fontStyle: FontStyle.normal),
-            ),
-          ],
-        ),
-      ),
-    );
+            //fixedSize: const Size(105, 135)
+          ),
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                flex: 3,
+                child: Image.asset(
+                  widget.imagePath,
+                  // productValues.elementAt(0),
+                  width: 75,
+                  height: 70,
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Text(
+                  widget.label,
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                      fontWeight: FontWeight.w300,
+                      fontSize: 10,
+                      color: Color(0xff515c6f),
+                      fontStyle: FontStyle.normal),
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Text(
+                  widget.price,
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 10,
+                      color: Color(0xff515c6f),
+                      fontStyle: FontStyle.normal),
+                ),
+              ),
+            ],
+          ),
+        ));
+    //////////
   }
 }

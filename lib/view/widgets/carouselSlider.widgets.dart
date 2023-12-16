@@ -78,7 +78,7 @@ class _CarouselSliderWidgetState extends State<CarouselSliderWidget> {
                             fixedSize: const Size(121, 39),
                           ),
                           child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               //mainAxisSize: MainAxisSize.max,
                               children: [
                                 Expanded(

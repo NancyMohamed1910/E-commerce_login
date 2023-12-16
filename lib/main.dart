@@ -1,5 +1,6 @@
 //import 'package:e_commerce/view/screens/signUp.dart';
 import 'package:e_commerce/providers/category.provider.dart';
+import 'package:e_commerce/providers/product.providers.dart';
 import 'package:e_commerce/seeder/data.seeder.dart';
 import 'package:e_commerce/view/pages/splash_page.dart';
 import 'package:get_it/get_it.dart';
@@ -32,7 +33,8 @@ void main() async {
       catchError: (_, err) {
         return [];
       },
-    )
+    ),
+    ChangeNotifierProvider(create: (_) => ProductProvider()),
   ], child: const MyApp()));
 }
 
