@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 class CategoryProvider {
   Future<List<String>?> getCategoriesTitle() async {
     await Future.delayed(const Duration(seconds: 15));
-    print('hi from gettitle');
+    // print('hi from gettitle');
     List<String>? title =
         DataSeeder.categories.map((e) => e.title ?? '').toList();
-    print('-------title:$title');
+    // print('-------title:$title');
     return (title);
   }
 }

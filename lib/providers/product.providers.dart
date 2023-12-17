@@ -30,7 +30,7 @@ class ProductProvider extends ChangeNotifier {
 
 //---------------------
   int getlength() {
-    print('hi from getlength');
+    //print('hi from getlength');
     return (DataSeeder.products.map((e) => e.imagePath ?? '').toList().length);
   }
 }

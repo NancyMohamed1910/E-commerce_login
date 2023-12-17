@@ -47,7 +47,7 @@ class _ProductColorWidgetState extends State<ProductColorWidget> {
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 itemCount: WidgetData.productColors.length,
-                //itemCount: DataSeeder.products[index].colors?.length,
+                //itemCount: DataSeeder.colors.length,
                 itemBuilder: (_, index) {
                   return ElevatedButton(
                     onPressed: widget.onPressed,

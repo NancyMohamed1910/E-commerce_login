@@ -1,4 +1,5 @@
 import 'package:e_commerce/view/pages/login_page.dart';
+import 'package:e_commerce/view/pages/main_page.dart';
 import 'package:e_commerce/view/pages/master_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -27,7 +28,7 @@ class _SplashPageState extends State<SplashPage> {
             context, MaterialPageRoute(builder: (_) => MasterPage()));
       } else {
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (_) => LoginPage()));
+            context, MaterialPageRoute(builder: (_) => MainPage()));
       }
     }
   }

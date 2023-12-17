@@ -11,6 +11,7 @@ class DataSeeder {
   static List<ProductData> products = [];
   static List<CategoryData> categories = [];
   static List<AdvertiesData> adverties = [];
+  static List<ColorsData> colors = [];
   //static List<ColorsData> colors = [];
   static void loadData() async {
     await Future.delayed(const Duration(seconds: 5));
@@ -27,11 +28,15 @@ class DataSeeder {
     adverties = (_data['advertise'] as List)
         .map((e) => AdvertiesData.fromJson(e))
         .toList();
-    //colors =
+    //colors = ((_data['products'] as List).map((e) => ProductData.fromJson(e))
+    //        as List)
+    //   .map((c) => ColorsData.fromJson(c))
+    //.toList();
     //    (_data['colors'] as List).map((e) => ColorsData.fromJson(e)).toList();
-    print('----------products----------: $products');
-    print('-----------categories--------------:$categories');
-    print('----------------adverties-------:$adverties');
+    //print('----------products----------: $products');
+    //print('-----------categories--------------:$categories');
+    //print('----------------adverties-------:$adverties');
     //print('>>>>>>>dataseeder  Colors>>>>>>>>$colors');
+    //print('------colorLen-----${colors.length}');
   }
 }

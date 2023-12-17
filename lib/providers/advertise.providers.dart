@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 
 class AdvertiseProvider extends ChangeNotifier {
   String? getImagePath(int index) {
-    print('hi from getimagepath');
+    //print('hi from getimagepath');
     String? imagePath = DataSeeder.adverties
         .map((e) => e.imagePath ?? '')
         .toList()
         .elementAt(index);
-    print('-------title:$imagePath');
-    //notifyListeners();
+    //print('-------title:$imagePath');
+
     return (imagePath);
   }
 }
