@@ -2,7 +2,7 @@ import 'package:e_commerce/view/pages/master_page.dart';
 
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -237,7 +237,7 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                       ),
                       Text(
-                        'Terms of Service ',
+                        'Privacy Policy ',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontStyle: FontStyle.normal,

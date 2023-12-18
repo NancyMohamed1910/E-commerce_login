@@ -1,9 +1,7 @@
 import 'package:e_commerce/providers/product.providers.dart';
 import 'package:e_commerce/seeder/data.seeder.dart';
 import 'package:e_commerce/view/pages/productDetails_page.dart';
-
 import 'package:e_commerce/view/widgets/carouselSlider.widgets.dart';
-
 import 'package:e_commerce/view/widgets/headline.widgets.dart';
 import 'package:e_commerce/view/widgets/home/categories_row.home.widget.dart';
 import 'package:e_commerce/view/widgets/home/product_item.home.dart';
@@ -36,7 +34,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xffF5F6F8),
+      color: const Color(0xffF5F6F8),
       child: Padding(
         padding: const EdgeInsets.only(left: 15),
         child: Column(
@@ -44,35 +42,31 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           //crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            HeadlineWidget(title: 'Caregories'),
-            CategoriesRowHome(),
+            const HeadlineWidget(title: 'Caregories'),
+            const CategoriesRowHome(),
             const HeadlineWidget(title: 'Latest'),
             if (_isLoading)
               const CircularProgressIndicator()
             else
-              CarouselSliderWidget(
-                  items: [
-                    ...DataSeeder.adverties.map((e) => e.imagePath ?? '')
-                  ],
-                  onchangePage: (index) {
-                    currentPositon = index;
+              CarouselSliderWidget(onchangePage: (index) {
+                currentPositon = index;
 
-                    setState(() {});
-                  }),
+                setState(() {});
+              }),
             ////--------------------
             Consumer<ProductProvider>(builder: (ctx, productValues, _) {
               //    Provider.of<ProductProvider>(context, listen: false)
               //       .getProductImage();
 
               if (productValues == null) {
-                return CircularProgressIndicator();
+                return const CircularProgressIndicator();
               } else if (productValues == '') {
-                return Text('No Data Found');
-              } else
+                return const Text('No Data Found');
+              } else {
                 return SizedBox(
                   height: 140.0,
                   child: ListView.builder(
-                      physics: ClampingScrollPhysics(),
+                      physics: const ClampingScrollPhysics(),
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
                       // itemCount: DataSeeder.products.length,
@@ -98,6 +92,7 @@ class _HomePageState extends State<HomePage> {
                             },
                           )),
                 );
+              }
             })
 
             ///---------------------

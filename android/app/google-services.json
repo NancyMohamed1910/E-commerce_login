@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "479514889011",
+    "project_id": "nancy-shop-c87fe",
+    "storage_bucket": "nancy-shop-c87fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479514889011:android:ea72b75c2b75a658444c46",
+        "android_client_info": {
+          "package_name": "com.example.e_commerce"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7FHvBhPd7DbM2ShUk7KFxYrE2ufVZeiw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,4 @@
 import 'package:e_commerce/seeder/data.seeder.dart';
-import 'package:flutter/material.dart';
 
 class CategoryProvider {
   Future<List<String>?> getCategoriesTitle() async {

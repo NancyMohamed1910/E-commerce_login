@@ -1,6 +1,4 @@
-import 'package:e_commerce/providers/product.providers.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class ProductItemWidget extends StatefulWidget {
   String imagePath;
@@ -26,13 +24,12 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
         child: ElevatedButton(
           onPressed: widget.onPressed,
           style: ElevatedButton.styleFrom(
-            elevation: 0,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            backgroundColor: Colors.white,
-            shadowColor: Color(0xffE7EAF0),
-            //fixedSize: const Size(105, 135)
-          ),
+              elevation: 0,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              backgroundColor: Colors.white,
+              shadowColor: const Color(0xffE7EAF0),
+              fixedSize: const Size(101, 135)),
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,7 +48,7 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                 child: Text(
                   widget.label,
                   textAlign: TextAlign.start,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontWeight: FontWeight.w300,
                       fontSize: 10,
                       color: Color(0xff515c6f),
@@ -63,7 +60,7 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                 child: Text(
                   widget.price,
                   textAlign: TextAlign.left,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 10,
                       color: Color(0xff515c6f),

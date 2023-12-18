@@ -20,14 +20,14 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-        color: Color(0xffF5F6F8),
+        color: const Color(0xffF5F6F8),
         child: Padding(
           padding: const EdgeInsets.only(left: 15, right: 15),
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.start,
             children: [
               ProductHeaderWidget(productIndex: widget.productIndex),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Image.asset(
@@ -36,20 +36,20 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 height: 202,
                 fit: BoxFit.cover,
               ),
-              RowButtonWidgets(),
+              const RowButtonWidgets(),
               ProductColorWidget(
                 onPressed: () {},
               ),
               ProductSizeWidget(onPressed: () {}),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
-              Divider(
+              const Divider(
                 thickness: 0,
                 indent: 15,
                 color: Color(0xff727C8E),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               ProductFooterWidget(

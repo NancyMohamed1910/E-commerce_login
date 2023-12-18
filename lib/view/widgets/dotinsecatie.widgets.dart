@@ -17,7 +17,7 @@ class _DotsIndicatorWidgetState extends State<DotsIndicatorWidget> {
     return DotsIndicator(
       dotsCount: widget.dotsCount,
       position: widget.positionIndex,
-      decorator: DotsDecorator(
+      decorator: const DotsDecorator(
         color: Color(0xff727C8E), // Inactive color
         activeColor: Colors.black87,
       ),

@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:e_commerce/view/pages/master_page.dart';
-
 import 'package:email_validator/email_validator.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -40,9 +36,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(375, 667),
+      designSize: const Size(375, 667),
       builder: (context, _) => Scaffold(
-        backgroundColor: Color(0xffF5F6F8),
+        backgroundColor: const Color(0xffF5F6F8),
         body: Form(
           key: formKey,
           child: SingleChildScrollView(
@@ -58,7 +54,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontStyle: FontStyle.normal,
-                        color: Color(0xff515C6F),
+                        color: const Color(0xff515C6F),
                         fontWeight: FontWeight.w300,
                         fontSize: 15.sp,
                       ),
@@ -68,7 +64,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontStyle: FontStyle.normal,
-                        color: Color(0xff515C6F),
+                        color: const Color(0xff515C6F),
                         fontWeight: FontWeight.w300,
                         fontSize: 15.sp,
                       ),
@@ -78,7 +74,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontStyle: FontStyle.normal,
-                        color: Color(0xff515C6F),
+                        color: const Color(0xff515C6F),
                         fontWeight: FontWeight.w300,
                         fontSize: 15.sp,
                       ),
@@ -108,7 +104,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                 }
                                 return null;
                               },
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 label: Text('EMAIL'),
                                 prefixIcon: const Icon(Icons.mail),
                                 isDense: false,
@@ -130,15 +126,17 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                         if ((formKey.currentState?.validate() ?? false)) {
                           GetIt.I<SharedPreferences>()
                               .setString('user', emailController.text);
-                          Navigator.pushReplacement(context,
-                              MaterialPageRoute(builder: (_) => MasterPage()));
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => const MasterPage()));
                         }
                       },
                       style: ElevatedButton.styleFrom(
                         shape: const StadiumBorder(),
                         elevation: 0,
-                        backgroundColor: Color(0xffFF6969),
-                        shadowColor: Color.fromARGB(255, 105, 105, 4),
+                        backgroundColor: const Color(0xffFF6969),
+                        shadowColor: const Color.fromARGB(255, 105, 105, 4),
                         fixedSize: Size(325.w, 50.h),
                       ),
                       child: Row(
@@ -152,7 +150,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontStyle: FontStyle.normal,
-                                    color: Color(0xffFFFFFF),
+                                    color: const Color(0xffFFFFFF),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 12.sp,
                                   ),
