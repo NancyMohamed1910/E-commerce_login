@@ -1,4 +1,3 @@
-import 'package:e_commerce/view/pages/home_page.dart';
 import 'package:e_commerce/view/pages/master_page.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce/seeder/data.seeder.dart';

@@ -1,8 +1,7 @@
-import 'package:e_commerce/view/pages/main_page.dart';
+import 'package:e_commerce/view/pages/authentication/main_page.dart';
 import 'package:e_commerce/view/pages/master_page.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -12,6 +11,7 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  //StreamSubscription<User?>? _listener;
   @override
   void initState() {
     checkUser();
@@ -19,23 +19,23 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   void checkUser() async {
-    await Future.delayed(const Duration(milliseconds: 500));
-    var result = GetIt.I<SharedPreferences>().get('user');
-    if (context.mounted) {
-      if (result != null) {
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (_) => MasterPage()));
-      } else {
+    // await Future.delayed(const Duration(seconds: 2));
+    // _listener = FirebaseAuth.instance.authStateChanges().listen((user) {
+    FirebaseAuth.instance.authStateChanges().listen((user) {
+      if (user == null) {
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (_) => MainPage()));
+      } else {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (_) => MasterPage()));
       }
-    }
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: const Center(
+    return const Scaffold(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [CircularProgressIndicator()],

@@ -1,12 +1,9 @@
-import 'package:e_commerce/models/colors.models.dart';
-import 'package:e_commerce/models/products.model.dart';
-import 'package:e_commerce/seeder/data.seeder.dart';
 import 'package:e_commerce/seeder/widgetdata.seeder.dart';
 import 'package:flutter/material.dart';
 
 class ProductColorWidget extends StatefulWidget {
-  void Function()? onPressed;
-  ProductColorWidget({super.key, required this.onPressed});
+  final void Function()? onPressed;
+  const ProductColorWidget({super.key, required this.onPressed});
 
   @override
   State<ProductColorWidget> createState() => _ProductColorWidgetState();
@@ -20,12 +17,12 @@ class _ProductColorWidgetState extends State<ProductColorWidget> {
       padding: const EdgeInsets.only(left: 15),
       child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Container(
             alignment: Alignment.topLeft,
-            child: Text(
+            child: const Text(
               'SELECT COLOR',
               textAlign: TextAlign.left,
               style: TextStyle(
@@ -36,14 +33,14 @@ class _ProductColorWidgetState extends State<ProductColorWidget> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           ///////////////
           SizedBox(
             height: 42,
             child: ListView.builder(
-                physics: ClampingScrollPhysics(),
+                physics: const ClampingScrollPhysics(),
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 itemCount: WidgetData.productColors.length,
@@ -54,10 +51,10 @@ class _ProductColorWidgetState extends State<ProductColorWidget> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(WidgetData.productColors[index]),
                       elevation: 0,
-                      fixedSize: Size(40, 40),
-                      shape: CircleBorder(),
+                      fixedSize: const Size(40, 40),
+                      shape: const CircleBorder(),
                     ),
-                    child: Text(''),
+                    child: const Text(''),
                     /* (index == 0)
                         ? Center(
                             child: Icon(

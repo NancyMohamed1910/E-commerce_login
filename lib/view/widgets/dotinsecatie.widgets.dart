@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class DotsIndicatorWidget extends StatefulWidget {
   late int dotsCount;
-  late int positionIndex;
+  final int positionIndex;
   DotsIndicatorWidget(
       {super.key, required this.dotsCount, required this.positionIndex});
 

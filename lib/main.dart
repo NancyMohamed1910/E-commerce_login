@@ -1,4 +1,5 @@
 import 'package:e_commerce/firebase_options.dart';
+import 'package:e_commerce/providers/authentication.provider.dart';
 import 'package:e_commerce/providers/category.provider.dart';
 import 'package:e_commerce/providers/product.providers.dart';
 import 'package:e_commerce/view/pages/splash_page.dart';
@@ -41,7 +42,7 @@ void main() async {
       },
     ),*/
     ChangeNotifierProvider(create: (_) => ProductProvider()),
-    // ChangeNotifierProvider(create: (_) => AdvertiseProvider()),
+    ChangeNotifierProvider(create: (_) => AuthenticationProvider()),
   ], child: const MyApp()));
 }
 
@@ -64,6 +65,6 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         title: 'Nancy Shop',
         theme: ThemeUtils.themeData,
-        home: SplashPage());
+        home: const SplashPage());
   }
 }

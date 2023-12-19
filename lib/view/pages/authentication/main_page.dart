@@ -1,12 +1,9 @@
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
-import 'package:e_commerce/seeder/data.seeder.dart';
+import 'package:e_commerce/providers/authentication.provider.dart';
 import 'package:e_commerce/seeder/widgetdata.seeder.dart';
 import 'package:e_commerce/utils/enum.dart';
-import 'package:e_commerce/view/pages/forgotpassword_page.dart';
-import 'package:e_commerce/view/pages/login_page.dart';
-import 'package:e_commerce/view/pages/signup_page.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class MainPage extends StatefulWidget {
   MainPage({super.key});
@@ -27,6 +24,7 @@ class _MainPageState extends State<MainPage> {
   @override
   void dispose() {
     pageController.dispose();
+
     super.dispose();
   }
 
@@ -63,9 +61,10 @@ class _MainPageState extends State<MainPage> {
                                       } else if (selectedPage ==
                                           AuthPage.logIn) {
                                         pageController.jumpToPage(1);
-                                      } else
+                                      } else if (selectedPage ==
+                                          AuthPage.forgetPassword) {
                                         pageController.jumpToPage(2);
-
+                                      }
                                       setState(() {});
                                     },
                                     child: Row(
