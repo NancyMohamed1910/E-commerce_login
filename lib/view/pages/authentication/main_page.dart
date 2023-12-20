@@ -1,6 +1,6 @@
 import 'package:e_commerce/providers/authentication.provider.dart';
 import 'package:e_commerce/seeder/widgetdata.seeder.dart';
-import 'package:e_commerce/utils/enum.dart';
+import 'package:e_commerce/utils/Authenum.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

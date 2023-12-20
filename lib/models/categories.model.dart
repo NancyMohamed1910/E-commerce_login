@@ -4,8 +4,8 @@ class CategoryData {
   String? description;
   CategoryData();
 
-  CategoryData.fromJson(Map<String, dynamic> jsondata) {
-    id = jsondata['id'];
+  CategoryData.fromJson(Map<String, dynamic> jsondata, String docId) {
+    id = docId;
     title = jsondata['title'];
     description = jsondata['description'];
   }

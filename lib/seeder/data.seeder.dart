@@ -22,12 +22,12 @@ class DataSeeder {
     products = (_data['products'] as List)
         .map((e) => ProductData.fromJson(e))
         .toList();
-    categories = (_data['categories'] as List)
-        .map((e) => CategoryData.fromJson(e))
-        .toList();
-    adverties = (_data['advertise'] as List)
-        .map((e) => AdvertiesData.fromJson(e))
-        .toList();
+    // categories = (_data['categories'] as List)
+    //    .map((e) => CategoryData.fromJson(e))
+    //   .toList();
+    //  adverties = (_data['advertise'] as List)
+    //    .map((e) => AdvertiesData.fromJson(e))
+    //   .toList();
     //colors = ((_data['products'] as List).map((e) => ProductData.fromJson(e))
     //        as List)
     //   .map((c) => ColorsData.fromJson(c))

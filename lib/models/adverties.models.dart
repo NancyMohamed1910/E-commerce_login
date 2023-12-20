@@ -3,8 +3,8 @@ class AdvertiesData {
   String? imagePath;
   String? description;
   AdvertiesData();
-  AdvertiesData.fromJson(Map<String, dynamic> jsondata) {
-    id = jsondata['id'];
+  AdvertiesData.fromJson(Map<String, dynamic> jsondata, String docId) {
+    id = docId;
     imagePath = jsondata['imagePath'];
     description = jsondata['desccription'];
   }

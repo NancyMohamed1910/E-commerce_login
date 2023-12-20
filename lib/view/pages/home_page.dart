@@ -1,3 +1,4 @@
+import 'package:e_commerce/providers/home.providers.dart';
 import 'package:e_commerce/providers/product.providers.dart';
 import 'package:e_commerce/seeder/data.seeder.dart';
 import 'package:e_commerce/view/pages/productDetails_page.dart';
@@ -20,6 +21,7 @@ class _HomePageState extends State<HomePage> {
   bool _isLoading = true;
   @override
   void initState() {
+    Provider.of<HomeProvider>(context, listen: false).initHomeProvider;
     getData();
 
     super.initState();
