@@ -8,8 +8,8 @@ import 'package:e_commerce/view/widgets/product/product_size.product.widgets.dar
 import 'package:flutter/material.dart';
 
 class ProductDetailsPage extends StatefulWidget {
-  ProductDetailsPage({super.key, required this.productIndex});
-  int productIndex;
+  const ProductDetailsPage({super.key, required this.productIndex});
+  final int productIndex;
 
   @override
   State<ProductDetailsPage> createState() => _ProductDetailsPageState();

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:e_commerce/seeder/widgetdata.seeder.dart';
 
 class ProductSizeWidget extends StatefulWidget {
-  ProductSizeWidget({super.key, required this.onPressed});
-  void Function()? onPressed;
+  const ProductSizeWidget({super.key, required this.onPressed});
+  final void Function()? onPressed;
 
   @override
   State<ProductSizeWidget> createState() => _ProductSizeWidgetState();

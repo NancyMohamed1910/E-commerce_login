@@ -24,7 +24,7 @@ class _SplashPageState extends State<SplashPage> {
     FirebaseAuth.instance.authStateChanges().listen((user) {
       if (user == null) {
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (_) => MainPage()));
+            context, MaterialPageRoute(builder: (_) => const MainPage()));
       } else {
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (_) => const MasterPage()));

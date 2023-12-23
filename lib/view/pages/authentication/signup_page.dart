@@ -86,8 +86,9 @@ class _SignupPageState extends State<SignupPage> {
                                   validator: (value) {
                                     if (value == null || value == '') {
                                       return 'Name is required';
-                                    } else
+                                    } else {
                                       return null;
+                                    }
                                   },
                                   decoration: const InputDecoration(
                                     label: Text('USER NAME'),

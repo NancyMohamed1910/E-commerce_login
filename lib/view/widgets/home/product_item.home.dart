@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ProductItemWidget extends StatefulWidget {
-  String imagePath;
-  String label;
-  String price;
-  void Function()? onPressed;
-  ProductItemWidget(
+  final String imagePath;
+  final String label;
+  final String price;
+  final void Function()? onPressed;
+  const ProductItemWidget(
       {required this.imagePath,
       required this.label,
       required this.price,

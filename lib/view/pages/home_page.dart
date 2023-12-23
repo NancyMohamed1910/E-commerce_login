@@ -2,7 +2,7 @@ import 'package:e_commerce/models/adverties.models.dart';
 import 'package:e_commerce/models/categories.model.dart';
 import 'package:e_commerce/providers/home.providers.dart';
 import 'package:e_commerce/seeder/data.seeder.dart';
-import 'package:e_commerce/view/pages/productDetails_page.dart';
+import 'package:e_commerce/view/pages/productdetails_page.dart';
 import 'package:e_commerce/view/widgets/carouselSlider.widgets.dart';
 import 'package:e_commerce/view/widgets/headline.widgets.dart';
 import 'package:e_commerce/view/widgets/home/categories_row.home.widget.dart';
@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
               homeValues.getCategory();
               if (homeValues.catList == null) {
                 return const CircularProgressIndicator();
-              } else if (homeValues.catList == '') {
+              } else if (homeValues.catList.toString() == '') {
                 return const Text('No Data Found');
               } else {
                 return CategoriesRowHome(
@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
               homeValues.getAdvertise();
               if (homeValues.adList == null) {
                 return const CircularProgressIndicator();
-              } else if (homeValues.adList == '') {
+              } else if (homeValues.adList.toString() == '') {
                 return const Text('No Data Found');
               } else {
                 return CarouselSliderWidget(
@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                         imagePath:
                             DataSeeder.products[index].imagePath.toString(),
                         label: DataSeeder.products[index].name.toString(),
-                        price: '\$' +
+                        price: '\$'
                             ' ${DataSeeder.products[index].price.toString()}',
                         onPressed: () {
                           Navigator.pushReplacement(

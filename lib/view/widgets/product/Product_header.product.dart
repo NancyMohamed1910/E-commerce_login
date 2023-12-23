@@ -6,8 +6,8 @@ import 'package:e_commerce/view/widgets/dotinsecatie.widgets.dart';
 import 'package:line_icons/line_icons.dart';
 
 class ProductHeaderWidget extends StatefulWidget {
-  ProductHeaderWidget({super.key, required this.productIndex});
-  int productIndex;
+  const ProductHeaderWidget({super.key, required this.productIndex});
+  final int productIndex;
 
   @override
   State<ProductHeaderWidget> createState() => _ProductHeaderWidgetState();
@@ -54,9 +54,9 @@ class _ProductHeaderWidgetState extends State<ProductHeaderWidget> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              '\$' + DataSeeder.products[widget.productIndex].price.toString(),
-              style: const TextStyle(
+            const Text(
+              '\$ DataSeeder.products[widget.productIndex].price.toString()',
+              style: TextStyle(
                   color: Color(0xff515C6F),
                   fontWeight: FontWeight.bold,
                   fontSize: 15),
@@ -83,7 +83,7 @@ class _ProductHeaderWidgetState extends State<ProductHeaderWidget> {
             ),
           ],
         ),
-        DotsIndicatorWidget(dotsCount: 3, positionIndex: 1)
+        const DotsIndicatorWidget(dotsCount: 3, positionIndex: 1)
         //////
       ],
     );

@@ -2,9 +2,9 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 
 class DotsIndicatorWidget extends StatefulWidget {
-  late int dotsCount;
+  final int dotsCount;
   final int positionIndex;
-  DotsIndicatorWidget(
+  const DotsIndicatorWidget(
       {super.key, required this.dotsCount, required this.positionIndex});
 
   @override

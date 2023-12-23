@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ProductFooterWidget extends StatefulWidget {
-  ProductFooterWidget(
+  const ProductFooterWidget(
       {super.key, required this.onPressedCart, required this.onPressedShare});
-  void Function()? onPressedShare;
-  void Function()? onPressedCart;
+  final void Function()? onPressedShare;
+  final void Function()? onPressedCart;
 
   @override
   State<ProductFooterWidget> createState() => _ProductFooterWidgetState();

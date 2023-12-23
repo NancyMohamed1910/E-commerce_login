@@ -1,10 +1,10 @@
 import 'package:e_commerce/seeder/widgetdata.seeder.dart';
-import 'package:e_commerce/utils/Authenum.dart';
+import 'package:e_commerce/utils/authenum.dart';
 
 import 'package:flutter/material.dart';
 
 class MainPage extends StatefulWidget {
-  MainPage({super.key});
+  const MainPage({super.key});
 
   @override
   State<MainPage> createState() => _MainPageState();
