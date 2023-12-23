@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                                     },
                                     decoration: const InputDecoration(
                                       label: Text('EMAIL'),
-                                      prefixIcon: const Icon(Icons.mail),
+                                      prefixIcon: Icon(Icons.mail),
                                       isDense: false,
                                       filled: false,
                                       border: InputBorder.none,

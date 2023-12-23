@@ -24,11 +24,9 @@ class _MasterPageState extends State<MasterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBarEx.getAppBar,
-        body: Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [WidgetData.myWidget[_selectedIndex]],
-          ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [WidgetData.myWidget[_selectedIndex]],
         ),
         bottomNavigationBar: BottomNavigationBarWidget(
             itemCount: 5,

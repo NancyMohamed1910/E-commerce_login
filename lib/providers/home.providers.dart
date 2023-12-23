@@ -7,10 +7,10 @@ import 'package:flutter/foundation.dart';
 class HomeProvider extends ChangeNotifier {
   List<AdvertiesData>? adList;
   List<CategoryData>? catList;
-  void initHomeProvider() async {
-    await getAdvertise();
-    await getCategory();
-  }
+  // void initHomeProvider() async {
+  //  await getCategory();
+  //  await getAdvertise();
+  // }
 
   Future<void> getAdvertise() async {
     QuerySnapshot<Map<String, dynamic>> result = await FirebaseFirestore
@@ -19,6 +19,7 @@ class HomeProvider extends ChangeNotifier {
         .get();
     adList = List<AdvertiesData>.from(
         result.docs.map((e) => AdvertiesData.fromJson(e.data(), e.id)));
+    //  print('================adlist===$adList');
     notifyListeners();
   }
 
@@ -29,6 +30,7 @@ class HomeProvider extends ChangeNotifier {
         .get();
     catList = List<CategoryData>.from(
         result.docs.map((e) => CategoryData.fromJson(e.data(), e.id)));
+    // print('=========catList=====$catList');
     notifyListeners();
   }
 }

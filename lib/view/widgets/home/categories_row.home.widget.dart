@@ -2,7 +2,8 @@ import 'package:e_commerce/view/widgets/home/category_item_row.home.widget.dart'
 import 'package:flutter/material.dart';
 
 class CategoriesRowHome extends StatefulWidget {
-  const CategoriesRowHome({super.key});
+  List<String> titles;
+  CategoriesRowHome({super.key, required this.titles});
 
   @override
   State<CategoriesRowHome> createState() => _CategoriesRowHomeState();
@@ -10,8 +11,9 @@ class CategoriesRowHome extends StatefulWidget {
 
 class _CategoriesRowHomeState extends State<CategoriesRowHome> {
   @override
+  @override
   Widget build(BuildContext context) {
-    return const Padding(
+    return Padding(
         padding: const EdgeInsets.symmetric(vertical: 8),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -19,14 +21,13 @@ class _CategoriesRowHomeState extends State<CategoriesRowHome> {
             Expanded(
               flex: 1,
               child: CategoryItemRowWidget(
-                gradientColors: const [
+                gradientColors: [
                   Color(0xffffa554),
                   Color(0xfffe6953),
                 ],
                 imagePath: 'assets/images/clothes.png',
-                shadowColor: const Color(0xfffee0e1),
-                title: 'Apparel',
-                //title: categoriesValues.elementAt(0),
+                shadowColor: Color(0xfffee0e1),
+                title: widget.titles.elementAt(0),
               ),
             ),
             Expanded(
@@ -34,32 +35,28 @@ class _CategoriesRowHomeState extends State<CategoriesRowHome> {
                 child: SizedBox(
                   width: 20,
                   child: CategoryItemRowWidget(
-                    gradientColors: const [
-                      Color(0xff56f1f9),
-                      Color(0xff69b9fe),
-                    ],
-                    imagePath: 'assets/images/beauty.png',
-                    shadowColor: const Color(0xffe1efff),
-                    title: 'Beauty',
-                    //title: categoriesValues.elementAt(1),
-                  ),
+                      gradientColors: [
+                        Color(0xff56f1f9),
+                        Color(0xff69b9fe),
+                      ],
+                      imagePath: 'assets/images/beauty.png',
+                      shadowColor: Color(0xffe1efff),
+                      title: widget.titles.elementAt(1)),
                 )),
             Expanded(
                 flex: 1,
                 child: SizedBox(
                   width: 20,
                   child: CategoryItemRowWidget(
-                    gradientColors: const [
-                      Color.fromARGB(255, 111, 121, 102),
-                      Color(0xff42c441),
-                    ],
-                    imagePath: 'assets/images/shoes.png',
-                    shadowColor: const Color(0xffd1f6db),
-                    title: 'Shoes',
-                    // title: categoriesValues.elementAt(2),
-                  ),
+                      gradientColors: [
+                        Color.fromARGB(255, 111, 121, 102),
+                        Color(0xff42c441),
+                      ],
+                      imagePath: 'assets/images/shoes.png',
+                      shadowColor: Color(0xffd1f6db),
+                      title: widget.titles.elementAt(2)),
                 )),
-            const Expanded(
+            Expanded(
                 flex: 1,
                 child: SizedBox(
                   width: 20,
@@ -81,16 +78,3 @@ class _CategoriesRowHomeState extends State<CategoriesRowHome> {
         ));
   }
 }
-    
-  
-
-
-/*
- Consumer<List<String>?>(builder: (ctx, categoriesValues, _) {
-        if (categoriesValues == null) {
-          return const CircularProgressIndicator();
-        } else if (categoriesValues.isEmpty) {
-          return const Text('No Data Found');
-        } else {
-          return
-*/

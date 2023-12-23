@@ -28,7 +28,7 @@ class ProductData {
         jsondata['colors'].map((e) => ColorsData.fromJson(e)));
     size =
         List<SizeData>.from(jsondata['size'].map((e) => SizeData.fromJson(e)));
-    print('--------colors--------------:$colors');
+    // print('--------colors--------------:$colors');
   }
   Map<String, dynamic> toJson() {
     return {

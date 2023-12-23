@@ -1,11 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:e_commerce/seeder/data.seeder.dart';
 import 'package:flutter/material.dart';
 
 class CarouselSliderWidget extends StatefulWidget {
-  //final List<String> items;
+  final List<String> items;
   final void Function(int index) onchangePage;
-  const CarouselSliderWidget({required this.onchangePage, super.key});
+  const CarouselSliderWidget(
+      {required this.onchangePage, required this.items, super.key});
 
   @override
   State<CarouselSliderWidget> createState() => _CarouselSliderWidgetState();
@@ -37,7 +37,8 @@ class _CarouselSliderWidgetState extends State<CarouselSliderWidget> {
   Widget build(BuildContext context) {
     return CarouselSlider(
       options: options,
-      items: [...DataSeeder.adverties.map((e) => e.imagePath ?? '')].map((i) {
+      // items: [...DataSeeder.adverties.map((e) => e.imagePath ?? '')].map((i) {
+      items: widget.items.map((i) {
         return Builder(
           builder: (BuildContext context) {
             return Container(

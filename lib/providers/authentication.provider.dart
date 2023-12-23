@@ -1,4 +1,3 @@
-import 'package:e_commerce/view/pages/authentication/main_page.dart';
 import 'package:e_commerce/view/pages/master_page.dart';
 import 'package:e_commerce/view/pages/splash_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -75,7 +74,7 @@ class AuthenticationProvider extends ChangeNotifier {
         await QuickAlert.show(
             context: context,
             type: QuickAlertType.error,
-            title: 'Login Error ${e}');
+            title: 'Login Error $e');
       }
     }
   }
@@ -129,7 +128,7 @@ class AuthenticationProvider extends ChangeNotifier {
         await QuickAlert.show(
             context: context,
             type: QuickAlertType.error,
-            title: 'Signup Error ${e}');
+            title: 'Signup Error $e');
       }
     }
   }
@@ -148,6 +147,6 @@ class AuthenticationProvider extends ChangeNotifier {
         title: 'You Logout Successfully');
     Navigator.pop(context);
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (_) => SplashPage()));
+        context, MaterialPageRoute(builder: (_) => const SplashPage()));
   }
 }

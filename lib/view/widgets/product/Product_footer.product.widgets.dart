@@ -26,13 +26,13 @@ class _ProductFooterWidgetState extends State<ProductFooterWidget> {
                 shape: const StadiumBorder(),
                 elevation: 0,
                 backgroundColor: Colors.white,
-                shadowColor: Color.fromARGB(255, 105, 105, 4),
+                shadowColor: const Color.fromARGB(255, 105, 105, 4),
                 fixedSize: const Size(200, 50),
               ),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Expanded(
+                    const Expanded(
                       flex: 3,
                       child: SizedBox(
                         child: Text(
@@ -75,14 +75,14 @@ class _ProductFooterWidgetState extends State<ProductFooterWidget> {
                 style: ElevatedButton.styleFrom(
                   shape: const StadiumBorder(),
                   elevation: 0,
-                  backgroundColor: Color(0xffff6969),
-                  shadowColor: Color.fromARGB(255, 105, 105, 4),
+                  backgroundColor: const Color(0xffff6969),
+                  shadowColor: const Color.fromARGB(255, 105, 105, 4),
                   fixedSize: const Size(200, 50),
                 ),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Expanded(
+                      const Expanded(
                         flex: 3,
                         child: SizedBox(
                           child: Text(

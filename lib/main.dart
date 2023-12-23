@@ -1,8 +1,6 @@
 import 'package:e_commerce/firebase_options.dart';
 import 'package:e_commerce/providers/authentication.provider.dart';
-import 'package:e_commerce/providers/category.provider.dart';
 import 'package:e_commerce/providers/home.providers.dart';
-import 'package:e_commerce/providers/product.providers.dart';
 import 'package:e_commerce/view/pages/splash_page.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
@@ -28,15 +26,7 @@ void main() async {
     print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Error When Set prefrences');
   }
   runApp(MultiProvider(providers: [
-    //  FutureProvider<List<String>?>(
-    //    create: (_) => CategoryProvider().getCategoriesTitle(),
-    //    initialData: null,
-    //    catchError: (_, err) {
-    //     return [];
-    //  },
-    // ),
     ChangeNotifierProvider(create: (_) => HomeProvider()),
-    ChangeNotifierProvider(create: (_) => ProductProvider()),
     ChangeNotifierProvider(create: (_) => AuthenticationProvider()),
   ], child: const MyApp()));
 }

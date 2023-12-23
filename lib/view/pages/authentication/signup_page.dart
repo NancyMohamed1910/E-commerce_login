@@ -1,13 +1,8 @@
 import 'package:e_commerce/providers/authentication.provider.dart';
-import 'package:e_commerce/view/pages/master_page.dart';
-
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -34,9 +29,9 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(375, 667),
+      designSize: const Size(375, 667),
       builder: (context, _) => Scaffold(
-          backgroundColor: Color(0xffF5F6F8),
+          backgroundColor: const Color(0xffF5F6F8),
           body: Consumer<AuthenticationProvider>(
               builder: (context, authProvider, _) {
             return Form(
@@ -71,9 +66,9 @@ class _SignupPageState extends State<SignupPage> {
                                     }
                                     return null;
                                   },
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     label: Text('EMAIL'),
-                                    prefixIcon: const Icon(Icons.mail),
+                                    prefixIcon: Icon(Icons.mail),
                                     isDense: false,
                                     filled: false,
                                     border: InputBorder.none,
@@ -83,7 +78,8 @@ class _SignupPageState extends State<SignupPage> {
                                     disabledBorder: InputBorder.none,
                                   ),
                                 ),
-                                Divider(thickness: 2, color: Color(0xffF5F6F8)),
+                                const Divider(
+                                    thickness: 2, color: Color(0xffF5F6F8)),
                                 TextFormField(
                                   keyboardType: TextInputType.name,
                                   controller: authProvider.userController,
@@ -93,9 +89,9 @@ class _SignupPageState extends State<SignupPage> {
                                     } else
                                       return null;
                                   },
-                                  decoration: InputDecoration(
+                                  decoration: const InputDecoration(
                                     label: Text('USER NAME'),
-                                    prefixIcon: const Icon(Icons.person),
+                                    prefixIcon: Icon(Icons.person),
                                     isDense: false,
                                     filled: false,
                                     border: InputBorder.none,
@@ -105,7 +101,8 @@ class _SignupPageState extends State<SignupPage> {
                                     disabledBorder: InputBorder.none,
                                   ),
                                 ),
-                                Divider(thickness: 2, color: Color(0xffF5F6F8)),
+                                const Divider(
+                                    thickness: 2, color: Color(0xffF5F6F8)),
                                 TextFormField(
                                   obscureText: authProvider.obscureText,
                                   controller: authProvider.passwordController,

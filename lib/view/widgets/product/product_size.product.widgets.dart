@@ -16,12 +16,12 @@ class _ProductSizeWidgetState extends State<ProductSizeWidget> {
       padding: const EdgeInsets.only(left: 15),
       child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Container(
             alignment: Alignment.topLeft,
-            child: Text(
+            child: const Text(
               'SELECT SIZE (US)',
               textAlign: TextAlign.left,
               style: TextStyle(
@@ -32,14 +32,14 @@ class _ProductSizeWidgetState extends State<ProductSizeWidget> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           ///////////////
           SizedBox(
             height: 40,
             child: ListView.builder(
-                physics: ClampingScrollPhysics(),
+                physics: const ClampingScrollPhysics(),
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 itemCount: WidgetData.productColors.length,
@@ -51,14 +51,14 @@ class _ProductSizeWidgetState extends State<ProductSizeWidget> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
                         elevation: 0,
-                        fixedSize: Size(72, 39),
+                        fixedSize: const Size(72, 39),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
                       ),
                       child: Text(
                         WidgetData.prodctSize[index],
                         textAlign: TextAlign.center,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontStyle: FontStyle.normal,
                           color: Color(0xff727C8E),
                           fontWeight: FontWeight.w500,
@@ -72,6 +72,5 @@ class _ProductSizeWidgetState extends State<ProductSizeWidget> {
         ],
       ),
     );
-    ;
   }
 }

@@ -27,7 +27,7 @@ class _SplashPageState extends State<SplashPage> {
             context, MaterialPageRoute(builder: (_) => MainPage()));
       } else {
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (_) => MasterPage()));
+            context, MaterialPageRoute(builder: (_) => const MasterPage()));
       }
     });
   }

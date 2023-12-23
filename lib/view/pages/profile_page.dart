@@ -18,7 +18,7 @@ class _ProfilePageState extends State<ProfilePage> {
             Provider.of<AuthenticationProvider>(context, listen: false)
                 .onLogout(context);
           },
-          child: Text('Logout')),
+          child: const Text('Logout')),
     );
   }
 }

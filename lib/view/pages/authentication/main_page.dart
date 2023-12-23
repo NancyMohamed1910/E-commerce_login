@@ -1,9 +1,7 @@
-import 'package:e_commerce/providers/authentication.provider.dart';
 import 'package:e_commerce/seeder/widgetdata.seeder.dart';
 import 'package:e_commerce/utils/Authenum.dart';
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class MainPage extends StatefulWidget {
   MainPage({super.key});
@@ -37,7 +35,7 @@ class _MainPageState extends State<MainPage> {
             Container(
               height: 100,
               //width: 367,
-              color: Color(0xffF5F6F8),
+              color: const Color(0xffF5F6F8),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -45,15 +43,15 @@ class _MainPageState extends State<MainPage> {
                     child: ListView(
                         scrollDirection: Axis.horizontal,
                         shrinkWrap: true,
-                        physics: ClampingScrollPhysics(),
+                        physics: const ClampingScrollPhysics(),
                         children: AuthPage.values
                             .map((e) => Padding(
-                                  padding: EdgeInsets.all(8),
+                                  padding: const EdgeInsets.all(8),
                                   child: InkWell(
-                                    focusColor: Color(0xffF5F6F8),
-                                    highlightColor: Color(0xffF5F6F8),
-                                    hoverColor: Color(0xffF5F6F8),
-                                    splashColor: Color(0xffF5F6F8),
+                                    focusColor: const Color(0xffF5F6F8),
+                                    highlightColor: const Color(0xffF5F6F8),
+                                    hoverColor: const Color(0xffF5F6F8),
+                                    splashColor: const Color(0xffF5F6F8),
                                     onTap: () {
                                       selectedPage = e;
                                       if (selectedPage == AuthPage.signUp) {
@@ -76,16 +74,16 @@ class _MainPageState extends State<MainPage> {
                                         Text(
                                           e.name,
                                           style: selectedPage == e
-                                              ? TextStyle(
+                                              ? const TextStyle(
                                                   fontSize: 30,
                                                   color: Colors.black,
                                                   fontWeight: FontWeight.w700)
-                                              : TextStyle(
+                                              : const TextStyle(
                                                   fontSize: 30,
                                                   color: Colors.grey,
                                                   fontWeight: FontWeight.w500),
                                         ),
-                                        SizedBox(width: 30),
+                                        const SizedBox(width: 30),
                                       ],
                                     ),
                                   ),

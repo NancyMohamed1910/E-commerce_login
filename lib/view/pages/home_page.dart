@@ -1,5 +1,6 @@
+import 'package:e_commerce/models/adverties.models.dart';
+import 'package:e_commerce/models/categories.model.dart';
 import 'package:e_commerce/providers/home.providers.dart';
-import 'package:e_commerce/providers/product.providers.dart';
 import 'package:e_commerce/seeder/data.seeder.dart';
 import 'package:e_commerce/view/pages/productDetails_page.dart';
 import 'package:e_commerce/view/widgets/carouselSlider.widgets.dart';
@@ -18,21 +19,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   var currentPositon = 0;
-  bool _isLoading = true;
+
   @override
-  void initState() {
-    Provider.of<HomeProvider>(context, listen: false).initHomeProvider;
-    getData();
-
-    super.initState();
-  }
-
-  void getData() async {
-    await DataSeeder.loadData;
-    setState(() {});
-    _isLoading = false;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -42,62 +30,65 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const HeadlineWidget(title: 'Caregories'),
-            const CategoriesRowHome(),
-            const HeadlineWidget(title: 'Latest'),
-            if (_isLoading)
-              const CircularProgressIndicator()
-            else
-              CarouselSliderWidget(onchangePage: (index) {
-                currentPositon = index;
-
-                setState(() {});
-              }),
-            ////--------------------
-            Consumer<ProductProvider>(builder: (ctx, productValues, _) {
-              //    Provider.of<ProductProvider>(context, listen: false)
-              //       .getProductImage();
-
-              if (productValues == null) {
+            Consumer<HomeProvider>(builder: (ctx, homeValues, _) {
+              homeValues.getCategory();
+              if (homeValues.catList == null) {
                 return const CircularProgressIndicator();
-              } else if (productValues == '') {
+              } else if (homeValues.catList == '') {
                 return const Text('No Data Found');
               } else {
-                return SizedBox(
-                  height: 140.0,
-                  child: ListView.builder(
-                      physics: const ClampingScrollPhysics(),
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      // itemCount: DataSeeder.products.length,
-                      itemCount: productValues.getlength(),
-                      itemBuilder: (BuildContext context, int index) =>
-                          ProductItemWidget(
-                            imagePath:
-                                '${productValues.getProductImage(index)}' ?? '',
-                            // DataSeeder.products[index].imagePath.toString(),
-                            //label: DataSeeder.products[index].name.toString(),
-                            label:
-                                '${productValues.getProductTitle(index)}' ?? '',
-                            price: '\$' +
-                                    '${productValues.getProductPrice(index)}' ??
-                                '',
-                            //DataSeeder.products[index].price.toString(),
-                            onPressed: () {
-                              Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) => ProductDetailsPage(
-                                          productIndex: index)));
-                            },
-                          )),
+                return CategoriesRowHome(
+                  titles: (homeValues.catList as List<CategoryData>)
+                      .map((e) => e.title ?? '')
+                      .toList(),
                 );
               }
-            })
+            }),
+            const HeadlineWidget(title: 'Latest'),
+            Consumer<HomeProvider>(builder: (ctx, homeValues, _) {
+              homeValues.getAdvertise();
+              if (homeValues.adList == null) {
+                return const CircularProgressIndicator();
+              } else if (homeValues.adList == '') {
+                return const Text('No Data Found');
+              } else {
+                return CarouselSliderWidget(
+                  onchangePage: (index) {
+                    currentPositon = index;
 
-            ///---------------------
+                    setState(() {});
+                  },
+                  items: (homeValues.adList as List<AdvertiesData>)
+                      .map((e) => e.imagePath ?? '')
+                      .toList(),
+                );
+              }
+            }),
+            SizedBox(
+              height: 140.0,
+              child: ListView.builder(
+                  physics: const ClampingScrollPhysics(),
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: DataSeeder.products.length,
+                  itemBuilder: (BuildContext context, int index) =>
+                      ProductItemWidget(
+                        imagePath:
+                            DataSeeder.products[index].imagePath.toString(),
+                        label: DataSeeder.products[index].name.toString(),
+                        price: '\$' +
+                            ' ${DataSeeder.products[index].price.toString()}',
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) =>
+                                      ProductDetailsPage(productIndex: index)));
+                        },
+                      )),
+            )
           ],
         ),
       ),

@@ -24,21 +24,22 @@ class _ProductHeaderWidgetState extends State<ProductHeaderWidget> {
                 Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (_) => const MasterPage()));
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.keyboard_arrow_left,
                 size: 30,
-                color: const Color(0xffFF6969),
+                color: Color(0xffFF6969),
               )),
           Text(
             DataSeeder.products[widget.productIndex].description.toString(),
-            style: TextStyle(
+            style: const TextStyle(
                 color: Color(0xff515C6F),
                 fontWeight: FontWeight.w300,
                 fontSize: 15),
           ),
           Stack(
             children: [
-              IconButton(onPressed: () {}, icon: Icon(LineIcons.shoppingCart)),
+              IconButton(
+                  onPressed: () {}, icon: const Icon(LineIcons.shoppingCart)),
               Positioned(
                   bottom: 6,
                   left: 10,
@@ -55,25 +56,25 @@ class _ProductHeaderWidgetState extends State<ProductHeaderWidget> {
           children: [
             Text(
               '\$' + DataSeeder.products[widget.productIndex].price.toString(),
-              style: TextStyle(
+              style: const TextStyle(
                   color: Color(0xff515C6F),
                   fontWeight: FontWeight.bold,
                   fontSize: 15),
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             Container(
               height: 19,
               width: 42,
               decoration: BoxDecoration(
-                  color: Color(0xffFF6969),
+                  color: const Color(0xffFF6969),
                   borderRadius: BorderRadius.circular(14)),
               child: Text(
                 '* ' +
                     DataSeeder.products[widget.productIndex].review.toString(),
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Color(0xffFFFFFF),
                   fontWeight: FontWeight.bold,
                   fontSize: 12,

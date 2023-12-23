@@ -29,7 +29,7 @@ class _RowButtonWidgetsState extends State<RowButtonWidgets> {
                     backgroundColor: Colors.white,
                     fixedSize: const Size(110, 30),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Products',
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -52,7 +52,7 @@ class _RowButtonWidgetsState extends State<RowButtonWidgets> {
                       backgroundColor: Colors.white,
                       fixedSize: const Size(110, 30),
                     ),
-                    child: Text(
+                    child: const Text(
                       'Details',
                       textAlign: TextAlign.center,
                       style: TextStyle(
@@ -74,7 +74,7 @@ class _RowButtonWidgetsState extends State<RowButtonWidgets> {
                     backgroundColor: Colors.white,
                     fixedSize: const Size(110, 30),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Reviews',
                     textAlign: TextAlign.center,
                     style: TextStyle(
