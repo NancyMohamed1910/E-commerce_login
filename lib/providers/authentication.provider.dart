@@ -141,12 +141,14 @@ class AuthenticationProvider extends ChangeNotifier {
     await FirebaseAuth.instance.signOut();
 
     await GetIt.I.get<SharedPreferences>().clear();
-    await QuickAlert.show(
-        context: context,
-        type: QuickAlertType.success,
-        title: 'You Logout Successfully');
-    Navigator.pop(context);
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (_) => const SplashPage()));
+    if (context.mounted) {
+      Navigator.pop(context);
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (_) => const SplashPage()));
+      await QuickAlert.show(
+          context: context,
+          type: QuickAlertType.success,
+          title: 'You Logout Successfully');
+    }
   }
 }
