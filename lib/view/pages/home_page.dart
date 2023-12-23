@@ -1,6 +1,6 @@
 import 'package:e_commerce/models/adverties.models.dart';
-import 'package:e_commerce/models/categories.model.dart';
-import 'package:e_commerce/providers/home.providers.dart';
+import 'package:e_commerce/providers/adv.providers.dart';
+import 'package:e_commerce/providers/categories.providers.dart';
 import 'package:e_commerce/seeder/data.seeder.dart';
 import 'package:e_commerce/view/pages/productdetails_page.dart';
 import 'package:e_commerce/view/widgets/carouselSlider.widgets.dart';
@@ -32,35 +32,42 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const HeadlineWidget(title: 'Caregories'),
-            Consumer<HomeProvider>(builder: (ctx, homeValues, _) {
-              homeValues.getCategory();
-              if (homeValues.catList == null) {
-                return const CircularProgressIndicator();
-              } else if (homeValues.catList.toString() == '') {
-                return const Text('No Data Found');
-              } else {
-                return CategoriesRowHome(
-                  titles: (homeValues.catList as List<CategoryData>)
-                      .map((e) => e.title ?? '')
-                      .toList(),
-                );
-              }
+            Consumer<CategoryProvider>(builder: (context, catValues, _) {
+              return FutureBuilder(
+                  future: catValues.getCategories(context, limit: 3),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return CircularProgressIndicator();
+                    } else if (snapshot.connectionState ==
+                        ConnectionState.done) {
+                      if (snapshot.hasError) {
+                        return Text('Error while get data');
+                      } else if (snapshot.hasData) {
+                        return CategoriesRowHome(
+                            categories: snapshot.data ?? []);
+                      } else {
+                        return Text('No data found');
+                      }
+                    } else {
+                      return Text(
+                          'Connection State: ${snapshot.connectionState}');
+                    }
+                  });
             }),
+            // ,
             const HeadlineWidget(title: 'Latest'),
-            Consumer<HomeProvider>(builder: (ctx, homeValues, _) {
-              homeValues.getAdvertise();
-              if (homeValues.adList == null) {
+            Consumer<AdvProvider>(builder: (ctx, advValues, _) {
+              advValues.getAdvertise();
+              if (advValues.adList == null) {
                 return const CircularProgressIndicator();
-              } else if (homeValues.adList.toString() == '') {
+              } else if (advValues.adList.toString() == '') {
                 return const Text('No Data Found');
               } else {
                 return CarouselSliderWidget(
                   onchangePage: (index) {
                     currentPositon = index;
-
-                    setState(() {});
                   },
-                  items: (homeValues.adList as List<AdvertiesData>)
+                  items: (advValues.adList as List<AdvertiesData>)
                       .map((e) => e.imagePath ?? '')
                       .toList(),
                 );

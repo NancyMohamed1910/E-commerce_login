@@ -1,19 +1,14 @@
+import 'package:e_commerce/models/categories.model.dart';
 import 'package:flutter/material.dart';
 
 class CategoryItemRowWidget extends StatelessWidget {
-  final Color shadowColor;
-  final List<Color> gradientColors;
-  final String? imagePath;
-  final Widget? iconWidget;
-  final String title;
-  const CategoryItemRowWidget(
-      {required this.shadowColor,
-      required this.gradientColors,
-      this.imagePath,
-      this.iconWidget,
-      required this.title,
-      super.key})
-      : assert(imagePath != null || iconWidget != null);
+  final CategoryData categoryData;
+  Widget? iconWidget;
+  CategoryItemRowWidget({
+    required this.categoryData,
+    this.iconWidget,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +20,7 @@ class CategoryItemRowWidget extends StatelessWidget {
           decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
-                    color: shadowColor,
+                    color: Color(categoryData.shadowColor ?? 0),
                     offset: const Offset(0, 10),
                     blurRadius: 5,
                     spreadRadius: 2)
@@ -33,19 +28,25 @@ class CategoryItemRowWidget extends StatelessWidget {
               gradient: LinearGradient(
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
-                  colors: gradientColors),
+                  colors:
+                      categoryData.colors?.map((e) => Color(e)).toList() ?? []),
               shape: BoxShape.circle),
           child: Padding(
-            padding: EdgeInsets.only(top: imagePath != null ? 10 : 0),
+            padding: EdgeInsets.only(top: categoryData.image != null ? 10 : 0),
             child: Center(
-              child: imagePath != null
-                  ? Image.asset(
-                      imagePath!,
+              child: iconWidget != null
+                  ? const Icon(
+                      Icons.arrow_forward_ios_outlined,
+                      size: 30,
+                      color: Colors.red,
+                    )
+                  // : Image.network(
+                  : Image.asset(
+                      categoryData.image ?? '',
                       height: 70,
                       width: 70,
                       fit: BoxFit.cover,
-                    )
-                  : iconWidget,
+                    ),
             ),
           ),
         ),
@@ -53,7 +54,7 @@ class CategoryItemRowWidget extends StatelessWidget {
           height: 7,
         ),
         Text(
-          title,
+          categoryData.title ?? 'No Title',
           style: const TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.w400,

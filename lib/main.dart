@@ -1,6 +1,7 @@
 import 'package:e_commerce/firebase_options.dart';
 import 'package:e_commerce/providers/authentication.provider.dart';
-import 'package:e_commerce/providers/home.providers.dart';
+import 'package:e_commerce/providers/adv.providers.dart';
+import 'package:e_commerce/providers/categories.providers.dart';
 import 'package:e_commerce/view/pages/splash_page.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
@@ -18,16 +19,17 @@ void main() async {
   var prefrenceInstance = await SharedPreferences.getInstance();
   GetIt.I.registerSingleton<SharedPreferences>(prefrenceInstance);
 
-  // var result = GetIt.I.allReadySync();
-/*
+  var result = GetIt.I.allReadySync();
+
   if (result == true) {
     print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>> prefrences set successfully');
   } else {
     print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Error When Set prefrences');
-  }*/
+  }
   runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(create: (_) => HomeProvider()),
     ChangeNotifierProvider(create: (_) => AuthenticationProvider()),
+    Provider(create: (_) => CategoryProvider()),
+    ChangeNotifierProvider(create: (_) => AdvProvider()),
   ], child: const MyApp()));
 }
 

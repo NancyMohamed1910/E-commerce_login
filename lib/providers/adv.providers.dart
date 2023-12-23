@@ -4,7 +4,7 @@ import 'package:e_commerce/models/categories.model.dart';
 import 'package:e_commerce/utils/collections.Utils.dart';
 import 'package:flutter/foundation.dart';
 
-class HomeProvider extends ChangeNotifier {
+class AdvProvider extends ChangeNotifier {
   List<AdvertiesData>? adList;
   List<CategoryData>? catList;
   // void initHomeProvider() async {
@@ -23,7 +23,7 @@ class HomeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> getCategory() async {
+  /* Future<void> getCategory() async {
     QuerySnapshot<Map<String, dynamic>> result = await FirebaseFirestore
         .instance
         .collection(CollectionsUtils.categoires.name)
@@ -32,5 +32,5 @@ class HomeProvider extends ChangeNotifier {
         result.docs.map((e) => CategoryData.fromJson(e.data(), e.id)));
     // print('=========catList=====$catList');
     notifyListeners();
-  }
+  }*/
 }
