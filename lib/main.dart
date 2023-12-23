@@ -18,13 +18,13 @@ void main() async {
   var prefrenceInstance = await SharedPreferences.getInstance();
   GetIt.I.registerSingleton<SharedPreferences>(prefrenceInstance);
 
-  var result = GetIt.I.allReadySync();
-
+  // var result = GetIt.I.allReadySync();
+/*
   if (result == true) {
     print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>> prefrences set successfully');
   } else {
     print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Error When Set prefrences');
-  }
+  }*/
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => HomeProvider()),
     ChangeNotifierProvider(create: (_) => AuthenticationProvider()),
