@@ -1,47 +1,60 @@
-import 'package:e_commerce/models/colors.models.dart';
-import 'package:e_commerce/models/sizes.model.dart';
+import 'package:e_commerce/models/categories.model.dart';
 
 class ProductData {
-  int? id;
-  String? categoryId;
+  String? id;
+  CategoryData? category;
   String? description;
   String? name;
   double? price;
   int? quantity;
   double? review;
   String? imagePath;
-  List<ColorsData>? colors;
-  List<SizeData>? size;
+  String? brand;
+  String? condition;
+  String? sku;
+  String? material;
+  String? fitting;
+  DateTime? createdAt;
+  Map<String, List<dynamic>>? variants;
 
   ProductData();
-  ProductData.fromJson(Map<String, dynamic> jsondata) {
-    id = jsondata['id'] as int;
-    categoryId = jsondata['categoryId'];
+  ProductData.fromJson(Map<String, dynamic> jsondata, [String? docId]) {
+    id = docId;
+    category = jsondata['category'] != null
+        ? CategoryData.fromJson(jsondata['category'])
+        : null;
     description = jsondata['description'];
     name = jsondata['name'];
     price = jsondata['price'] as double;
     quantity = jsondata['quantity'];
     review = jsondata['review'] as double;
-
     imagePath = jsondata['imagePath'];
-    colors = List<ColorsData>.from(
-        jsondata['colors'].map((e) => ColorsData.fromJson(e)));
-    size =
-        List<SizeData>.from(jsondata['size'].map((e) => SizeData.fromJson(e)));
-    // print('--------colors--------------:$colors');
+    brand = jsondata['brand'];
+    condition = jsondata['condition'];
+    sku = jsondata['sku'];
+    material = jsondata['material'];
+    fitting = jsondata['fitting'];
+    createdAt = DateTime.fromMillisecondsSinceEpoch(
+        jsondata['createdAt'].millisecondsSinceEpoch);
+    // variants = jsondata['variants'];
   }
   Map<String, dynamic> toJson() {
     return {
       "id": id,
-      "categoryId": categoryId,
+      "categoryId": category?.toJson(),
       "description": description,
       "name": name,
       "price": price,
       "quantity": quantity,
       "review": review,
       "imagePath": imagePath,
-      "colors": colors?.map((e) => e.toJson()).toList(),
-      "size": size?.map((e) => e.toJson()).toList()
+      "brand": brand,
+      "condition": condition,
+      "sku": sku,
+      "material": material,
+      "fitting": fitting,
+      "createdAt": createdAt,
+      "variants": variants
     };
   }
 }

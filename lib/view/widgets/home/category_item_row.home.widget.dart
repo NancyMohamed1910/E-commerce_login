@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 class CategoryItemRowWidget extends StatelessWidget {
   final CategoryData categoryData;
-  Widget? iconWidget;
-  CategoryItemRowWidget({
+  final Widget? iconWidget;
+  const CategoryItemRowWidget({
     required this.categoryData,
     this.iconWidget,
     super.key,

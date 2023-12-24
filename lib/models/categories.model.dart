@@ -22,7 +22,6 @@ class CategoryData {
         ? DateTime.fromMillisecondsSinceEpoch(
             jsondata['createdAt'].millisecondsSinceEpoch)
         : null;
-    ;
   }
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = {};

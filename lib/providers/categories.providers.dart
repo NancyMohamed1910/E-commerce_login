@@ -24,7 +24,7 @@ class CategoryProvider {
         var categoriesList = List<CategoryData>.from(
                 result.docs.map((e) => CategoryData.fromJson(e.data(), e.id)))
             .toList();
-        print('====categoryList=====$categoriesList');
+        // print('====categoryList=====$categoriesList');
         return categoriesList;
       } else {
         return [];

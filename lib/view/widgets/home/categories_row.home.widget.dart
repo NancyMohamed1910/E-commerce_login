@@ -32,9 +32,6 @@ class CategoriesRowHome extends StatelessWidget {
               color: Colors.red,
             ),
           ),
-          const SizedBox(
-            width: 20,
-          ),
         ],
       ),
     );

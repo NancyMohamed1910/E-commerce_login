@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:e_commerce/models/adverties.models.dart';
 import 'package:e_commerce/models/categories.model.dart';
-import 'package:e_commerce/models/colors.models.dart';
+
 import 'package:e_commerce/models/products.model.dart';
 import 'package:flutter/services.dart';
 
@@ -11,7 +11,7 @@ class DataSeeder {
   static List<ProductData> products = [];
   static List<CategoryData> categories = [];
   static List<AdvertiesData> adverties = [];
-  static List<ColorsData> colors = [];
+  // static List<ColorsData> colors = [];
   //static List<ColorsData> colors = [];
   static void loadData() async {
     await Future.delayed(const Duration(seconds: 5));

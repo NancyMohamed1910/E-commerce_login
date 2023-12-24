@@ -1,7 +1,9 @@
 import 'package:e_commerce/models/adverties.models.dart';
+import 'package:e_commerce/models/products.model.dart';
 import 'package:e_commerce/providers/adv.providers.dart';
 import 'package:e_commerce/providers/categories.providers.dart';
-import 'package:e_commerce/seeder/data.seeder.dart';
+import 'package:e_commerce/providers/product.providers.dart';
+
 import 'package:e_commerce/view/pages/productdetails_page.dart';
 import 'package:e_commerce/view/widgets/carouselSlider.widgets.dart';
 import 'package:e_commerce/view/widgets/headline.widgets.dart';
@@ -37,16 +39,16 @@ class _HomePageState extends State<HomePage> {
                   future: catValues.getCategories(context, limit: 3),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return CircularProgressIndicator();
+                      return const CircularProgressIndicator();
                     } else if (snapshot.connectionState ==
                         ConnectionState.done) {
                       if (snapshot.hasError) {
-                        return Text('Error while get data');
+                        return const Text('Error while get data');
                       } else if (snapshot.hasData) {
                         return CategoriesRowHome(
                             categories: snapshot.data ?? []);
                       } else {
-                        return Text('No data found');
+                        return const Text('No data found');
                       }
                     } else {
                       return Text(
@@ -73,6 +75,71 @@ class _HomePageState extends State<HomePage> {
                 );
               }
             }),
+            ///////
+            Consumer<ProductProvider>(
+              builder: (__, productValues, _) {
+                return FutureBuilder(
+                    future: productValues.getProducts(context),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const CircularProgressIndicator();
+                      } else if (snapshot.connectionState ==
+                          ConnectionState.done) {
+                        if (snapshot.hasError) {
+                          return const Text('Error While Get Data');
+                        } else if (snapshot.hasData) {
+                          return SizedBox(
+                            height: 140.0,
+                            child: ListView.builder(
+                                physics: const ClampingScrollPhysics(),
+                                shrinkWrap: true,
+                                scrollDirection: Axis.horizontal,
+                                itemCount: snapshot.data?.length,
+                                //itemCount: DataSeeder.products.length,
+                                itemBuilder: (BuildContext context,
+                                        int index) =>
+                                    ProductItemWidget(
+                                      imagePath:
+                                          (snapshot.data as List<ProductData>)
+                                              .map((e) => e.imagePath ?? '')
+                                              .toList()
+                                              .first
+                                              //.elementAt()
+                                              .toString(),
+                                      // imagePath:
+                                      //    DataSeeder.products[index].imagePath.toString(),
+                                      // label: DataSeeder.products[index].name.toString(),
+                                      label:
+                                          (snapshot.data as List<ProductData>)
+                                              .map((e) => e.name ?? '')
+                                              .toList()
+                                              .elementAt(index)
+                                              .toString(),
+                                      price: '\$'
+                                          ' ${(snapshot.data as List<ProductData>).map((e) => e.price ?? '').toList().elementAt(index).toString()}',
+                                      onPressed: () {
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (_) =>
+                                                    ProductDetailsPage(
+                                                        productIndex: index)));
+                                      },
+                                    )),
+                          );
+                        } else {
+                          return const Text('No Data Found');
+                        }
+                      } else {
+                        return Text(
+                            'Connection Statue ${snapshot.connectionState}');
+                      }
+                    });
+              },
+            ),
+
+            ///////
+            /*
             SizedBox(
               height: 140.0,
               child: ListView.builder(
@@ -95,7 +162,7 @@ class _HomePageState extends State<HomePage> {
                                       ProductDetailsPage(productIndex: index)));
                         },
                       )),
-            )
+            )*/
           ],
         ),
       ),
