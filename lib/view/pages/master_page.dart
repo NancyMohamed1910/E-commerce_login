@@ -1,4 +1,3 @@
-import 'package:e_commerce/seeder/data.seeder.dart';
 import 'package:e_commerce/seeder/widgetdata.seeder.dart';
 import 'package:e_commerce/view/widgets/AppBar_EX.widgets.dart';
 import 'package:e_commerce/view/widgets/bottumNavigationBar.widgets.dart';
@@ -16,7 +15,6 @@ class _MasterPageState extends State<MasterPage> {
 
   @override
   void initState() {
-    DataSeeder.loadData();
     super.initState();
   }
 

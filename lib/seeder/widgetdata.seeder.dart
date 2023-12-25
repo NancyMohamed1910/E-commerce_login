@@ -26,33 +26,4 @@ class WidgetData {
     const LoginPage(),
     const ForgotPasswordPage()
   ];
-
-  static const List productColors = [
-    0xffED5199,
-    0xffFF8C69,
-    0xff67B5F7,
-    0xffFFFFFF,
-    0xffC9C9C9,
-    0xff3E3A3A,
-    0xffED5199,
-    0xffFF8C69,
-    0xff67B5F7,
-    0xffFFFFFF,
-    0xffC9C9C9,
-    0xff3E3A3A
-  ];
-  static const List<String> prodctSize = [
-    "4.5",
-    "5",
-    "6",
-    "7.5",
-    "8",
-    "8.5",
-    "9",
-    "9.5",
-    "10",
-    "10.5",
-    "11",
-    "11.5"
-  ];
 }

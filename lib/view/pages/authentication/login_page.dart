@@ -19,10 +19,16 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   @override
-  void dispose() {
+
+  //void dispose() {
+  //Provider.of<AuthenticationProvider>(context, listen: false)
+  //   .disposeProvider();
+  // super.dispose();
+  // }
+  void deactivate() {
     Provider.of<AuthenticationProvider>(context, listen: false)
         .disposeProvider();
-    super.dispose();
+    super.deactivate();
   }
 
   @override

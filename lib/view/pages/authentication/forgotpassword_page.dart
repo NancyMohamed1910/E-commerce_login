@@ -19,11 +19,16 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   }
 
   @override
-  void dispose() {
+  void deactivate() {
     Provider.of<AuthenticationProvider>(context, listen: false)
         .disposeProvider();
-    super.dispose();
+    super.deactivate();
   }
+  // void dispose() {
+  // Provider.of<AuthenticationProvider>(context, listen: false)
+  //   .disposeProvider();
+  //super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {

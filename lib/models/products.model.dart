@@ -34,9 +34,12 @@ class ProductData {
     sku = jsondata['sku'];
     material = jsondata['material'];
     fitting = jsondata['fitting'];
-    createdAt = DateTime.fromMillisecondsSinceEpoch(
-        jsondata['createdAt'].millisecondsSinceEpoch);
-    // variants = jsondata['variants'];
+
+    createdAt = jsondata['createdAt'] != null
+        ? DateTime.fromMillisecondsSinceEpoch(
+            jsondata['createdAt'].millisecondsSinceEpoch)
+        : null;
+    variants = Map<String, List<dynamic>>.from(jsondata['variants']);
   }
   Map<String, dynamic> toJson() {
     return {

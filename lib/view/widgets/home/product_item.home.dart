@@ -19,6 +19,7 @@ class ProductItemWidget extends StatefulWidget {
 class _ProductItemWidgetState extends State<ProductItemWidget> {
   @override
   Widget build(BuildContext context) {
+    // print('=====imagePath:======= ${widget.imagePath}');
     return Padding(
         padding: const EdgeInsets.all(8.0),
         child: ElevatedButton(
@@ -38,7 +39,6 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                 flex: 3,
                 child: Image.asset(
                   widget.imagePath,
-                  // productValues.elementAt(0),
                   width: 75,
                   height: 70,
                 ),

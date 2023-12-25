@@ -1,13 +1,13 @@
+import 'package:e_commerce/models/products.model.dart';
 import 'package:e_commerce/view/pages/master_page.dart';
 import 'package:flutter/material.dart';
-import 'package:e_commerce/seeder/data.seeder.dart';
 import 'package:e_commerce/utils/colors.util.dart';
 import 'package:e_commerce/view/widgets/dotinsecatie.widgets.dart';
 import 'package:line_icons/line_icons.dart';
 
 class ProductHeaderWidget extends StatefulWidget {
-  const ProductHeaderWidget({super.key, required this.productIndex});
-  final int productIndex;
+  const ProductHeaderWidget({super.key, required this.productdata});
+  final ProductData? productdata;
 
   @override
   State<ProductHeaderWidget> createState() => _ProductHeaderWidgetState();
@@ -30,7 +30,10 @@ class _ProductHeaderWidgetState extends State<ProductHeaderWidget> {
                 color: Color(0xffFF6969),
               )),
           Text(
-            DataSeeder.products[widget.productIndex].description.toString(),
+            ((widget.productdata ?? [] as ProductData).description ?? '')
+                .toString(),
+
+            //DataSeeder.products[widget.productIndex].description.toString(),
             style: const TextStyle(
                 color: Color(0xff515C6F),
                 fontWeight: FontWeight.w300,
@@ -54,9 +57,11 @@ class _ProductHeaderWidgetState extends State<ProductHeaderWidget> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              '\$ DataSeeder.products[widget.productIndex].price.toString()',
-              style: TextStyle(
+            Text(
+              '\$ ${((widget.productdata ?? [] as ProductData).price ?? '').toString()}',
+
+              //DataSeeder.products[widget.productIndex].price.toString()',
+              style: const TextStyle(
                   color: Color(0xff515C6F),
                   fontWeight: FontWeight.bold,
                   fontSize: 15),
@@ -71,8 +76,8 @@ class _ProductHeaderWidgetState extends State<ProductHeaderWidget> {
                   color: const Color(0xffFF6969),
                   borderRadius: BorderRadius.circular(14)),
               child: Text(
-                '* ' +
-                    DataSeeder.products[widget.productIndex].review.toString(),
+                '* ${((widget.productdata ?? [] as ProductData).review ?? '').toString()}',
+                // DataSeeder.products[widget.productIndex].review.toString(),
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   color: Color(0xffFFFFFF),

@@ -77,7 +77,7 @@ class _HomePageState extends State<HomePage> {
             }),
             ///////
             Consumer<ProductProvider>(
-              builder: (__, productValues, _) {
+              builder: (context, productValues, _) {
                 return FutureBuilder(
                     future: productValues.getProducts(context),
                     builder: (context, snapshot) {
@@ -95,7 +95,6 @@ class _HomePageState extends State<HomePage> {
                                 shrinkWrap: true,
                                 scrollDirection: Axis.horizontal,
                                 itemCount: snapshot.data?.length,
-                                //itemCount: DataSeeder.products.length,
                                 itemBuilder: (BuildContext context,
                                         int index) =>
                                     ProductItemWidget(
@@ -103,12 +102,8 @@ class _HomePageState extends State<HomePage> {
                                           (snapshot.data as List<ProductData>)
                                               .map((e) => e.imagePath ?? '')
                                               .toList()
-                                              .first
-                                              //.elementAt()
+                                              .elementAt(index)
                                               .toString(),
-                                      // imagePath:
-                                      //    DataSeeder.products[index].imagePath.toString(),
-                                      // label: DataSeeder.products[index].name.toString(),
                                       label:
                                           (snapshot.data as List<ProductData>)
                                               .map((e) => e.name ?? '')
@@ -118,12 +113,31 @@ class _HomePageState extends State<HomePage> {
                                       price: '\$'
                                           ' ${(snapshot.data as List<ProductData>).map((e) => e.price ?? '').toList().elementAt(index).toString()}',
                                       onPressed: () {
+                                        /* String productId =
+                                            (snapshot.data as List<ProductData>)
+                                                .map((e) => e.id ?? '')
+                                                .toList()
+                                                .elementAt(index);
+                                        print('======productId:===$productId');
+                                        */
+                                        /*  List<Map<String, dynamic>> prod =
+                                            ((snapshot.data ??
+                                                    [].elementAt(index))
+                                                // as List<ProductData>
+                                                as List<Map<String, dynamic>>);
+                                        print('======prod=====$prod');
+                                        */
                                         Navigator.pushReplacement(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (_) =>
                                                     ProductDetailsPage(
-                                                        productIndex: index)));
+                                                      productdata: ((snapshot
+                                                                  .data ??
+                                                              [])
+                                                          .elementAt(index)),
+                                                      //index: index,
+                                                    )));
                                       },
                                     )),
                           );
@@ -137,32 +151,6 @@ class _HomePageState extends State<HomePage> {
                     });
               },
             ),
-
-            ///////
-            /*
-            SizedBox(
-              height: 140.0,
-              child: ListView.builder(
-                  physics: const ClampingScrollPhysics(),
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: DataSeeder.products.length,
-                  itemBuilder: (BuildContext context, int index) =>
-                      ProductItemWidget(
-                        imagePath:
-                            DataSeeder.products[index].imagePath.toString(),
-                        label: DataSeeder.products[index].name.toString(),
-                        price: '\$'
-                            ' ${DataSeeder.products[index].price.toString()}',
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (_) =>
-                                      ProductDetailsPage(productIndex: index)));
-                        },
-                      )),
-            )*/
           ],
         ),
       ),

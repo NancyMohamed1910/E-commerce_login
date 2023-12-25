@@ -1,4 +1,3 @@
-import 'package:e_commerce/seeder/widgetdata.seeder.dart';
 import 'package:flutter/material.dart';
 
 class ProductColorWidget extends StatefulWidget {
@@ -10,7 +9,6 @@ class ProductColorWidget extends StatefulWidget {
 }
 
 class _ProductColorWidgetState extends State<ProductColorWidget> {
-  // int index = DataSeeder.products.map((e) => e.id) as int;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -43,13 +41,14 @@ class _ProductColorWidgetState extends State<ProductColorWidget> {
                 physics: const ClampingScrollPhysics(),
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
-                itemCount: WidgetData.productColors.length,
+                itemCount: 2, //WidgetData.productColors.length,
                 //itemCount: DataSeeder.colors.length,
                 itemBuilder: (_, index) {
                   return ElevatedButton(
                     onPressed: widget.onPressed,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(WidgetData.productColors[index]),
+                      backgroundColor:
+                          Colors.red, //Color(WidgetData.productColors[index]),
                       elevation: 0,
                       fixedSize: const Size(40, 40),
                       shape: const CircleBorder(),

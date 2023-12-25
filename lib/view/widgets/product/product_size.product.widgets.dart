@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:e_commerce/seeder/widgetdata.seeder.dart';
 
 class ProductSizeWidget extends StatefulWidget {
   const ProductSizeWidget({super.key, required this.onPressed});
@@ -42,7 +41,7 @@ class _ProductSizeWidgetState extends State<ProductSizeWidget> {
                 physics: const ClampingScrollPhysics(),
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
-                itemCount: WidgetData.productColors.length,
+                itemCount: 2, //WidgetData.productColors.length,
                 itemBuilder: (_, index) {
                   return Padding(
                     padding: const EdgeInsets.only(left: 5, right: 5),
@@ -55,10 +54,11 @@ class _ProductSizeWidgetState extends State<ProductSizeWidget> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
                       ),
-                      child: Text(
-                        WidgetData.prodctSize[index],
+                      child: const Text(
+                        '4.5',
+                        //WidgetData.prodctSize[index],
                         textAlign: TextAlign.center,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontStyle: FontStyle.normal,
                           color: Color(0xff727C8E),
                           fontWeight: FontWeight.w500,

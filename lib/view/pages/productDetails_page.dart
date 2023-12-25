@@ -1,6 +1,5 @@
-import 'package:e_commerce/seeder/data.seeder.dart';
+import 'package:e_commerce/models/products.model.dart';
 import 'package:e_commerce/view/widgets/product/Product_footer.product.widgets.dart';
-
 import 'package:e_commerce/view/widgets/product/Product_header.product.dart';
 import 'package:e_commerce/view/widgets/product/button_row.product.widgets.dart';
 import 'package:e_commerce/view/widgets/product/product_color.product.widget.dart';
@@ -8,8 +7,11 @@ import 'package:e_commerce/view/widgets/product/product_size.product.widgets.dar
 import 'package:flutter/material.dart';
 
 class ProductDetailsPage extends StatefulWidget {
-  const ProductDetailsPage({super.key, required this.productIndex});
-  final int productIndex;
+  const ProductDetailsPage({
+    super.key,
+    required this.productdata,
+  });
+  final ProductData? productdata;
 
   @override
   State<ProductDetailsPage> createState() => _ProductDetailsPageState();
@@ -26,12 +28,15 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              ProductHeaderWidget(productIndex: widget.productIndex),
+              ProductHeaderWidget(productdata: widget.productdata),
               const SizedBox(
                 height: 10,
               ),
               Image.asset(
-                DataSeeder.products[widget.productIndex].imagePath.toString(),
+                ((widget.productdata ?? [] as ProductData).imagePath ?? '')
+                    .toString(),
+
+                //DataSeeder.products[widget.productIndex].imagePath.toString(),
                 width: 220,
                 height: 202,
                 fit: BoxFit.cover,
