@@ -1,5 +1,5 @@
 import 'package:e_commerce/seeder/widgetdata.seeder.dart';
-import 'package:e_commerce/utils/authenum.dart';
+import 'package:e_commerce/utils/authenum.util.dart';
 
 import 'package:flutter/material.dart';
 

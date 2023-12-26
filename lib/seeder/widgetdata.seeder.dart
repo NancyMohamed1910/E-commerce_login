@@ -3,6 +3,7 @@ import 'package:e_commerce/view/pages/authentication/login_page.dart';
 
 import 'package:e_commerce/view/pages/authentication/signup_page.dart';
 import 'package:e_commerce/view/pages/home_page.dart';
+
 import 'package:e_commerce/view/pages/profile_page.dart';
 
 import 'package:flutter/material.dart';

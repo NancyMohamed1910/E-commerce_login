@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce/models/categories.model.dart';
-import 'package:e_commerce/utils/collections.Utils.dart';
+import 'package:e_commerce/utils/collections.utils.dart';
 import 'package:flutter/material.dart';
 import 'package:quickalert/quickalert.dart';
 

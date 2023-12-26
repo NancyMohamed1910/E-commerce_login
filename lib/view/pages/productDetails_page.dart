@@ -1,9 +1,9 @@
 import 'package:e_commerce/models/products.model.dart';
 import 'package:e_commerce/view/widgets/product/Product_footer.product.widgets.dart';
 import 'package:e_commerce/view/widgets/product/Product_header.product.dart';
-import 'package:e_commerce/view/widgets/product/button_row.product.widgets.dart';
-import 'package:e_commerce/view/widgets/product/product_color.product.widget.dart';
-import 'package:e_commerce/view/widgets/product/product_size.product.widgets.dart';
+
+import 'package:e_commerce/view/widgets/product/product_data.product.widgets.dart';
+
 import 'package:flutter/material.dart';
 
 class ProductDetailsPage extends StatefulWidget {
@@ -41,14 +41,11 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 height: 202,
                 fit: BoxFit.cover,
               ),
-              const RowButtonWidgets(),
-              ProductColorWidget(
-                onPressed: () {},
-              ),
-              ProductSizeWidget(onPressed: () {}),
               const SizedBox(
-                height: 5,
+                height: 10,
               ),
+              ProductDataWidget(
+                  productdata: (widget.productdata ?? [] as ProductData)),
               const Divider(
                 thickness: 0,
                 indent: 15,
