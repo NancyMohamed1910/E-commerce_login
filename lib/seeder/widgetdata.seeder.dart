@@ -2,6 +2,7 @@ import 'package:e_commerce/view/pages/authentication/forgotpassword_page.dart';
 import 'package:e_commerce/view/pages/authentication/login_page.dart';
 
 import 'package:e_commerce/view/pages/authentication/signup_page.dart';
+import 'package:e_commerce/view/pages/cart_page.dart';
 import 'package:e_commerce/view/pages/home_page.dart';
 
 import 'package:e_commerce/view/pages/profile_page.dart';
@@ -16,7 +17,8 @@ class WidgetData {
       LineIcons.search,
       size: 150,
     ),
-    Icon(LineIcons.shoppingCart, size: 150),
+    CartPage(),
+    //Icon(LineIcons.shoppingCart, size: 150),
     //Icon(LineIcons.user, size: 150),
     ProfilePage(),
     Icon(LineIcons.bars, size: 150),

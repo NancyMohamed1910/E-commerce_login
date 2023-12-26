@@ -113,20 +113,6 @@ class _HomePageState extends State<HomePage> {
                                       price: '\$'
                                           ' ${(snapshot.data as List<ProductData>).map((e) => e.price ?? '').toList().elementAt(index).toString()}',
                                       onPressed: () {
-                                        /* String productId =
-                                            (snapshot.data as List<ProductData>)
-                                                .map((e) => e.id ?? '')
-                                                .toList()
-                                                .elementAt(index);
-                                        print('======productId:===$productId');
-                                        */
-                                        /*  List<Map<String, dynamic>> prod =
-                                            ((snapshot.data ??
-                                                    [].elementAt(index))
-                                                // as List<ProductData>
-                                                as List<Map<String, dynamic>>);
-                                        print('======prod=====$prod');
-                                        */
                                         Navigator.pushReplacement(
                                             context,
                                             MaterialPageRoute(

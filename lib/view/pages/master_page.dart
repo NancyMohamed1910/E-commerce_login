@@ -21,9 +21,10 @@ class _MasterPageState extends State<MasterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: const Color(0xffF5F6F8),
         appBar: AppBarEx.getAppBar,
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          // mainAxisAlignment: MainAxisAlignment.center,
           children: [WidgetData.myWidget[_selectedIndex]],
         ),
         bottomNavigationBar: BottomNavigationBarWidget(
