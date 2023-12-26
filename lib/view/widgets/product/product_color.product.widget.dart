@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
 
 class ProductColorWidget extends StatefulWidget {
-  final void Function()? onPressed;
-  const ProductColorWidget({super.key, required this.onPressed});
+  final List<int> colors;
+  final void Function(Color) onPressed;
+  const ProductColorWidget(
+      {super.key, required this.onPressed, required this.colors});
 
   @override
   State<ProductColorWidget> createState() => _ProductColorWidgetState();
 }
 
 class _ProductColorWidgetState extends State<ProductColorWidget> {
+  int selectedIndex = -1;
+  late List<Color> colors;
+  @override
+  void initState() {
+    colors = widget.colors.map((e) => Color(e)).toList();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -18,50 +28,39 @@ class _ProductColorWidgetState extends State<ProductColorWidget> {
           const SizedBox(
             height: 15,
           ),
-          Container(
-            alignment: Alignment.topLeft,
-            child: const Text(
-              'SELECT COLOR',
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                fontStyle: FontStyle.normal,
-                color: Color(0xff515c6f),
-                fontWeight: FontWeight.w500,
-                fontSize: 12,
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          ///////////////
           SizedBox(
             height: 42,
             child: ListView.builder(
                 physics: const ClampingScrollPhysics(),
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
-                itemCount: 2, //WidgetData.productColors.length,
-                //itemCount: DataSeeder.colors.length,
+                itemCount: widget.colors.length,
                 itemBuilder: (_, index) {
                   return ElevatedButton(
-                    onPressed: widget.onPressed,
+                    onPressed: () {
+                      if (selectedIndex == index) {
+                        selectedIndex = 0;
+                      } else {
+                        selectedIndex = index;
+                      }
+                      widget.onPressed.call(colors[selectedIndex]);
+                      setState(() {});
+                    },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                          Colors.red, //Color(WidgetData.productColors[index]),
+                      backgroundColor: colors[index],
+                      //Colors.red, //Color(WidgetData.productColors[index]),
                       elevation: 0,
                       fixedSize: const Size(40, 40),
                       shape: const CircleBorder(),
                     ),
-                    child: const Text(''),
-                    /* (index == 0)
-                        ? Center(
-                            child: Icon(
+                    child: Center(
+                      child: selectedIndex == index
+                          ? const Icon(
                               Icons.check,
                               color: Colors.white,
-                            ),
-                          )
-                        : Text(''),*/
+                            )
+                          : null,
+                    ),
                   );
                 }),
           ),

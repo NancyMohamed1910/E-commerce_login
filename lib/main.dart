@@ -2,6 +2,7 @@ import 'package:e_commerce/firebase_options.dart';
 import 'package:e_commerce/providers/authentication.provider.dart';
 import 'package:e_commerce/providers/adv.providers.dart';
 import 'package:e_commerce/providers/categories.providers.dart';
+import 'package:e_commerce/providers/cart.providers.dart';
 import 'package:e_commerce/providers/product.providers.dart';
 import 'package:e_commerce/view/pages/splash_page.dart';
 import 'package:get_it/get_it.dart';
@@ -32,6 +33,7 @@ void main() async {
     Provider(create: (_) => CategoryProvider()),
     ChangeNotifierProvider(create: (_) => AdvProvider()),
     Provider(create: (_) => ProductProvider()),
+    Provider(create: (_) => CartProvider()),
   ], child: const MyApp()));
 }
 

@@ -25,9 +25,13 @@ class ProductData {
         : null;
     description = jsondata['description'];
     name = jsondata['name'];
-    price = jsondata['price'] as double;
+    price = jsondata['price'] is int
+        ? (jsondata['price'] as int).toDouble()
+        : jsondata['price'];
     quantity = jsondata['quantity'];
-    review = jsondata['review'] as double;
+    review = jsondata['review'] is int
+        ? (jsondata['review'] as int).toDouble()
+        : jsondata['review']; //jsondata['review'] as double;
     imagePath = jsondata['imagePath'];
     brand = jsondata['brand'];
     condition = jsondata['condition'];

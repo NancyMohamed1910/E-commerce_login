@@ -1,5 +1,6 @@
 import 'package:e_commerce/models/categories.model.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class CategoryItemRowWidget extends StatelessWidget {
   final CategoryData categoryData;
@@ -16,7 +17,7 @@ class CategoryItemRowWidget extends StatelessWidget {
       children: [
         Container(
           height: 75,
-          width: 75,
+          //width: 75,
           decoration: BoxDecoration(
               boxShadow: [
                 BoxShadow(
@@ -40,11 +41,18 @@ class CategoryItemRowWidget extends StatelessWidget {
                       size: 30,
                       color: Colors.red,
                     )
-                  // : Image.network(
-                  : Image.asset(
-                      categoryData.image ?? '',
+                  : CachedNetworkImage(
+                      progressIndicatorBuilder: (context, url, progress) =>
+                          Center(
+                        child: CircularProgressIndicator(
+                          value: progress.progress,
+                        ),
+                      ),
+                      imageUrl: categoryData.image ?? '',
                       height: 70,
                       width: 70,
+                      //cacheWidth: 10,
+                      //cacheHeight: 10,
                       fit: BoxFit.cover,
                     ),
             ),

@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
 
 class ProductSizeWidget extends StatefulWidget {
-  const ProductSizeWidget({super.key, required this.onPressed});
-  final void Function()? onPressed;
+  final List<dynamic> values;
+  final void Function(dynamic) onPressed;
+
+  const ProductSizeWidget(
+      {super.key, required this.onPressed, required this.values});
 
   @override
   State<ProductSizeWidget> createState() => _ProductSizeWidgetState();
 }
 
 class _ProductSizeWidgetState extends State<ProductSizeWidget> {
+  int? selectedIndex = -1;
+  late List<dynamic> values;
+  @override
+  void initState() {
+    values = widget.values;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -18,35 +29,26 @@ class _ProductSizeWidgetState extends State<ProductSizeWidget> {
           const SizedBox(
             height: 15,
           ),
-          Container(
-            alignment: Alignment.topLeft,
-            child: const Text(
-              'SELECT SIZE (US)',
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                fontStyle: FontStyle.normal,
-                color: Color(0xff515c6f),
-                fontWeight: FontWeight.w500,
-                fontSize: 12,
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          ///////////////
           SizedBox(
             height: 40,
             child: ListView.builder(
                 physics: const ClampingScrollPhysics(),
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
-                itemCount: 2, //WidgetData.productColors.length,
+                itemCount: widget.values.length,
                 itemBuilder: (_, index) {
                   return Padding(
                     padding: const EdgeInsets.only(left: 5, right: 5),
                     child: ElevatedButton(
-                      onPressed: widget.onPressed,
+                      onPressed: () {
+                        if (selectedIndex == index) {
+                          selectedIndex = 0;
+                        } else {
+                          selectedIndex = index;
+                        }
+                        widget.onPressed.call(values[selectedIndex ?? 0]);
+                        setState(() {});
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
                         elevation: 0,
@@ -54,16 +56,17 @@ class _ProductSizeWidgetState extends State<ProductSizeWidget> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
                       ),
-                      child: const Text(
-                        '4.5',
+                      child: Text(
+                        '${values[index]}',
                         //WidgetData.prodctSize[index],
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontStyle: FontStyle.normal,
-                          color: Color(0xff727C8E),
-                          fontWeight: FontWeight.w500,
-                          fontSize: 15,
-                        ),
+                            color: selectedIndex == index
+                                ? const Color(0xffff6969)
+                                : const Color(0xff727c8e),
+                            fontSize: 15,
+                            fontWeight: FontWeight.w500,
+                            letterSpacing: 1),
                       ),
                     ),
                   );

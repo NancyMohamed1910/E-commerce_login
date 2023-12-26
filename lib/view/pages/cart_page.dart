@@ -20,7 +20,8 @@ class _CartPageState extends State<CartPage> {
             child: Column(
                 //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  SizedBox(height: 35, child: HeadlineWidget(title: 'Cart')),
+                  const SizedBox(
+                      height: 35, child: HeadlineWidget(title: 'Cart')),
                   ListView.separated(
                       separatorBuilder: (ctx, index) {
                         return const Divider(

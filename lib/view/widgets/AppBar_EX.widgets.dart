@@ -1,5 +1,6 @@
 import 'package:e_commerce/utils/colors.util.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class AppBarEx {
   static PreferredSizeWidget get getAppBar => AppBar(
@@ -10,7 +11,15 @@ class AppBarEx {
             children: [
               IconButton(
                   onPressed: () {},
-                  icon: Image.asset('assets/images/Messages.png')),
+                  icon: CachedNetworkImage(
+                      progressIndicatorBuilder: (context, url, progress) =>
+                          Center(
+                            child: CircularProgressIndicator(
+                              value: progress.progress,
+                            ),
+                          ),
+                      imageUrl:
+                          'https://firebasestorage.googleapis.com/v0/b/nancy-shop-c87fe.appspot.com/o/products%2FMessages.png?alt=media&token=907fc7d9-0e79-4c03-a9ee-34b5073b4150')),
               Positioned(
                   bottom: 6,
                   left: 10,

@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class CarouselSliderWidget extends StatefulWidget {
   final List<String> items;
@@ -46,7 +47,14 @@ class _CarouselSliderWidgetState extends State<CarouselSliderWidget> {
                 decoration:
                     BoxDecoration(borderRadius: BorderRadius.circular(20)),
                 child: Stack(children: [
-                  Image.asset(i,
+                  CachedNetworkImage(
+                      progressIndicatorBuilder: (context, url, progress) =>
+                          Center(
+                            child: CircularProgressIndicator(
+                              value: progress.progress,
+                            ),
+                          ),
+                      imageUrl: i,
                       height: 184,
                       // width: 325,
                       width: double.infinity,

@@ -1,1 +1,1 @@
-enum CollectionsUtils { ads, categoires, product }
+enum CollectionsUtils { ads, categoires, product, cart }

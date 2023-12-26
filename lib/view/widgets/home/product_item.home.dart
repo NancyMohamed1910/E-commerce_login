@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ProductItemWidget extends StatefulWidget {
   final String imagePath;
@@ -37,8 +38,13 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
             children: [
               Expanded(
                 flex: 3,
-                child: Image.asset(
-                  widget.imagePath,
+                child: CachedNetworkImage(
+                  progressIndicatorBuilder: (context, url, progress) => Center(
+                    child: CircularProgressIndicator(
+                      value: progress.progress,
+                    ),
+                  ),
+                  imageUrl: widget.imagePath,
                   width: 75,
                   height: 70,
                 ),
