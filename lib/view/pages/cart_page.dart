@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce/seeder/widgetdata.seeder.dart';
 import 'package:e_commerce/view/widgets/headline.widgets.dart';
@@ -22,12 +24,11 @@ class _CartPageState extends State<CartPage> {
           Column(
               //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const SizedBox(
-                    height: 35, child: HeadlineWidget(title: 'Cart')),
+                HeadlineWidget(title: 'Cart'),
                 ListView.separated(
                     separatorBuilder: (ctx, index) {
                       return const Divider(
-                          thickness: 0, indent: 200, color: Color(0xff727C8E));
+                          thickness: 0, indent: 50, color: Color(0xff727C8E));
                     },
                     scrollDirection: Axis.vertical,
                     physics: const ClampingScrollPhysics(),
@@ -94,7 +95,7 @@ class _CartPageState extends State<CartPage> {
                           ));
                     }),
               ]),
-          const Divider(thickness: 0, indent: 10, color: Color(0xff727C8E)),
+          const Divider(thickness: 2, indent: 10, color: Color(0xff727C8E)),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -139,7 +140,7 @@ class _CartPageState extends State<CartPage> {
                   elevation: 0,
                   backgroundColor: const Color(0xffff6969),
                   shadowColor: const Color.fromARGB(255, 105, 105, 4),
-                  fixedSize: const Size(200, 50),
+                  fixedSize: const Size(180, 50),
                 ),
                 child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -149,6 +150,7 @@ class _CartPageState extends State<CartPage> {
                         child: SizedBox(
                           child: Text(
                             'CHECKOUT',
+                            textDirection: TextDirection.ltr,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontStyle: FontStyle.normal,
