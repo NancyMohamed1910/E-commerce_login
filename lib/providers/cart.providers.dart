@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce/models/cart.models.dart';
 import 'package:e_commerce/utils/collections.utils.dart';
+import 'package:e_commerce/view/pages/master_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:quickalert/models/quickalert_type.dart';
@@ -97,7 +98,10 @@ class CartProvider {
                 context: context,
                 type: QuickAlertType.success,
                 title: 'product Added Successfully')
-            .then((value) => Navigator.pop(context));
+            .then((value) {
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (_) => const MasterPage()));
+        });
       }
     } catch (e) {
       if (!context.mounted) return null;

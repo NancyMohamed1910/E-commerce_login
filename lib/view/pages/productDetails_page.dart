@@ -1,18 +1,22 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce/models/products.model.dart';
+import 'package:e_commerce/providers/cart.providers.dart';
+import 'package:e_commerce/view/pages/master_page.dart';
 
 import 'package:e_commerce/view/widgets/product/Product_header.product.dart';
 
 import 'package:e_commerce/view/widgets/product/product_data.product.widgets.dart';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:uuid/uuid.dart';
 
 class ProductDetailsPage extends StatefulWidget {
   const ProductDetailsPage({
     super.key,
     required this.productdata,
   });
-  final ProductData? productdata;
+  final ProductData productdata;
 
   @override
   State<ProductDetailsPage> createState() => _ProductDetailsPageState();
@@ -122,7 +126,19 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                     child: SizedBox(
                       width: 15,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Provider.of<CartProvider>(context, listen: false)
+                              .cartItem
+                              ?.productId = widget.productdata.id;
+                          Provider.of<CartProvider>(context, listen: false)
+                              .cartItem
+                              ?.quantity = 1;
+                          Provider.of<CartProvider>(context, listen: false)
+                              .cartItem
+                              ?.itemId = const Uuid().v4();
+                          Provider.of<CartProvider>(context, listen: false)
+                              .onAddItemToCart(context: context);
+                        },
                         style: ElevatedButton.styleFrom(
                           shape: const StadiumBorder(),
                           elevation: 0,

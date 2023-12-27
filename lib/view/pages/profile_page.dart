@@ -12,13 +12,6 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-          onPressed: () {
-            Provider.of<AuthenticationProvider>(context, listen: false)
-                .onLogout(context);
-          },
-          child: const Text('Logout')),
-    );
+    return Center();
   }
 }

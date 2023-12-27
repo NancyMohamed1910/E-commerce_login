@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_commerce/seeder/widgetdata.seeder.dart';
 import 'package:e_commerce/view/widgets/headline.widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +11,7 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
+  int index = 0;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -16,43 +19,117 @@ class _CartPageState extends State<CartPage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SingleChildScrollView(
-            child: Column(
-                //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  const SizedBox(
-                      height: 35, child: HeadlineWidget(title: 'Cart')),
-                  ListView.separated(
-                      separatorBuilder: (ctx, index) {
-                        return const Divider(
-                            thickness: 0,
-                            indent: 200,
-                            color: Color(0xff727C8E));
-                      },
-                      //  ListView.builder.(
-                      scrollDirection: Axis.vertical,
-                      physics: const ClampingScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: 3,
-                      itemBuilder: (ctx, index) {
-                        return ListTile(
-                          leading: Text('leading$index'),
-                          title: Text('title'),
-                          subtitle: Text('subtitle'),
-                          trailing: Text('trealing'),
-                        );
-                      }),
-                ]),
-          ),
-          const Divider(thickness: 0, indent: 15, color: Color(0xff727C8E)),
+          Column(
+              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                const SizedBox(
+                    height: 35, child: HeadlineWidget(title: 'Cart')),
+                ListView.separated(
+                    separatorBuilder: (ctx, index) {
+                      return const Divider(
+                          thickness: 0, indent: 200, color: Color(0xff727C8E));
+                    },
+                    scrollDirection: Axis.vertical,
+                    physics: const ClampingScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: 4,
+                    itemBuilder: (ctx, index) {
+                      return ListTile(
+                          leading: Container(
+                            height: 100,
+                            width: 100,
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.white,
+                            ),
+                            child: Center(
+                              child: CachedNetworkImage(
+                                progressIndicatorBuilder:
+                                    (context, url, progress) => Center(
+                                  child: CircularProgressIndicator(
+                                    value: progress.progress,
+                                  ),
+                                ),
+                                imageUrl:
+                                    'https://firebasestorage.googleapis.com/v0/b/nancy-shop-c87fe.appspot.com/o/products%2Fwomen_shoes.png?alt=media&token=76ba682f-0820-4255-871d-28ab85f71b64',
+                                width: 75,
+                                height: 69,
+                              ),
+                            ),
+                          ),
+                          title: Column(children: [
+                            Text(
+                              'Faux Sued Ankle Boots',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                fontStyle: FontStyle.normal,
+                                color: const Color(0xff515C6F),
+                                fontWeight: FontWeight.w500,
+                                fontSize: 15,
+                              ),
+                            ),
+                            Text(
+                              '7, Hot Pink',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                fontStyle: FontStyle.normal,
+                                color: const Color(0xff515c6f),
+                                fontWeight: FontWeight.w500,
+                                fontSize: 15,
+                              ),
+                            ),
+                            Text(
+                              '\$49.99',
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                fontStyle: FontStyle.normal,
+                                color: const Color(0xffFF6969),
+                                fontWeight: FontWeight.w500,
+                                fontSize: 15,
+                              ),
+                            )
+                          ]),
+                          subtitle: Row(
+                            children: [],
+                          ));
+                    }),
+              ]),
+          const Divider(thickness: 0, indent: 10, color: Color(0xff727C8E)),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Column(
                 children: [
-                  Text('Total'),
-                  Text('total cost'),
-                  Text('free shipping')
+                  Text(
+                    'TOTAL',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      fontStyle: FontStyle.normal,
+                      color: const Color(0xff515c6f),
+                      fontWeight: FontWeight.w500,
+                      fontSize: 10,
+                    ),
+                  ),
+                  Text(
+                    '\$81.57',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      fontStyle: FontStyle.normal,
+                      color: const Color(0xff515c6f),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
+                  Text(
+                    'Free Domestic Shipping',
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                      fontStyle: FontStyle.normal,
+                      color: const Color(0xff727c8e),
+                      fontWeight: FontWeight.normal,
+                      fontSize: 12,
+                    ),
+                  )
                 ],
               ),
               ElevatedButton(
@@ -71,7 +148,7 @@ class _CartPageState extends State<CartPage> {
                         flex: 3,
                         child: SizedBox(
                           child: Text(
-                            'ADD TO CART',
+                            'CHECKOUT',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontStyle: FontStyle.normal,

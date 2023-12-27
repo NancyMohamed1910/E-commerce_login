@@ -23,9 +23,11 @@ class _MasterPageState extends State<MasterPage> {
     return Scaffold(
         backgroundColor: const Color(0xffF5F6F8),
         appBar: AppBarEx.getAppBar,
-        body: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          children: [WidgetData.myWidget[_selectedIndex]],
+        body: SingleChildScrollView(
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            children: [WidgetData.myWidget[_selectedIndex]],
+          ),
         ),
         bottomNavigationBar: BottomNavigationBarWidget(
             itemCount: 5,
