@@ -38,7 +38,6 @@ class _CarouselSliderWidgetState extends State<CarouselSliderWidget> {
   Widget build(BuildContext context) {
     return CarouselSlider(
       options: options,
-      // items: [...DataSeeder.adverties.map((e) => e.imagePath ?? '')].map((i) {
       items: widget.items.map((i) {
         return Builder(
           builder: (BuildContext context) {

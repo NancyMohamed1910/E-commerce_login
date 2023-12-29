@@ -25,7 +25,6 @@ class _MasterPageState extends State<MasterPage> {
         appBar: AppBarEx.getAppBar,
         body: SingleChildScrollView(
           child: Column(
-            // mainAxisAlignment: MainAxisAlignment.center,
             children: [WidgetData.myWidget[_selectedIndex]],
           ),
         ),

@@ -20,7 +20,6 @@ class ProductItemWidget extends StatefulWidget {
 class _ProductItemWidgetState extends State<ProductItemWidget> {
   @override
   Widget build(BuildContext context) {
-    // print('=====imagePath:======= ${widget.imagePath}');
     return Padding(
         padding: const EdgeInsets.all(8.0),
         child: ElevatedButton(
@@ -33,7 +32,6 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
               shadowColor: const Color(0xffE7EAF0),
               fixedSize: const Size(101, 135)),
           child: Column(
-            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(

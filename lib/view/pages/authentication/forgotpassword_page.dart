@@ -1,4 +1,5 @@
 import 'package:e_commerce/providers/authentication.provider.dart';
+import 'package:e_commerce/utils/colors.util.dart';
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -52,6 +53,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           'Enter the email address you used to create',
                           textAlign: TextAlign.center,
                           style: TextStyle(
+                            fontFamily: 'NeusaNextStd',
                             fontStyle: FontStyle.normal,
                             color: const Color(0xff515C6F),
                             fontWeight: FontWeight.w300,
@@ -62,6 +64,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           'your account and we will email you a link to',
                           textAlign: TextAlign.center,
                           style: TextStyle(
+                            fontFamily: 'NeusaNextStd',
                             fontStyle: FontStyle.normal,
                             color: const Color(0xff515C6F),
                             fontWeight: FontWeight.w300,
@@ -72,6 +75,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           'reset your password',
                           textAlign: TextAlign.center,
                           style: TextStyle(
+                            fontFamily: 'NeusaNextStd',
                             fontStyle: FontStyle.normal,
                             color: const Color(0xff515C6F),
                             fontWeight: FontWeight.w300,
@@ -82,16 +86,22 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           height: 50.h,
                         ),
                         Container(
-                          height: 100.h,
                           width: 325.w,
                           decoration: BoxDecoration(
                               color: Colors.white,
-                              borderRadius: BorderRadius.circular(8)),
+                              borderRadius: BorderRadius.circular(8.r)),
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              // crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 TextFormField(
+                                  style: TextStyle(
+                                    fontFamily: 'NeusaNextStd',
+                                    fontStyle: FontStyle.normal,
+                                    color: ColorsUtil.textColor,
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 15.sp,
+                                  ),
+                                  textAlign: TextAlign.left,
                                   keyboardType: TextInputType.emailAddress,
                                   controller: authProvider.emailController,
                                   validator: (value) {
@@ -103,9 +113,19 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                     }
                                     return null;
                                   },
-                                  decoration: const InputDecoration(
-                                    label: Text('EMAIL'),
-                                    prefixIcon: Icon(Icons.mail),
+                                  decoration: InputDecoration(
+                                    label: Text(
+                                      'EMAIL',
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        fontFamily: 'NeusaNextStd',
+                                        fontStyle: FontStyle.normal,
+                                        color: ColorsUtil.textColor,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 12.sp,
+                                      ),
+                                    ),
+                                    prefixIcon: Icon(size: 20.0.w, Icons.mail),
                                     isDense: false,
                                     filled: false,
                                     border: InputBorder.none,
@@ -139,6 +159,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                       'SEND EMAIL',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
+                                        fontFamily: 'NeusaNextStd',
                                         fontStyle: FontStyle.normal,
                                         color: const Color(0xffFFFFFF),
                                         fontWeight: FontWeight.bold,
