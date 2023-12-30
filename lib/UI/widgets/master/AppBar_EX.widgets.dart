@@ -5,7 +5,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 class AppBarEx {
   static PreferredSizeWidget get getAppBar => AppBar(
         backgroundColor: const Color(0xffF5F6F8),
-        //toolbarHeight: 49,
         actions: [
           Stack(
             children: [

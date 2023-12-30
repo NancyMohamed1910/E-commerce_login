@@ -1,8 +1,8 @@
 import 'package:e_commerce/models/products.model.dart';
-import 'package:e_commerce/view/pages/master_page.dart';
+import 'package:e_commerce/UI/pages/master_page.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce/utils/colors.util.dart';
-import 'package:e_commerce/view/widgets/dotinsecatie.widgets.dart';
+import 'package:e_commerce/UI/widgets/product/dotinsecatie.widgets.dart';
 import 'package:line_icons/line_icons.dart';
 
 class ProductHeaderWidget extends StatefulWidget {

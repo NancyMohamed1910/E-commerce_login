@@ -1,13 +1,13 @@
-import 'package:e_commerce/view/pages/authentication/forgotpassword_page.dart';
-import 'package:e_commerce/view/pages/authentication/login_page.dart';
+import 'package:e_commerce/UI/pages/authentication/forgotpassword_page.dart';
+import 'package:e_commerce/UI/pages/authentication/login_page.dart';
 
-import 'package:e_commerce/view/pages/authentication/signup_page.dart';
-import 'package:e_commerce/view/pages/cart_page.dart';
-import 'package:e_commerce/view/pages/home_page.dart';
-import 'package:e_commerce/view/pages/more_page.dart';
+import 'package:e_commerce/UI/pages/authentication/signup_page.dart';
+import 'package:e_commerce/UI/pages/cart_page.dart';
+import 'package:e_commerce/UI/pages/home_page.dart';
+import 'package:e_commerce/UI/pages/more_page.dart';
 
-import 'package:e_commerce/view/pages/profile_page.dart';
-import 'package:e_commerce/view/pages/search_page.dart';
+import 'package:e_commerce/UI/pages/profile_page.dart';
+import 'package:e_commerce/UI/pages/search_page.dart';
 
 import 'package:flutter/material.dart';
 

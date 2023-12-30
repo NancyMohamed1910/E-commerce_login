@@ -1,8 +1,5 @@
-import 'dart:math';
-
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:e_commerce/seeder/widgetdata.seeder.dart';
-import 'package:e_commerce/view/widgets/headline.widgets.dart';
+import 'package:e_commerce/UI/widgets/headline.widgets.dart';
 import 'package:flutter/material.dart';
 
 class CartPage extends StatefulWidget {
@@ -24,7 +21,7 @@ class _CartPageState extends State<CartPage> {
           Column(
               //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                HeadlineWidget(title: 'Cart'),
+                const HeadlineWidget(title: 'Cart'),
                 ListView.separated(
                     separatorBuilder: (ctx, index) {
                       return const Divider(

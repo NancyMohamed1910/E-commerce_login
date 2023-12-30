@@ -1,5 +1,5 @@
-import 'package:e_commerce/view/widgets/container.widgets.dart';
-import 'package:e_commerce/view/widgets/headline.widgets.dart';
+import 'package:e_commerce/UI/widgets/profile/container.widgets.dart';
+import 'package:e_commerce/UI/widgets/headline.widgets.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';

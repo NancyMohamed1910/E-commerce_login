@@ -1,6 +1,6 @@
 import 'package:e_commerce/seeder/widgetdata.seeder.dart';
-import 'package:e_commerce/view/widgets/AppBar_EX.widgets.dart';
-import 'package:e_commerce/view/widgets/bottumNavigationBar.widgets.dart';
+import 'package:e_commerce/UI/widgets/master/AppBar_EX.widgets.dart';
+import 'package:e_commerce/UI/widgets/master/bottumNavigationBar.widgets.dart';
 import 'package:flutter/material.dart';
 
 class MasterPage extends StatefulWidget {
@@ -25,7 +25,6 @@ class _MasterPageState extends State<MasterPage> {
         appBar: AppBarEx.getAppBar,
         body: SingleChildScrollView(
           child: Column(
-            // mainAxisAlignment: MainAxisAlignment.center,
             children: [WidgetData.myWidget[_selectedIndex]],
           ),
         ),

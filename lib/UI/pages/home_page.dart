@@ -4,11 +4,11 @@ import 'package:e_commerce/providers/adv.providers.dart';
 import 'package:e_commerce/providers/categories.providers.dart';
 import 'package:e_commerce/providers/product.providers.dart';
 
-import 'package:e_commerce/view/pages/productdetails_page.dart';
-import 'package:e_commerce/view/widgets/carouselSlider.widgets.dart';
-import 'package:e_commerce/view/widgets/headline.widgets.dart';
-import 'package:e_commerce/view/widgets/home/categories_row.home.widget.dart';
-import 'package:e_commerce/view/widgets/home/product_item.home.dart';
+import 'package:e_commerce/UI/pages/product_page.dart';
+import 'package:e_commerce/UI/widgets/home/carouselSlider.widgets.dart';
+import 'package:e_commerce/UI/widgets/headline.widgets.dart';
+import 'package:e_commerce/UI/widgets/home/categories_row.home.widget.dart';
+import 'package:e_commerce/UI/widgets/home/product_item.home.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

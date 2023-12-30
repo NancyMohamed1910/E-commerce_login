@@ -1,5 +1,5 @@
-import 'package:e_commerce/view/pages/master_page.dart';
-import 'package:e_commerce/view/pages/splash_page.dart';
+import 'package:e_commerce/UI/pages/master_page.dart';
+import 'package:e_commerce/UI/pages/splash_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';

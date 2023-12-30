@@ -2,9 +2,9 @@ import 'package:e_commerce/models/products.model.dart';
 
 import 'package:e_commerce/utils/productenum.util.dart';
 
-import 'package:e_commerce/view/widgets/product/Product_product.product.widgets.dart';
-import 'package:e_commerce/view/widgets/product/product_reviews.product.widgets.dart';
-import 'package:e_commerce/view/widgets/product/product_details.product.widgets.dart';
+import 'package:e_commerce/UI/widgets/product/Product_product.product.widgets.dart';
+import 'package:e_commerce/UI/widgets/product/product_reviews.product.widgets.dart';
+import 'package:e_commerce/UI/widgets/product/product_details.product.widgets.dart';
 import 'package:flutter/material.dart';
 
 class ProductDataWidget extends StatefulWidget {

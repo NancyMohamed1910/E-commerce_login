@@ -1,4 +1,4 @@
-import 'package:e_commerce/view/widgets/listtile.widgets.dart';
+import 'package:e_commerce/UI/widgets/profile/listtile.widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -4,7 +4,7 @@ import 'package:e_commerce/providers/adv.providers.dart';
 import 'package:e_commerce/providers/categories.providers.dart';
 import 'package:e_commerce/providers/cart.providers.dart';
 import 'package:e_commerce/providers/product.providers.dart';
-import 'package:e_commerce/view/pages/splash_page.dart';
+import 'package:e_commerce/UI/pages/splash_page.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';

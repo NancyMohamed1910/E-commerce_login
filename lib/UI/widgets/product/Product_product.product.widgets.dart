@@ -1,7 +1,7 @@
 import 'package:e_commerce/models/products.model.dart';
 import 'package:e_commerce/providers/cart.providers.dart';
-import 'package:e_commerce/view/widgets/product/product_color.product.widget.dart';
-import 'package:e_commerce/view/widgets/product/product_size.product.widgets.dart';
+import 'package:e_commerce/UI/widgets/product/product_color.product.widget.dart';
+import 'package:e_commerce/UI/widgets/product/product_size.product.widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -1,5 +1,5 @@
 import 'package:e_commerce/providers/authentication.provider.dart';
-import 'package:e_commerce/view/widgets/uplaoadbutton.widgets.dart';
+import 'package:e_commerce/UI/widgets/uplaoadbutton.widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

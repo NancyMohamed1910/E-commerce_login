@@ -1,11 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce/models/products.model.dart';
 import 'package:e_commerce/providers/cart.providers.dart';
-import 'package:e_commerce/view/pages/master_page.dart';
 
-import 'package:e_commerce/view/widgets/product/Product_header.product.dart';
+import 'package:e_commerce/UI/widgets/product/Product_header.product.dart';
 
-import 'package:e_commerce/view/widgets/product/product_data.product.widgets.dart';
+import 'package:e_commerce/UI/widgets/product/product_data.product.widgets.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -43,9 +42,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                     value: progress.progress,
                   ),
                 ),
-                imageUrl:
-                    ((widget.productdata ?? [] as ProductData).imagePath ?? '')
-                        .toString(),
+                imageUrl: (widget.productdata.imagePath ?? '').toString(),
 
                 //DataSeeder.products[widget.productIndex].imagePath.toString(),
                 width: 220,
@@ -55,8 +52,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
               const SizedBox(
                 height: 10,
               ),
-              ProductDataWidget(
-                  productdata: (widget.productdata ?? [] as ProductData)),
+              ProductDataWidget(productdata: widget.productdata),
               const Divider(
                 thickness: 0,
                 indent: 15,
@@ -65,10 +61,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
               const SizedBox(
                 height: 10,
               ),
-              /* ProductFooterWidget(
-                onPressedShare: () {},
-                onPressedCart: () {},
-              ),*/
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
