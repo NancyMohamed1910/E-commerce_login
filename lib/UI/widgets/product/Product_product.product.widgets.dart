@@ -33,13 +33,17 @@ class _ProductProductWidgetState extends State<ProductProductWidget> {
                       padding: const EdgeInsets.symmetric(vertical: 11),
                       child: Align(
                         alignment: Alignment.topLeft,
-                        child: Text(
-                          'SELECT ${e.key.toUpperCase()}',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 12,
-                              color: const Color(0xff515c6f).withOpacity(0.502),
-                              letterSpacing: 1),
+                        child: Material(
+                          color: Colors.transparent,
+                          child: Text(
+                            'SELECT ${e.key.toUpperCase()}',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 12,
+                                color:
+                                    const Color(0xff515c6f).withOpacity(0.502),
+                                letterSpacing: 1),
+                          ),
                         ),
                       ),
                     ),

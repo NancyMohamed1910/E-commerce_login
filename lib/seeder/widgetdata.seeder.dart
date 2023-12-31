@@ -25,9 +25,4 @@ class WidgetData {
     const LoginPage(),
     const ForgotPasswordPage()
   ];
-  static List<String> mypathe = <String>[
-    'assets/images/women_shoes.png',
-    'assets/images/scarf.png',
-    'assets/images/backpack1.png'
-  ];
 }

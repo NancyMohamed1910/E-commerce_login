@@ -1,4 +1,5 @@
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:e_commerce/utils/colors.util.dart';
 import 'package:flutter/material.dart';
 
 class DotsIndicatorWidget extends StatefulWidget {
@@ -17,9 +18,9 @@ class _DotsIndicatorWidgetState extends State<DotsIndicatorWidget> {
     return DotsIndicator(
       dotsCount: widget.dotsCount,
       position: widget.positionIndex,
-      decorator: const DotsDecorator(
-        color: Color(0xff727C8E), // Inactive color
-        activeColor: Colors.black87,
+      decorator: DotsDecorator(
+        color: const Color(0xff727C8E), // Inactive color
+        activeColor: ColorsUtil.activeIconColor,
       ),
     );
   }

@@ -95,21 +95,18 @@ class _CarouselSliderWidgetState extends State<CarouselSliderWidget> {
                               children: [
                                 Expanded(
                                   flex: 4,
-                                  child: SizedBox(
-                                    width: 74.w,
-                                    height: 15.h,
-                                    child: Text(
-                                      'SEE MORE',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontFamily: 'NeusaNextStd',
-                                        fontStyle: FontStyle.normal,
-                                        color: const Color(0xff727c8e),
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 12.sp,
-                                      ),
+                                  child: Text(
+                                    'SEE MORE',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontFamily: 'NeusaNextStd',
+                                      fontStyle: FontStyle.normal,
+                                      color: const Color(0xff727c8e),
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 12.sp,
                                     ),
                                   ),
+                                  // ),
                                 ),
                                 Expanded(
                                   flex: 1,

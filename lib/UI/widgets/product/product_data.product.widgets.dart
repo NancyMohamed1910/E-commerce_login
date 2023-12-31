@@ -1,4 +1,5 @@
 import 'package:e_commerce/models/products.model.dart';
+import 'package:e_commerce/providers/UI.providers.dart';
 
 import 'package:e_commerce/utils/productenum.util.dart';
 
@@ -6,6 +7,7 @@ import 'package:e_commerce/UI/widgets/product/Product_product.product.widgets.da
 import 'package:e_commerce/UI/widgets/product/product_reviews.product.widgets.dart';
 import 'package:e_commerce/UI/widgets/product/product_details.product.widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProductDataWidget extends StatefulWidget {
   final ProductData? productdata;
@@ -53,6 +55,8 @@ class _ProductDataWidgetState extends State<ProductDataWidget> {
                     child: ElevatedButton(
                         onPressed: () {
                           selectedData = ProductDataEnum.product;
+                          Provider.of<UiProvider>(context, listen: false)
+                              .getdotIndex(0);
                           setState(() {});
                           pageController.jumpToPage(0);
                         },
@@ -82,6 +86,8 @@ class _ProductDataWidgetState extends State<ProductDataWidget> {
                       child: ElevatedButton(
                           onPressed: () {
                             selectedData = ProductDataEnum.details;
+                            Provider.of<UiProvider>(context, listen: false)
+                                .getdotIndex(1);
                             setState(() {});
                             pageController.jumpToPage(1);
                           },
@@ -110,6 +116,8 @@ class _ProductDataWidgetState extends State<ProductDataWidget> {
                     child: ElevatedButton(
                         onPressed: () {
                           selectedData = ProductDataEnum.reviews;
+                          Provider.of<UiProvider>(context, listen: false)
+                              .getdotIndex(2);
                           setState(() {});
                           pageController.jumpToPage(2);
                         },

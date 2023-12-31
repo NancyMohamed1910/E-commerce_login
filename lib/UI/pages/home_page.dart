@@ -56,7 +56,6 @@ class _HomePageState extends State<HomePage> {
                     }
                   });
             }),
-            // ,
             const HeadlineWidget(title: 'Latest'),
             Consumer<AdvProvider>(builder: (ctx, advValues, _) {
               advValues.getAdvertise();
@@ -75,7 +74,6 @@ class _HomePageState extends State<HomePage> {
                 );
               }
             }),
-            ///////
             Consumer<ProductProvider>(
               builder: (context, productValues, _) {
                 return FutureBuilder(
@@ -116,13 +114,11 @@ class _HomePageState extends State<HomePage> {
                                         Navigator.pushReplacement(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (_) =>
-                                                    ProductDetailsPage(
+                                                builder: (_) => ProductPage(
                                                       productdata: ((snapshot
                                                                   .data ??
                                                               [])
                                                           .elementAt(index)),
-                                                      //index: index,
                                                     )));
                                       },
                                     )),

@@ -10,18 +10,18 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
-class ProductDetailsPage extends StatefulWidget {
-  const ProductDetailsPage({
+class ProductPage extends StatefulWidget {
+  const ProductPage({
     super.key,
     required this.productdata,
   });
   final ProductData productdata;
 
   @override
-  State<ProductDetailsPage> createState() => _ProductDetailsPageState();
+  State<ProductPage> createState() => _ProductPageState();
 }
 
-class _ProductDetailsPageState extends State<ProductDetailsPage> {
+class _ProductPageState extends State<ProductPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -30,7 +30,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
         child: Padding(
           padding: const EdgeInsets.only(left: 15, right: 15),
           child: Column(
-            // mainAxisAlignment: MainAxisAlignment.start,
             children: [
               ProductHeaderWidget(productdata: widget.productdata),
               const SizedBox(
@@ -43,8 +42,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   ),
                 ),
                 imageUrl: (widget.productdata.imagePath ?? '').toString(),
-
-                //DataSeeder.products[widget.productIndex].imagePath.toString(),
                 width: 220,
                 height: 202,
                 fit: BoxFit.cover,
