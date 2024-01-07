@@ -1,4 +1,4 @@
-import 'package:e_commerce/UI/pages/authentication/main_page.dart';
+import 'package:e_commerce/UI/pages/authentication/auth_page.dart';
 import 'package:e_commerce/UI/pages/master_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -11,7 +11,6 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  //StreamSubscription<User?>? _listener;
   @override
   void initState() {
     checkUser();
@@ -19,12 +18,10 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   void checkUser() async {
-    // await Future.delayed(const Duration(seconds: 2));
-    // _listener = FirebaseAuth.instance.authStateChanges().listen((user) {
     FirebaseAuth.instance.authStateChanges().listen((user) {
       if (user == null) {
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (_) => const MainPage()));
+            context, MaterialPageRoute(builder: (_) => const AuthAppPage()));
       } else {
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (_) => const MasterPage()));

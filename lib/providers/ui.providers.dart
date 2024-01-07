@@ -6,4 +6,12 @@ class UiProvider extends ChangeNotifier {
     dotIndex = index;
     notifyListeners();
   }
+
+/*  void openNotificationPage(BuildContext context) {
+    if (context.mounted) {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (_) => const NotificationPage()));
+    }
+    notifyListeners();
+  }*/
 }

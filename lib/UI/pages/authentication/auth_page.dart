@@ -5,14 +5,14 @@ import 'package:e_commerce/utils/colors.util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+class AuthAppPage extends StatefulWidget {
+  const AuthAppPage({super.key});
 
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<AuthAppPage> createState() => _AuthAppPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _AuthAppPageState extends State<AuthAppPage> {
   var selectedPage = AuthPage.signUp;
   late PageController pageController;
   @override

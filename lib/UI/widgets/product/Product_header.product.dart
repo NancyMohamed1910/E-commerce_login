@@ -1,7 +1,6 @@
-import 'package:e_commerce/UI/pages/cart_page.dart';
 import 'package:e_commerce/models/products.model.dart';
 import 'package:e_commerce/UI/pages/master_page.dart';
-import 'package:e_commerce/providers/UI.providers.dart';
+import 'package:e_commerce/providers/ui.providers.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce/utils/colors.util.dart';
 import 'package:e_commerce/UI/widgets/product/dotinsecation.widgets.dart';

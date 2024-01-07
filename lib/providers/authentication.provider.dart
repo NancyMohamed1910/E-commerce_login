@@ -46,7 +46,7 @@ class AuthenticationProvider extends ChangeNotifier {
             await QuickAlert.show(
                 context: context,
                 type: QuickAlertType.error,
-                title: 'Error In Signup');
+                title: 'Error In Login');
           }
         }
       } on FirebaseAuthException catch (e) {
@@ -90,6 +90,7 @@ class AuthenticationProvider extends ChangeNotifier {
 
         if (context.mounted) {
           Navigator.pop(context);
+
           if (credintials.user != null) {
             await QuickAlert.show(
                 context: context,
@@ -136,7 +137,7 @@ class AuthenticationProvider extends ChangeNotifier {
   Future<void> onLogout(BuildContext context) async {
     QuickAlert.show(context: context, type: QuickAlertType.loading);
 
-    await Future.delayed(const Duration(seconds: 10));
+    await Future.delayed(const Duration(seconds: 3));
 
     await FirebaseAuth.instance.signOut();
 
