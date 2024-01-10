@@ -37,6 +37,9 @@ class AuthenticationProvider extends ChangeNotifier {
         var credintials = await FirebaseAuth.instance
             .signInWithEmailAndPassword(
                 email: emailController.text, password: passwordController.text);
+/*final user = FirebaseAuth.instance.currentUser;
+        var name = user?.displayName;
+        print('======name: $name');*/
         if (context.mounted) {
           Navigator.pop(context);
           if (credintials.user != null) {
@@ -87,7 +90,7 @@ class AuthenticationProvider extends ChangeNotifier {
         var credintials = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(
                 email: emailController.text, password: passwordController.text);
-
+        await credintials.user?.updateDisplayName(userController.text);
         if (context.mounted) {
           Navigator.pop(context);
 

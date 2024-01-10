@@ -6,6 +6,7 @@ import 'package:e_commerce/providers/categories.providers.dart';
 import 'package:e_commerce/providers/cart.providers.dart';
 import 'package:e_commerce/providers/product.providers.dart';
 import 'package:e_commerce/UI/pages/splash_page.dart';
+import 'package:e_commerce/providers/userprofile.providers.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -24,6 +25,7 @@ void main() async {
 
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => AuthenticationProvider()),
+    ChangeNotifierProvider(create: (_) => UsersProvider()),
     Provider(create: (_) => CategoryProvider()),
     ChangeNotifierProvider(create: (_) => AdvProvider()),
     ChangeNotifierProvider(create: (_) => UiProvider()),

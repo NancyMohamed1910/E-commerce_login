@@ -13,7 +13,6 @@ class AdvProvider extends ChangeNotifier {
         .get();
     adList = List<AdvertiesData>.from(
         result.docs.map((e) => AdvertiesData.fromJson(e.data(), e.id)));
-    //  print('================adlist===$adList');
     notifyListeners();
   }
 }

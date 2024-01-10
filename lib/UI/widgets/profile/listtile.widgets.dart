@@ -1,3 +1,4 @@
+import 'package:e_commerce/utils/colors.util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -22,17 +23,23 @@ class _ListtileWidgetState extends State<ListtileWidget> {
       designSize: const Size(375, 667),
       builder: (context1, _) => ListTile(
         leading: widget.leading, //Icon(Icons.safety_check), //Text('Icon'),
-        title: widget.title, // Text('All my order'),
+        title: widget.title,
+        titleTextStyle: TextStyle(
+          fontFamily: 'NeusaNextStd',
+          fontStyle: FontStyle.normal,
+          color: const Color.fromRGBO(182, 163, 163, 1),
+          fontWeight: FontWeight.normal,
+          fontSize: 15.sp,
+        ),
+
         trailing: Container(
           width: 30.w,
           height: 30.h,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: Color(0xff727c8e),
-          ),
+          decoration: const BoxDecoration(
+              shape: BoxShape.circle, color: Color(0xffdcdcdc)),
           child: Center(
             child: IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.keyboard_arrow_right,
               ),
               color: Colors.black45,

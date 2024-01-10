@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ContainerWidget extends StatefulWidget {
-  const ContainerWidget({super.key});
+  final List<String> icons;
+  final List<String> titles;
+  const ContainerWidget({super.key, required this.icons, required this.titles});
 
   @override
   State<ContainerWidget> createState() => _ContainerWidgetState();
@@ -15,7 +17,7 @@ class _ContainerWidgetState extends State<ContainerWidget> {
     return ScreenUtilInit(
       designSize: const Size(375, 667),
       builder: (context1, _) => Container(
-          height: 200.h,
+          // height: 200.h,
           width: 335.w,
           color: Colors.white,
           child: Column(
@@ -25,13 +27,14 @@ class _ContainerWidgetState extends State<ContainerWidget> {
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
                   physics: const ClampingScrollPhysics(),
-                  separatorBuilder: (context, _) => Divider(
-                      thickness: 2, indent: 10, color: Color(0xff727C8E)),
-                  itemCount: 3,
+                  separatorBuilder: (context, _) => const Divider(
+                      thickness: 0, indent: 10, color: Color(0xff727C8E)),
+                  itemCount: 4,
                   itemBuilder: (_, index) => ListtileWidget(
-                      leading: Icon(Icons.person),
+                      leading: Image.asset(
+                          'assets/icons/${widget.icons[index]}'), //Icon(Icons.person),
                       title: Text(
-                        'write any text',
+                        widget.titles[index],
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           fontStyle: FontStyle.normal,
