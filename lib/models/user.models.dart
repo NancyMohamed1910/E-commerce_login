@@ -2,7 +2,7 @@ class UsersData {
   String? userid;
   String? name;
   String? address;
-  double? age;
+  String? age;
   String? email;
   String? phone;
   String? image;
@@ -11,10 +11,7 @@ class UsersData {
     userid = docId;
     name = jsondata['name'];
     address = jsondata['address'];
-    age = jsondata['age'] is int
-        ? (jsondata['age'] as int).toDouble()
-        : jsondata['age'];
-
+    age = jsondata['age'];
     email = jsondata['email'];
     phone = jsondata['phone'];
     image = jsondata['image'];

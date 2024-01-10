@@ -28,7 +28,7 @@ class _MorePageState extends State<MorePage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    HeadlineWidget(title: 'More'),
+                    const HeadlineWidget(title: 'More'),
                     ContainerWidget(
                         icons: WidgetData.listTileLeading3,
                         titles: WidgetData.listTileTitles3),

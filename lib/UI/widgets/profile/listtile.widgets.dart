@@ -1,12 +1,11 @@
-import 'package:e_commerce/utils/colors.util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ListtileWidget extends StatefulWidget {
-  late Widget title;
-  late Widget leading;
-  void Function()? onPressed;
-  ListtileWidget(
+  final Widget title;
+  final Widget leading;
+  final void Function()? onPressed;
+  const ListtileWidget(
       {super.key,
       required this.leading,
       required this.title,

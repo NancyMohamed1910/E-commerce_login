@@ -39,6 +39,7 @@ class _SplashPageState extends State<SplashPage> {
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(

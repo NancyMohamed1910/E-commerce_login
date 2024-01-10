@@ -22,7 +22,6 @@ void main() async {
 
   var prefrenceInstance = await SharedPreferences.getInstance();
   GetIt.I.registerSingleton<SharedPreferences>(prefrenceInstance);
-
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => AuthenticationProvider()),
     ChangeNotifierProvider(create: (_) => UsersProvider()),

@@ -58,7 +58,7 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                     style: TextStyle(
                         fontWeight: FontWeight.w300,
                         fontSize: 10.sp,
-                        color: Color(0xff515c6f),
+                        color: const Color(0xff515c6f),
                         fontStyle: FontStyle.normal),
                   ),
                 ),
@@ -70,7 +70,7 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 10.sp,
-                        color: Color(0xff515c6f),
+                        color: const Color(0xff515c6f),
                         fontStyle: FontStyle.normal),
                   ),
                 ),
@@ -78,6 +78,5 @@ class _ProductItemWidgetState extends State<ProductItemWidget> {
             ),
           )),
     );
-    //////////
   }
 }

@@ -1,8 +1,6 @@
 import 'package:e_commerce/utils/colors.util.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:provider/provider.dart';
-import 'package:e_commerce/providers/ui.providers.dart';
 
 class AppBarEx {
   static PreferredSizeWidget get getAppBar => AppBar(

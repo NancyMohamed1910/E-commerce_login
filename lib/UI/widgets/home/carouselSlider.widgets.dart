@@ -117,7 +117,7 @@ class _CarouselSliderWidgetState extends State<CarouselSliderWidget> {
                                       shape: BoxShape.circle,
                                       color: Color(0xffff6969),
                                     ),
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.keyboard_arrow_right,
                                       color: Colors.white,
                                       size: 20,

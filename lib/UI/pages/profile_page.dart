@@ -33,6 +33,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       var name = uservalues.fixString(uservalues.userProfile
                           ?.map((e) => e.name)
                           .toString());
+
                       var email = uservalues.fixString(uservalues.userProfile
                           ?.map((e) => e.email)
                           .toString());
@@ -80,8 +81,11 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                               ElevatedButton(
                                   onPressed: () {
-                                                Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (_) => const EditProfilePage()));
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (_) =>
+                                                const EditProfilePage()));
                                   },
                                   child: Text(
                                     'EDIT PROFILE',
