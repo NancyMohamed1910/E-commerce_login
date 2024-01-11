@@ -55,8 +55,9 @@ class _ProductDataWidgetState extends State<ProductDataWidget> {
                     child: ElevatedButton(
                         onPressed: () {
                           selectedData = ProductDataEnum.product;
-                          Provider.of<UiProvider>(context, listen: false)
-                              .getdotIndex(0);
+
+                          ///  Provider.of<UiProvider>(context, listen: false)
+                          //   .getdotIndex(0);
                           setState(() {});
                           pageController.jumpToPage(0);
                         },
@@ -86,8 +87,8 @@ class _ProductDataWidgetState extends State<ProductDataWidget> {
                       child: ElevatedButton(
                           onPressed: () {
                             selectedData = ProductDataEnum.details;
-                            Provider.of<UiProvider>(context, listen: false)
-                                .getdotIndex(1);
+                            // Provider.of<UiProvider>(context, listen: false)
+                            //   .getdotIndex(1);
                             setState(() {});
                             pageController.jumpToPage(1);
                           },
@@ -116,8 +117,8 @@ class _ProductDataWidgetState extends State<ProductDataWidget> {
                     child: ElevatedButton(
                         onPressed: () {
                           selectedData = ProductDataEnum.reviews;
-                          Provider.of<UiProvider>(context, listen: false)
-                              .getdotIndex(2);
+                          // Provider.of<UiProvider>(context, listen: false)
+                          //   .getdotIndex(2);
                           setState(() {});
                           pageController.jumpToPage(2);
                         },
@@ -162,85 +163,3 @@ class _ProductDataWidgetState extends State<ProductDataWidget> {
     );
   }
 }
-////
-/*
- Padding(
-      padding: const EdgeInsets.only(
-        left: 15,
-        top: 15,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Expanded(
-            flex: 1,
-            child: SizedBox(
-              child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    shape: const StadiumBorder(),
-                    elevation: 0,
-                    backgroundColor: Colors.white,
-                    fixedSize: const Size(110, 30),
-                  ),
-                  child: const Text(
-                    'Products',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Color(0xff727c8e),
-                      fontWeight: FontWeight.normal,
-                      fontSize: 14,
-                    ),
-                  )),
-            ),
-          ),
-          Expanded(
-            flex: 1,
-            child: SizedBox(
-                width: 10,
-                child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      shape: const StadiumBorder(),
-                      elevation: 0,
-                      backgroundColor: Colors.white,
-                      fixedSize: const Size(110, 30),
-                    ),
-                    child: const Text(
-                      'Details',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Color(0xff727c8e),
-                        fontWeight: FontWeight.normal,
-                        fontSize: 14,
-                      ),
-                    ))),
-          ),
-          Expanded(
-            flex: 1,
-            child: SizedBox(
-              width: 10,
-              child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    shape: const StadiumBorder(),
-                    elevation: 0,
-                    backgroundColor: Colors.white,
-                    fixedSize: const Size(110, 30),
-                  ),
-                  child: const Text(
-                    'Reviews',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Color(0xff727c8e),
-                      fontWeight: FontWeight.normal,
-                      fontSize: 14,
-                    ),
-                  )),
-            ),
-          ),
-        ],
-      ),
-    );
-*/
-//////

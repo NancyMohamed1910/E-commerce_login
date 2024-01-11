@@ -1,1 +1,9 @@
-enum CollectionsUtils { ads, categoires, product, cart, reviews, users }
+enum CollectionsUtils {
+  ads,
+  categoires,
+  product,
+  cart,
+  reviews,
+  users,
+  notifications
+}
