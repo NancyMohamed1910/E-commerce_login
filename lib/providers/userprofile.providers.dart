@@ -36,7 +36,7 @@ class UsersProvider extends ChangeNotifier {
       QuerySnapshot<Map<String, dynamic>> result = await FirebaseFirestore
           .instance
           .collection(CollectionsUtils.users.name)
-          .where('userid', isEqualTo: user.uid)
+          .where('email', isEqualTo: user.email)
           .get();
 
       if (result.docs.isNotEmpty) {

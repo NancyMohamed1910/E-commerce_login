@@ -1,8 +1,6 @@
 import 'package:e_commerce/models/products.model.dart';
-import 'package:e_commerce/providers/UI.providers.dart';
-
+import 'package:e_commerce/providers/product.providers.dart';
 import 'package:e_commerce/utils/productenum.util.dart';
-
 import 'package:e_commerce/UI/widgets/product/Product_product.product.widgets.dart';
 import 'package:e_commerce/UI/widgets/product/product_reviews.product.widgets.dart';
 import 'package:e_commerce/UI/widgets/product/product_details.product.widgets.dart';
@@ -56,8 +54,8 @@ class _ProductDataWidgetState extends State<ProductDataWidget> {
                         onPressed: () {
                           selectedData = ProductDataEnum.product;
 
-                          ///  Provider.of<UiProvider>(context, listen: false)
-                          //   .getdotIndex(0);
+                          Provider.of<ProductProvider>(context, listen: false)
+                              .getdotIndex(0);
                           setState(() {});
                           pageController.jumpToPage(0);
                         },
@@ -87,8 +85,8 @@ class _ProductDataWidgetState extends State<ProductDataWidget> {
                       child: ElevatedButton(
                           onPressed: () {
                             selectedData = ProductDataEnum.details;
-                            // Provider.of<UiProvider>(context, listen: false)
-                            //   .getdotIndex(1);
+                            Provider.of<ProductProvider>(context, listen: false)
+                                .getdotIndex(1);
                             setState(() {});
                             pageController.jumpToPage(1);
                           },
@@ -117,8 +115,8 @@ class _ProductDataWidgetState extends State<ProductDataWidget> {
                     child: ElevatedButton(
                         onPressed: () {
                           selectedData = ProductDataEnum.reviews;
-                          // Provider.of<UiProvider>(context, listen: false)
-                          //   .getdotIndex(2);
+                          Provider.of<ProductProvider>(context, listen: false)
+                              .getdotIndex(2);
                           setState(() {});
                           pageController.jumpToPage(2);
                         },
@@ -150,14 +148,18 @@ class _ProductDataWidgetState extends State<ProductDataWidget> {
         ),
         Expanded(
           flex: 4,
-          child: PageView(controller: pageController, children: [
-            ProductProductWidget(
-                productdata: widget.productdata as ProductData),
-            ProudcDetailsWidget(
-              productdata: widget.productdata as ProductData,
-            ),
-            ProductReviewsWidget(productdata: widget.productdata as ProductData)
-          ]),
+          child: PageView(
+              controller: pageController,
+              physics: const NeverScrollableScrollPhysics(),
+              children: [
+                ProductProductWidget(
+                    productdata: widget.productdata as ProductData),
+                ProudcDetailsWidget(
+                  productdata: widget.productdata as ProductData,
+                ),
+                ProductReviewsWidget(
+                    productdata: widget.productdata as ProductData)
+              ]),
         )
       ]),
     );

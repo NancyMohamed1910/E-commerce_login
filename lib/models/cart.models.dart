@@ -25,7 +25,8 @@ class CartItem {
   CartItem.fromJson(Map<String, dynamic> jsondata) {
     itemId = jsondata['itemId'];
     productId = jsondata['productId'];
-    quantity = jsondata['quantity'];
+    quantity = jsondata['quantity'] ?? 0;
+
     selectedVarints = jsondata['selectedVarints'] != null
         ? Map<String, dynamic>.from(jsondata['selectedVarints'])
         : null;

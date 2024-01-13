@@ -1,5 +1,4 @@
 import 'package:e_commerce/firebase_options.dart';
-import 'package:e_commerce/providers/UI.providers.dart';
 import 'package:e_commerce/providers/authentication.provider.dart';
 import 'package:e_commerce/providers/adv.providers.dart';
 import 'package:e_commerce/providers/categories.providers.dart';
@@ -27,8 +26,8 @@ void main() async {
     ChangeNotifierProvider(create: (_) => UsersProvider()),
     Provider(create: (_) => CategoryProvider()),
     ChangeNotifierProvider(create: (_) => AdvProvider()),
-    ChangeNotifierProvider(create: (_) => UiProvider()),
-    Provider(create: (_) => ProductProvider()),
+    //Provider(create: (_) => ProductProvider()),
+    ChangeNotifierProvider(create: (_) => ProductProvider()),
     Provider(create: (_) => CartProvider()),
   ], child: const MyApp()));
 }

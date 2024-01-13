@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:quickalert/quickalert.dart';
 
-class ProductProvider {
+class ProductProvider extends ChangeNotifier {
+  int dotIndex = 0;
   Future<List<ProductData>?> getProducts(BuildContext context,
       {int? limit}) async {
     try {
@@ -35,5 +36,10 @@ class ProductProvider {
           context: context, type: QuickAlertType.error, title: e.toString());
       return null;
     }
+  }
+
+  void getdotIndex(int index) {
+    dotIndex = index;
+    notifyListeners();
   }
 }

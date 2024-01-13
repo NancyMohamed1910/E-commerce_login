@@ -1,7 +1,7 @@
 import 'package:e_commerce/models/products.model.dart';
 import 'package:e_commerce/UI/pages/master_page.dart';
 import 'package:e_commerce/providers/cart.providers.dart';
-import 'package:e_commerce/providers/ui.providers.dart';
+import 'package:e_commerce/providers/product.providers.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce/utils/colors.util.dart';
 import 'package:e_commerce/UI/widgets/product/dotinsecation.widgets.dart';
@@ -59,23 +59,35 @@ class _ProductHeaderWidgetState extends State<ProductHeaderWidget> {
                   child: StreamBuilder(
                       stream: Provider.of<CartProvider>(context).cartStream,
                       builder: (context, snapshot) {
-                        int quantity = 0;
-                        if (snapshot.hasData) {
-                          for (Map<String, dynamic> item
-                              in snapshot.data?.data()?['items']) {
-                            quantity += (item['quantity'] as int);
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const CircularProgressIndicator();
+                        } else if (snapshot.connectionState ==
+                                ConnectionState.active ||
+                            snapshot.connectionState == ConnectionState.done) {
+                          if (snapshot.hasError) {
+                            return const Text('Error');
+                          } else if (snapshot.hasData) {
+                            int quantity = 0;
+                            if (snapshot.data?.data()?['items'] != null) {
+                              for (Map<String, dynamic> item
+                                  in snapshot.data?.data()?['items']) {
+                                quantity += (item['quantity'] as int);
+                              }
+
+                              return Badge(
+                                smallSize: 15,
+                                backgroundColor: ColorsUtil.badgeColor,
+                                label: Text('$quantity'),
+                              );
+                            } else {
+                              return const SizedBox.shrink();
+                            }
+                          } else {
+                            return const SizedBox.shrink();
                           }
-                          return Badge(
-                            smallSize: 15,
-                            backgroundColor: ColorsUtil.badgeColor,
-                            label: Text('$quantity'),
-                          );
                         } else {
-                          return Badge(
-                            smallSize: 15,
-                            backgroundColor: ColorsUtil.badgeColor,
-                            label: Text('$quantity'),
-                          );
+                          return Text('State: ${snapshot.connectionState}');
                         }
                       }))
             ],
@@ -120,10 +132,10 @@ class _ProductHeaderWidgetState extends State<ProductHeaderWidget> {
             ),
           ],
         ),
-        // Consumer<UiProvider>(
-        //  builder: (context, uiData, _) => DotsIndicatorWidget(
-        //        dotsCount: 3, positionIndex: uiData.dotIndex))
-        const DotsIndicatorWidget(dotsCount: 3, positionIndex: 0)
+        Consumer<ProductProvider>(
+            builder: (context, uiData, _) => DotsIndicatorWidget(
+                dotsCount: 3, positionIndex: uiData.dotIndex))
+        //const DotsIndicatorWidget(dotsCount: 3, positionIndex: 0)
       ],
     );
   }
