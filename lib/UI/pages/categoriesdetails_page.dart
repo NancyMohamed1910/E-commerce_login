@@ -85,8 +85,16 @@ class _CategoryDetailsPageState extends State<CategoryDetailsPage> {
                                                     widget.categoryData =
                                                         snapshot.data?[index]
                                                             as CategoryData;
+                                                    var len = widget
+                                                        .categoryData
+                                                        .subcategory
+                                                        ?.entries
+                                                        .map((e) => e.value)
+                                                        .toList()
+                                                        .elementAt(0);
+
                                                     print(
-                                                        '=====widgetcategorydata${widget.categoryData.title}');
+                                                        '=========length:$len');
                                                     setState(() {});
                                                     //  Navigator.pushReplacement(context,
                                                     //    MaterialPageRoute(builder: (_) => CategoryDetailsPage()));
@@ -209,20 +217,13 @@ class _CategoryDetailsPageState extends State<CategoryDetailsPage> {
                                   children: [
                                     Text(
                                         '${widget.categoryData.subcategory?.keys.toList().elementAt(index)}'),
-                                    ListView.builder(
-                                      physics: const ClampingScrollPhysics(),
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.vertical,
-                                      itemCount: widget
-                                          .categoryData.subcategory?.values
-                                          .map((e) => e.toList())
-                                          .length,
-                                      itemBuilder: (ctx, index) => Container(
-                                        color: Colors.amber,
-                                        child: Text(
-                                            '${widget.categoryData.subcategory?.values.toList().elementAt(index)}'),
-                                      ),
+
+                                    Container(
+                                      color: Colors.amber,
+                                      child: Text(
+                                          '${widget.categoryData.subcategory?.entries.map((e) => e.value).toList().elementAt(index)}'),
                                     ),
+                                    // ),
                                   ],
                                 );
                               }),
@@ -239,3 +240,64 @@ class _CategoryDetailsPageState extends State<CategoryDetailsPage> {
     );
   }
 }
+
+//////////////////////////////
+/*
+ Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          ...(widget.productdata.variants?.entries.toList().map((e) {
+                return Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 11),
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Material(
+                          color: Colors.transparent,
+                          child: Text(
+                            'SELECT ${e.key.toUpperCase()}',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 12,
+                                color:
+                                    const Color(0xff515c6f).withOpacity(0.502),
+                                letterSpacing: 1),
+                          ),
+                        ),
+                      ),
+                    ),
+                    if (e.key == 'color')
+                      ProductColorWidget(
+                        colors: List<int>.from(e.value),
+                        onPressed: (color) {
+                          Provider.of<CartProvider>(context, listen: false)
+                              .cartItem
+                              ?.selectedVarints ??= {};
+
+                          Provider.of<CartProvider>(context, listen: false)
+                              .cartItem
+                              ?.selectedVarints?[e.key] = color.value;
+                        },
+                      )
+                    else
+                      ProductSizeWidget(
+                        onPressed: (value) {
+                          Provider.of<CartProvider>(context, listen: false)
+                              .cartItem
+                              ?.selectedVarints ??= {};
+
+                          Provider.of<CartProvider>(context, listen: false)
+                              .cartItem
+                              ?.selectedVarints?[e.key] = value;
+                        },
+                        values: List<dynamic>.from(e.value),
+                      ),
+                  ],
+                );
+              }) ??
+              [SizedBox.fromSize()]),C
+        ],
+      ),
+      */
+/////////////////////////////
