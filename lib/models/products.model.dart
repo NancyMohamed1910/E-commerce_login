@@ -31,7 +31,7 @@ class ProductData {
     quantity = jsondata['quantity'];
     review = jsondata['review'] is int
         ? (jsondata['review'] as int).toDouble()
-        : jsondata['review']; //jsondata['review'] as double;
+        : jsondata['review'];
     imagePath = jsondata['imagePath'];
     brand = jsondata['brand'];
     condition = jsondata['condition'];

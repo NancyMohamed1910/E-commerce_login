@@ -6,6 +6,7 @@ class CategoryData {
   int? shadowColor;
   List<int>? colors;
   DateTime? createdAt;
+  Map<String, List<dynamic>>? subcategory;
   CategoryData();
 
   CategoryData.fromJson(Map<String, dynamic> jsondata, [String? docId]) {
@@ -22,6 +23,7 @@ class CategoryData {
         ? DateTime.fromMillisecondsSinceEpoch(
             jsondata['createdAt'].millisecondsSinceEpoch)
         : null;
+    subcategory = Map<String, List<dynamic>>.from(jsondata['subcategory']);
   }
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = {};
@@ -31,6 +33,7 @@ class CategoryData {
     data['shadowColor'] = shadowColor;
     data['colors'] = colors;
     data['createdAt'] = createdAt;
+    data['subcategory'] = subcategory;
     return data;
   }
 }

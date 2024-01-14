@@ -150,9 +150,7 @@ class _ProudcDetailsWidgetState extends State<ProudcDetailsWidget> {
                             fontStyle: FontStyle.normal),
                       ),
                       Text(
-                        (widget.productdata.category as CategoryData)
-                            .title
-                            .toString(),
+                        widget.productdata.description.toString(),
                         textAlign: TextAlign.left,
                         style: const TextStyle(
                             color: Color(0xff515c6f),
