@@ -2,14 +2,14 @@ import 'package:e_commerce/UI/pages/master_page.dart';
 import 'package:e_commerce/UI/widgets/headline.widgets.dart';
 import 'package:flutter/material.dart';
 
-class NotificationPage extends StatefulWidget {
-  const NotificationPage({super.key});
+class MessagesPage extends StatefulWidget {
+  const MessagesPage({super.key});
 
   @override
-  State<NotificationPage> createState() => _NotificationPageState();
+  State<MessagesPage> createState() => _MessagesPageState();
 }
 
-class _NotificationPageState extends State<NotificationPage> {
+class _MessagesPageState extends State<MessagesPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -36,7 +36,7 @@ class _NotificationPageState extends State<NotificationPage> {
                           color: Color(0xffFF6969),
                         )),
                   ),
-                  const HeadlineWidget(title: 'Notifications'),
+                  const HeadlineWidget(title: 'Messages'),
                   const SizedBox(
                     height: 10,
                   ),
