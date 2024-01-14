@@ -222,6 +222,8 @@ class _CategoryDetailsPageState extends State<CategoryDetailsPage> {
                               itemBuilder: (ctx, index) {
                                 return Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Text(
                                       '${widget.categoryData.subcategory?.keys.toList().elementAt(index)}',
