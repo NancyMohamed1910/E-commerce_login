@@ -27,7 +27,6 @@ class _MasterPageState extends State<MasterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: const Color(0xffF5F6F8),
-        // appBar: AppBarEx.getAppBar,
         appBar: AppBar(
           backgroundColor: const Color(0xffF5F6F8),
           actions: [

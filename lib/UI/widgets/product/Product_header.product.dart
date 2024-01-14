@@ -1,3 +1,4 @@
+import 'package:e_commerce/UI/pages/cart_page.dart';
 import 'package:e_commerce/models/products.model.dart';
 import 'package:e_commerce/UI/pages/master_page.dart';
 import 'package:e_commerce/providers/cart.providers.dart';
@@ -48,11 +49,7 @@ class _ProductHeaderWidgetState extends State<ProductHeaderWidget> {
           Stack(
             children: [
               IconButton(
-                  onPressed: () {
-                    //  Navigator.pushReplacement(context,
-                    //   MaterialPageRoute(builder: (_) => const CartPage()));
-                  },
-                  icon: const Icon(LineIcons.shoppingCart)),
+                  onPressed: () {}, icon: const Icon(LineIcons.shoppingCart)),
               Positioned(
                   bottom: 6,
                   left: 10,

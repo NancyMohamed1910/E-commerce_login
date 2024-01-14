@@ -18,44 +18,45 @@ class _CartPageState extends State<CartPage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-              //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                const HeadlineWidget(title: 'Cart'),
-                ListView.separated(
-                    separatorBuilder: (ctx, index) {
-                      return const Divider(
-                          thickness: 0, indent: 50, color: Color(0xff727C8E));
-                    },
-                    scrollDirection: Axis.vertical,
-                    physics: const ClampingScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: 4,
-                    itemBuilder: (ctx, index) {
-                      return ListTile(
-                          leading: Container(
-                            height: 100,
-                            width: 100,
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.white,
-                            ),
-                            child: Center(
-                              child: CachedNetworkImage(
-                                progressIndicatorBuilder:
-                                    (context, url, progress) => Center(
-                                  child: CircularProgressIndicator(
-                                    value: progress.progress,
-                                  ),
-                                ),
-                                imageUrl:
-                                    'https://firebasestorage.googleapis.com/v0/b/nancy-shop-c87fe.appspot.com/o/products%2Fwomen_shoes.png?alt=media&token=76ba682f-0820-4255-871d-28ab85f71b64',
-                                width: 75,
-                                height: 69,
+          Column(children: [
+            const HeadlineWidget(title: 'Cart'),
+            ListView.separated(
+                separatorBuilder: (ctx, index) {
+                  return const Divider(
+                      thickness: 0, indent: 50, color: Color(0xff727C8E));
+                },
+                scrollDirection: Axis.vertical,
+                physics: const ClampingScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: 4,
+                itemBuilder: (ctx, index) {
+                  return ListTile(
+                      leading: Container(
+                        height: 100,
+                        width: 100,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                        ),
+                        child: Center(
+                          child: CachedNetworkImage(
+                            progressIndicatorBuilder:
+                                (context, url, progress) => Center(
+                              child: CircularProgressIndicator(
+                                value: progress.progress,
                               ),
                             ),
+                            imageUrl:
+                                'https://firebasestorage.googleapis.com/v0/b/nancy-shop-c87fe.appspot.com/o/products%2Fwomen_shoes.png?alt=media&token=76ba682f-0820-4255-871d-28ab85f71b64',
+                            width: 75,
+                            height: 69,
                           ),
-                          title: Column(children: [
+                        ),
+                      ),
+                      title: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
                             Text(
                               'Faux Sued Ankle Boots',
                               textAlign: TextAlign.left,
@@ -87,11 +88,11 @@ class _CartPageState extends State<CartPage> {
                               ),
                             )
                           ]),
-                          subtitle: Row(
-                            children: [],
-                          ));
-                    }),
-              ]),
+                      subtitle: Row(
+                        children: [],
+                      ));
+                }),
+          ]),
           const Divider(thickness: 2, indent: 10, color: Color(0xff727C8E)),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
