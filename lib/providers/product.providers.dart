@@ -38,6 +38,25 @@ class ProductProvider extends ChangeNotifier {
     }
   }
 
+  Future<ProductData?> getProductById({required String productId}) async {
+    try {
+      DocumentSnapshot<Map<String, dynamic>>? result;
+
+      result = await FirebaseFirestore.instance
+          .collection(CollectionsUtils.product.name)
+          .doc(productId)
+          .get();
+
+      if (result.exists) {
+        return ProductData.fromJson(result.data() ?? {}, result.id);
+      } else {
+        return null;
+      }
+    } catch (e) {
+      return null;
+    }
+  }
+
   void getdotIndex(int index) {
     dotIndex = index;
     notifyListeners();

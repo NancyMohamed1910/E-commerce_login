@@ -1,6 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce/UI/widgets/headline.widgets.dart';
+import 'package:e_commerce/models/cart.models.dart';
+import 'package:e_commerce/providers/cart.providers.dart';
+import 'package:e_commerce/providers/product.providers.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
@@ -10,7 +14,6 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-  int index = 0;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -18,81 +21,216 @@ class _CartPageState extends State<CartPage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(children: [
-            const HeadlineWidget(title: 'Cart'),
-            ListView.separated(
-                separatorBuilder: (ctx, index) {
-                  return const Divider(
-                      thickness: 0, indent: 50, color: Color(0xff727C8E));
-                },
-                scrollDirection: Axis.vertical,
-                physics: const ClampingScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: 4,
-                itemBuilder: (ctx, index) {
-                  return ListTile(
-                      leading: Container(
-                        height: 100,
-                        width: 100,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: Center(
-                          child: CachedNetworkImage(
-                            progressIndicatorBuilder:
-                                (context, url, progress) => Center(
-                              child: CircularProgressIndicator(
-                                value: progress.progress,
-                              ),
-                            ),
-                            imageUrl:
-                                'https://firebasestorage.googleapis.com/v0/b/nancy-shop-c87fe.appspot.com/o/products%2Fwomen_shoes.png?alt=media&token=76ba682f-0820-4255-871d-28ab85f71b64',
-                            width: 75,
-                            height: 69,
-                          ),
-                        ),
-                      ),
-                      title: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Faux Sued Ankle Boots',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                fontStyle: FontStyle.normal,
-                                color: const Color(0xff515C6F),
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15,
-                              ),
-                            ),
-                            Text(
-                              '7, Hot Pink',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                fontStyle: FontStyle.normal,
-                                color: const Color(0xff515c6f),
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15,
-                              ),
-                            ),
-                            Text(
-                              '\$49.99',
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                fontStyle: FontStyle.normal,
-                                color: const Color(0xffFF6969),
-                                fontWeight: FontWeight.w500,
-                                fontSize: 15,
-                              ),
-                            )
-                          ]),
-                      subtitle: Row(
-                        children: [],
-                      ));
-                }),
-          ]),
+          const HeadlineWidget(title: 'Cart'),
+          StreamBuilder(
+              stream: Provider.of<CartProvider>(context).cartStream,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const CircularProgressIndicator();
+                } else if (snapshot.connectionState == ConnectionState.active ||
+                    snapshot.connectionState == ConnectionState.done) {
+                  if (snapshot.hasError) {
+                    return const Text('Error when getting data');
+                  } else if (snapshot.hasData) {
+                    var cartdata = Cart.fromJson(
+                        Map<String, dynamic>.from(snapshot.data?.data() ?? {}));
+
+                    if (cartdata.items?.isNotEmpty ?? false) {
+                      return ListView.separated(
+                          separatorBuilder: (ctx, index) {
+                            return const Divider(
+                                thickness: 0,
+                                indent: 50,
+                                color: Color(0xff727C8E));
+                          },
+                          scrollDirection: Axis.vertical,
+                          physics: const ClampingScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: cartdata.items?.length as int,
+                          itemBuilder: (ctx, index) {
+                            var variants = Provider.of<CartProvider>(context,
+                                    listen: false)
+                                .fixString(
+                                    '${cartdata.items?[index].selectedVarints?.keys.map((e) => '${e} : ${cartdata.items?[index].selectedVarints?[e]}\n').toString()}');
+                            return FutureBuilder(
+                                future: Provider.of<ProductProvider>(context)
+                                    .getProductById(
+                                        productId:
+                                            cartdata.items![index].productId!),
+                                builder: (context, product) {
+                                  if (product.hasData) {
+                                    return ListTile(
+                                        leading: Container(
+                                          height: 100,
+                                          width: 100,
+                                          decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: Colors.white,
+                                          ),
+                                          child: Center(
+                                            child: CachedNetworkImage(
+                                              progressIndicatorBuilder:
+                                                  (context, url, progress) =>
+                                                      Center(
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  value: progress.progress,
+                                                ),
+                                              ),
+                                              imageUrl:
+                                                  '${product.data?.imagePath}',
+                                              width: 45,
+                                              height: 45,
+                                            ),
+                                          ),
+                                        ),
+                                        title: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                '${product.data?.name}',
+                                                textAlign: TextAlign.left,
+                                                style: const TextStyle(
+                                                  fontStyle: FontStyle.normal,
+                                                  color: Color(0xff515C6F),
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 15,
+                                                ),
+                                              ),
+                                              if (cartdata.items?[index]
+                                                          .selectedVarints !=
+                                                      null &&
+                                                  cartdata.items?[index]
+                                                          .selectedVarints
+                                                          ?.containsKey(
+                                                              'color') ==
+                                                      false)
+                                                Row(
+                                                  children: [
+                                                    Text(
+                                                      variants as String,
+                                                      //'${cartdata.items?[index].selectedVarints?.keys.map((e) => '${e} : ${cartdata.items?[index].selectedVarints?[e]}\n').toString()}',
+                                                      textAlign: TextAlign.left,
+                                                      style: const TextStyle(
+                                                        fontStyle:
+                                                            FontStyle.normal,
+                                                        color:
+                                                            Color(0xff515c6f),
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        fontSize: 15,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              if (cartdata.items?[index]
+                                                          .selectedVarints !=
+                                                      null &&
+                                                  cartdata.items?[index]
+                                                          .selectedVarints
+                                                          ?.containsKey(
+                                                              'color') ==
+                                                      true)
+                                                Row(
+                                                  children: [
+                                                    Text(
+                                                      variants as String,
+                                                      //'${cartdata.items?[index].selectedVarints?.keys.map((e) => '${e} : ${cartdata.items?[index].selectedVarints?[e]}\n').toString()}',
+                                                      textAlign: TextAlign.left,
+                                                      style: const TextStyle(
+                                                        fontStyle:
+                                                            FontStyle.normal,
+                                                        color:
+                                                            Color(0xff515c6f),
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        fontSize: 15,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              Text(
+                                                '\$' + '${product.data?.price}',
+                                                textAlign: TextAlign.left,
+                                                style: const TextStyle(
+                                                  fontStyle: FontStyle.normal,
+                                                  color: Color(0xffFF6969),
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 15,
+                                                ),
+                                              )
+                                            ]),
+                                        subtitle: Row(
+                                          children: [
+                                            Container(
+                                              width: 30,
+                                              height: 30,
+                                              decoration: const BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  color: Color(0xffdcdcdc)),
+                                              child: Center(
+                                                child: IconButton(
+                                                  icon: const Icon(
+                                                    Icons.remove,
+                                                  ),
+                                                  color: Colors.black45,
+                                                  iconSize: 15.0,
+                                                  onPressed: () {},
+                                                ),
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              width: 5,
+                                            ),
+                                            Text(
+                                                '${cartdata.items?[index].quantity} '),
+                                            const SizedBox(
+                                              width: 5,
+                                            ),
+                                            Container(
+                                              width: 30,
+                                              height: 30,
+                                              decoration: const BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  color: Color(0xffdcdcdc)),
+                                              child: Center(
+                                                child: IconButton(
+                                                  icon: const Icon(Icons.add),
+                                                  color: Colors.black45,
+                                                  iconSize: 15.0,
+                                                  onPressed: () {},
+                                                ),
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              width: 45,
+                                            ),
+                                            IconButton(
+                                              icon: const Icon(Icons.delete),
+                                              color: Colors.black45,
+                                              iconSize: 20.0,
+                                              onPressed: () {},
+                                            ),
+                                          ],
+                                        ));
+                                  } else {
+                                    return const SizedBox.shrink();
+                                  }
+                                });
+                          });
+                    } else {
+                      return const SizedBox.shrink();
+                    }
+                  } else {
+                    return const SizedBox.shrink();
+                  }
+                } else {
+                  return Text('State: ${snapshot.connectionState}');
+                }
+              }),
           const Divider(thickness: 2, indent: 10, color: Color(0xff727C8E)),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

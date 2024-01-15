@@ -110,4 +110,15 @@ class CartProvider {
       return null;
     }
   }
+
+  ///////
+  String? fixString(String? str) {
+    if (str == null) {
+      return null;
+    } else {
+      int length = str.length;
+      return str.substring(1, length - 1);
+    }
+  }
+  ///////
 }
