@@ -14,6 +14,7 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
+  //double totalPrice = 0;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -23,7 +24,9 @@ class _CartPageState extends State<CartPage> {
         children: [
           const HeadlineWidget(title: 'Cart'),
           StreamBuilder(
-              stream: Provider.of<CartProvider>(context).cartStream,
+              stream: Provider.of<CartProvider>(
+                context,
+              ).cartStream,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const CircularProgressIndicator();
@@ -48,17 +51,18 @@ class _CartPageState extends State<CartPage> {
                           shrinkWrap: true,
                           itemCount: cartdata.items?.length as int,
                           itemBuilder: (ctx, index) {
-                            var variants = Provider.of<CartProvider>(context,
-                                    listen: false)
-                                .fixString(
-                                    '${cartdata.items?[index].selectedVarints?.keys.map((e) => '${e} : ${cartdata.items?[index].selectedVarints?[e]}\n').toString()}');
+                            //    var variants = Provider.of<CartProvider>(context,
+                            //          listen: false)
+                            //    .fixString(
+                            //      '${cartdata.items?[index].selectedVarints?.keys.map((e) => '${e} : ${cartdata.items?[index].selectedVarints?[e]}\n').toString()}');
                             return FutureBuilder(
-                                future: Provider.of<ProductProvider>(context)
-                                    .getProductById(
-                                        productId:
-                                            cartdata.items![index].productId!),
-                                builder: (context, product) {
-                                  if (product.hasData) {
+                                future: Provider.of<ProductProvider>(
+                                  context,
+                                ).getProductById(
+                                    productId:
+                                        cartdata.items![index].productId!),
+                                builder: (context, productDate) {
+                                  if (productDate.hasData) {
                                     return ListTile(
                                         leading: Container(
                                           height: 100,
@@ -78,7 +82,7 @@ class _CartPageState extends State<CartPage> {
                                                 ),
                                               ),
                                               imageUrl:
-                                                  '${product.data?.imagePath}',
+                                                  '${productDate.data?.imagePath}',
                                               width: 45,
                                               height: 45,
                                             ),
@@ -91,7 +95,7 @@ class _CartPageState extends State<CartPage> {
                                                 MainAxisAlignment.start,
                                             children: [
                                               Text(
-                                                '${product.data?.name}',
+                                                '${productDate.data?.name}',
                                                 textAlign: TextAlign.left,
                                                 style: const TextStyle(
                                                   fontStyle: FontStyle.normal,
@@ -111,8 +115,8 @@ class _CartPageState extends State<CartPage> {
                                                 Row(
                                                   children: [
                                                     Text(
-                                                      variants as String,
-                                                      //'${cartdata.items?[index].selectedVarints?.keys.map((e) => '${e} : ${cartdata.items?[index].selectedVarints?[e]}\n').toString()}',
+                                                      //  variants as String,
+                                                      '${cartdata.items?[index].selectedVarints?.keys.map((e) => '${e} : ${cartdata.items?[index].selectedVarints?[e]}').toString()}',
                                                       textAlign: TextAlign.left,
                                                       style: const TextStyle(
                                                         fontStyle:
@@ -137,8 +141,8 @@ class _CartPageState extends State<CartPage> {
                                                 Row(
                                                   children: [
                                                     Text(
-                                                      variants as String,
-                                                      //'${cartdata.items?[index].selectedVarints?.keys.map((e) => '${e} : ${cartdata.items?[index].selectedVarints?[e]}\n').toString()}',
+                                                      //   variants as String,
+                                                      '${cartdata.items?[index].selectedVarints?.keys.map((e) => '${e} : ${cartdata.items?[index].selectedVarints?[e]}').toString()}',
                                                       textAlign: TextAlign.left,
                                                       style: const TextStyle(
                                                         fontStyle:
@@ -153,7 +157,8 @@ class _CartPageState extends State<CartPage> {
                                                   ],
                                                 ),
                                               Text(
-                                                '\$' + '${product.data?.price}',
+                                                '\$' +
+                                                    '${productDate.data?.price}',
                                                 textAlign: TextAlign.left,
                                                 style: const TextStyle(
                                                   fontStyle: FontStyle.normal,
@@ -178,7 +183,17 @@ class _CartPageState extends State<CartPage> {
                                                   ),
                                                   color: Colors.black45,
                                                   iconSize: 15.0,
-                                                  onPressed: () {},
+                                                  onPressed: () {
+                                                    Provider.of<CartProvider>(
+                                                            context,
+                                                            listen: false)
+                                                        .onDecreaseItemQuantityInCart(
+                                                            context: context,
+                                                            itemId: cartdata
+                                                                .items?[index]
+                                                                .itemId as String,
+                                                            cart: cartdata);
+                                                  },
                                                 ),
                                               ),
                                             ),
@@ -201,18 +216,38 @@ class _CartPageState extends State<CartPage> {
                                                   icon: const Icon(Icons.add),
                                                   color: Colors.black45,
                                                   iconSize: 15.0,
-                                                  onPressed: () {},
+                                                  onPressed: () {
+                                                    Provider.of<CartProvider>(
+                                                            context,
+                                                            listen: false)
+                                                        .onIncreaseItemQuantityInCart(
+                                                            context: context,
+                                                            itemId: cartdata
+                                                                .items?[index]
+                                                                .itemId as String,
+                                                            cart: cartdata);
+                                                  },
                                                 ),
                                               ),
                                             ),
                                             const SizedBox(
-                                              width: 45,
+                                              width: 30,
                                             ),
                                             IconButton(
                                               icon: const Icon(Icons.delete),
                                               color: Colors.black45,
                                               iconSize: 20.0,
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                Provider.of<CartProvider>(
+                                                        context,
+                                                        listen: false)
+                                                    .onRemoveItemFromCart(
+                                                        context: context,
+                                                        itemId: cartdata
+                                                            .items?[index]
+                                                            .itemId as String,
+                                                        cart: cartdata);
+                                              },
                                             ),
                                           ],
                                         ));
@@ -222,10 +257,16 @@ class _CartPageState extends State<CartPage> {
                                 });
                           });
                     } else {
-                      return const SizedBox.shrink();
+                      //return const SizedBox.shrink();
+                      return const Center(
+                        child: Text('Your Cart Is Empty '),
+                      );
                     }
                   } else {
-                    return const SizedBox.shrink();
+                    //return const SizedBox.shrink();
+                    return const Center(
+                      child: Text('Your Cart Is Empty '),
+                    );
                   }
                 } else {
                   return Text('State: ${snapshot.connectionState}');
@@ -237,32 +278,38 @@ class _CartPageState extends State<CartPage> {
             children: [
               Column(
                 children: [
-                  Text(
+                  const Text(
                     'TOTAL',
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       fontStyle: FontStyle.normal,
-                      color: const Color(0xff515c6f),
+                      color: Color(0xff515c6f),
                       fontWeight: FontWeight.w500,
                       fontSize: 10,
                     ),
                   ),
-                  Text(
-                    '\$81.57',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      fontStyle: FontStyle.normal,
-                      color: const Color(0xff515c6f),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),
-                  ),
-                  Text(
+                  ValueListenableBuilder(
+                      valueListenable: Provider.of<CartProvider>(
+                        context,
+                      ).totalNotifier,
+                      builder: (context, value, __) {
+                        return Text(
+                          '\$ $value',
+                          textAlign: TextAlign.left,
+                          style: const TextStyle(
+                            fontStyle: FontStyle.normal,
+                            color: Color(0xff515c6f),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        );
+                      }),
+                  const Text(
                     'Free Domestic Shipping',
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       fontStyle: FontStyle.normal,
-                      color: const Color(0xff727c8e),
+                      color: Color(0xff727c8e),
                       fontWeight: FontWeight.normal,
                       fontSize: 12,
                     ),

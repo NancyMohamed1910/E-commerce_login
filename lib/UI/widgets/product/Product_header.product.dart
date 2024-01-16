@@ -70,12 +70,15 @@ class _ProductHeaderWidgetState extends State<ProductHeaderWidget> {
                                   in snapshot.data?.data()?['items']) {
                                 quantity += (item['quantity'] as int);
                               }
-
-                              return Badge(
-                                smallSize: 15,
-                                backgroundColor: ColorsUtil.badgeColor,
-                                label: Text('$quantity'),
-                              );
+                              if (quantity > 0) {
+                                return Badge(
+                                  smallSize: 15,
+                                  backgroundColor: ColorsUtil.badgeColor,
+                                  label: Text('$quantity'),
+                                );
+                              } else {
+                                return const SizedBox.shrink();
+                              }
                             } else {
                               return const SizedBox.shrink();
                             }

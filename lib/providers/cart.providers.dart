@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce/models/cart.models.dart';
+import 'package:e_commerce/models/products.model.dart';
 import 'package:e_commerce/utils/collections.utils.dart';
 import 'package:e_commerce/UI/pages/master_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,8 +8,44 @@ import 'package:flutter/material.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 
+//////////////////////////
 class CartProvider {
   CartItem? cartItem;
+  List<ProductData> products = [];
+
+  double _total = 0;
+
+  ValueNotifier<double> totalNotifier = ValueNotifier(0);
+
+  void onAddProductToProductsList(ProductData product, Cart cart) {
+    var index = products.indexWhere((element) => (element.id == product.id));
+
+    // Todo Check Avaliable Quantity In Product
+
+    if (index == -1) {
+      products.add(product);
+    }
+  }
+
+  //void initCalculateTotal() {}
+
+  void calculateTotalPrice(Cart cart) {
+    _total = 0;
+    for (var item in cart.items!) {
+      print('=================products$products');
+      if (products.isEmpty) return;
+      var product =
+          products.firstWhere((product) => product.id == item.productId);
+      _total += (product.price ?? 0) * (item.quantity ?? 0);
+      print('===============total${_total}');
+    }
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      totalNotifier.value = _total;
+    });
+  }
+
+  //void initCalculateTotal() {}
 
   void createItemInstance() {
     cartItem = CartItem();
@@ -19,6 +56,106 @@ class CartProvider {
           .collection(CollectionsUtils.cart.name)
           .doc(FirebaseAuth.instance.currentUser?.email ?? '')
           .snapshots();
+
+  void onRemoveItemFromCart(
+      {required BuildContext context,
+      required String itemId,
+      required Cart cart}) async {
+    try {
+      var result = await QuickAlert.show(
+          context: context,
+          type: QuickAlertType.confirm,
+          onConfirmBtnTap: () => Navigator.pop(context, true));
+
+      if (result ?? false) {
+        if (context.mounted) {
+          QuickAlert.show(context: context, type: QuickAlertType.loading);
+          cart.items?.removeWhere((element) => element.itemId == itemId);
+
+          await FirebaseFirestore.instance
+              .collection(CollectionsUtils.cart.name)
+              .doc(FirebaseAuth.instance.currentUser?.email ?? '')
+              .update(cart.toJson());
+          if (context.mounted) {
+            Navigator.pop(context);
+            calculateTotalPrice(cart);
+            await QuickAlert.show(
+                context: context,
+                type: QuickAlertType.success,
+                title: 'product Deleted Successfully');
+          }
+        }
+      }
+    } catch (e) {
+      if (!context.mounted) return;
+      await QuickAlert.show(
+          context: context, type: QuickAlertType.error, title: e.toString());
+    }
+  }
+
+  void onIncreaseItemQuantityInCart(
+      {required BuildContext context,
+      required String itemId,
+      required Cart cart}) async {
+    try {
+      if (context.mounted) {
+        QuickAlert.show(context: context, type: QuickAlertType.loading);
+        var updatedItem =
+            cart.items?.firstWhere((element) => element.itemId == itemId);
+
+        cart.items?.removeWhere((element) => element.itemId == itemId);
+
+        updatedItem!.quantity = (updatedItem.quantity ?? 0) + 1;
+        cart.items?.add(updatedItem);
+
+        await FirebaseFirestore.instance
+            .collection(CollectionsUtils.cart.name)
+            .doc(FirebaseAuth.instance.currentUser?.email ?? '')
+            .update(cart.toJson())
+            .then((value) => Navigator.pop(context));
+        calculateTotalPrice(cart);
+      }
+    } catch (e) {
+      if (!context.mounted) return;
+      await QuickAlert.show(
+          context: context, type: QuickAlertType.error, title: e.toString());
+    }
+  }
+
+  void onDecreaseItemQuantityInCart(
+      {required BuildContext context,
+      required String itemId,
+      required Cart cart}) async {
+    try {
+      if (context.mounted) {
+        var updatedItem =
+            cart.items?.firstWhere((element) => element.itemId == itemId);
+        if (updatedItem?.quantity == 1) {
+          onRemoveItemFromCart(context: context, itemId: itemId, cart: cart);
+
+          return;
+        }
+
+        QuickAlert.show(context: context, type: QuickAlertType.loading);
+
+        cart.items?.removeWhere((element) => element.itemId == itemId);
+
+        updatedItem!.quantity = (updatedItem.quantity ?? 0) - 1;
+        cart.items?.add(updatedItem);
+
+        await FirebaseFirestore.instance
+            .collection(CollectionsUtils.cart.name)
+            .doc(FirebaseAuth.instance.currentUser?.email ?? '')
+            .update(cart.toJson())
+            .then((value) => Navigator.pop(context));
+        calculateTotalPrice(cart);
+      }
+    } catch (e) {
+      if (!context.mounted) return;
+      await QuickAlert.show(
+          context: context, type: QuickAlertType.error, title: e.toString());
+    }
+  }
 
   void onAddItemToCart({required BuildContext context}) async {
     try {
@@ -98,10 +235,7 @@ class CartProvider {
                 context: context,
                 type: QuickAlertType.success,
                 title: 'product Added Successfully')
-            .then((value) {
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (_) => const MasterPage()));
-        });
+            .then((value) => Navigator.pop(context));
       }
     } catch (e) {
       if (!context.mounted) return null;
@@ -111,7 +245,7 @@ class CartProvider {
     }
   }
 
-  ///////
+  ///////////
   String? fixString(String? str) {
     if (str == null) {
       return null;

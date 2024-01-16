@@ -100,12 +100,18 @@ class _BottomNavigationBarWidgetState extends State<BottomNavigationBarWidget> {
                         in snapshot.data?.data()?['items']) {
                       quantity += (item['quantity'] as int);
                     }
-
-                    return Badge(
-                      smallSize: 15,
-                      backgroundColor: ColorsUtil.badgeColor,
-                      label: Text('$quantity'),
-                    );
+                    if (quantity > 0) {
+                      return Badge(
+                        smallSize: 15,
+                        backgroundColor: ColorsUtil.badgeColor,
+                        label: Text('$quantity'),
+                      );
+                    } else {
+                      return Badge(
+                        smallSize: 15,
+                        backgroundColor: Colors.black.withOpacity(.002),
+                      );
+                    }
                   } else {
                     return const SizedBox(
                       width: 10,
