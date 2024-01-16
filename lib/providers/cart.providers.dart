@@ -2,13 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce/models/cart.models.dart';
 import 'package:e_commerce/models/products.model.dart';
 import 'package:e_commerce/utils/collections.utils.dart';
-import 'package:e_commerce/UI/pages/master_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 
-//////////////////////////
 class CartProvider {
   CartItem? cartItem;
   List<ProductData> products = [];
@@ -27,25 +25,21 @@ class CartProvider {
     }
   }
 
-  //void initCalculateTotal() {}
-
   void calculateTotalPrice(Cart cart) {
     _total = 0;
     for (var item in cart.items!) {
-      print('=================products$products');
+      // print('=================item=====$item');
       if (products.isEmpty) return;
       var product =
           products.firstWhere((product) => product.id == item.productId);
       _total += (product.price ?? 0) * (item.quantity ?? 0);
-      print('===============total${_total}');
+      // print('===============total${_total}');
     }
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       totalNotifier.value = _total;
     });
   }
-
-  //void initCalculateTotal() {}
 
   void createItemInstance() {
     cartItem = CartItem();
@@ -232,10 +226,10 @@ class CartProvider {
       if (context.mounted) {
         Navigator.pop(context);
         await QuickAlert.show(
-                context: context,
-                type: QuickAlertType.success,
-                title: 'product Added Successfully')
-            .then((value) => Navigator.pop(context));
+            context: context,
+            type: QuickAlertType.success,
+            title: 'product Added Successfully');
+        // .then((value) => Navigator.pop(context));
       }
     } catch (e) {
       if (!context.mounted) return null;
