@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_commerce/UI/pages/checkout_page.dart';
 import 'package:e_commerce/UI/pages/ordertracker_page.dart';
 import 'package:e_commerce/UI/widgets/headline.widgets.dart';
 import 'package:e_commerce/models/cart.models.dart';
+import 'package:e_commerce/models/products.model.dart';
 import 'package:e_commerce/providers/cart.providers.dart';
 import 'package:e_commerce/providers/product.providers.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +60,7 @@ class _CartPageState extends State<CartPage> {
                         physics: const ClampingScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: cartdata.items?.length as int,
-                        itemBuilder: (ctx, index) {
+                        itemBuilder: (context, index) {
                           return FutureBuilder(
                               future: Provider.of<ProductProvider>(
                                 context,
@@ -94,7 +96,8 @@ class _CartPageState extends State<CartPage> {
                                               ),
                                             ),
                                             imageUrl:
-                                                '${productDate.data?.imagePath}',
+                                                productDate.data?.imagePath ??
+                                                    '',
                                             width: 45,
                                             height: 45,
                                           ),
@@ -107,7 +110,8 @@ class _CartPageState extends State<CartPage> {
                                               MainAxisAlignment.start,
                                           children: [
                                             Text(
-                                              '${productDate.data?.name}',
+                                              productDate.data?.name ??
+                                                  'No name found',
                                               textAlign: TextAlign.left,
                                               style: const TextStyle(
                                                 fontStyle: FontStyle.normal,
@@ -167,7 +171,8 @@ class _CartPageState extends State<CartPage> {
                                                 ],
                                               ),
                                             Text(
-                                              '\$' '${productDate.data?.price}',
+                                              '\$'
+                                              '${productDate.data?.price}',
                                               textAlign: TextAlign.left,
                                               style: const TextStyle(
                                                 fontStyle: FontStyle.normal,
@@ -286,10 +291,6 @@ class _CartPageState extends State<CartPage> {
                                   context,
                                 ).totalNotifier,
                                 builder: (context, value, __) {
-                                  Provider.of<CartProvider>(context,
-                                          listen: false)
-                                      .calculateTotalPrice(cartdata);
-//print('=====value ===$value');
                                   return Text(
                                     '\$ $value',
                                     textAlign: TextAlign.left,
@@ -318,7 +319,7 @@ class _CartPageState extends State<CartPage> {
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (_) => const OrderTrackerPage()));
+                                    builder: (_) => const CheckoutPage()));
                           },
                           style: ElevatedButton.styleFrom(
                             shape: const StadiumBorder(),
@@ -380,3 +381,29 @@ class _CartPageState extends State<CartPage> {
         });
   }
 }
+/////////
+/*
+ Consumer<CategoryProvider>(builder: (context, catValues, _) {
+              return FutureBuilder(
+                  future: catValues.getCategories(context, limit: 3),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const CircularProgressIndicator();
+                    } else if (snapshot.connectionState ==
+                        ConnectionState.done) {
+                      if (snapshot.hasError) {
+                        return const Text('Error while get data');
+                      } else if (snapshot.hasData) {
+                        return CategoriesRowHome(
+                            categories: snapshot.data ?? []);
+                      } else {
+                        return const Text('No data found');
+                      }
+                    } else {
+                      return Text(
+                          'Connection State: ${snapshot.connectionState}');
+                    }
+                  });
+            }),
+*/
+/////////
