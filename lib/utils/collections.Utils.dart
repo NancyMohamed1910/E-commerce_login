@@ -5,5 +5,6 @@ enum CollectionsUtils {
   cart,
   reviews,
   users,
-  notifications
+  notifications,
+  tokens
 }

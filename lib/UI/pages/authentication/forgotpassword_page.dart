@@ -1,5 +1,6 @@
 import 'package:e_commerce/providers/authentication.provider.dart';
 import 'package:e_commerce/utils/colors.util.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -141,7 +142,15 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                           height: 20.h,
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () async {
+                            try {
+                              await FirebaseAuth.instance
+                                  .sendPasswordResetEmail(
+                                      email: authProvider.emailController.text);
+                            } catch (e) {
+                              print('======error :$e');
+                            }
+                          },
                           style: ElevatedButton.styleFrom(
                             shape: const StadiumBorder(),
                             elevation: 0,

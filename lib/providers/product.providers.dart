@@ -41,7 +41,6 @@ class ProductProvider extends ChangeNotifier {
   Future<ProductData?> getProductById({required String productId}) async {
     try {
       DocumentSnapshot<Map<String, dynamic>>? result;
-
       result = await FirebaseFirestore.instance
           .collection(CollectionsUtils.product.name)
           .doc(productId)

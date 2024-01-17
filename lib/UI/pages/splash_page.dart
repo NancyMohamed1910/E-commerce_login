@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:e_commerce/UI/pages/authentication/auth_page.dart';
 import 'package:e_commerce/UI/pages/master_page.dart';
+import 'package:e_commerce/services/notifications.sevices.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -27,6 +28,8 @@ class _SplashPageState extends State<SplashPage> {
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (_) => const AuthAppPage()));
       } else {
+        PushNotificationService.checkNotificationOnKilledApp();
+        PushNotificationService.init();
         Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (_) => const MasterPage()));
       }

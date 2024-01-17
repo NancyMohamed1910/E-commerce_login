@@ -7,6 +7,7 @@ import 'package:e_commerce/providers/product.providers.dart';
 import 'package:e_commerce/UI/pages/splash_page.dart';
 import 'package:e_commerce/providers/userprofile.providers.dart';
 import 'package:get_it/get_it.dart';
+import 'package:overlay_support/overlay_support.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -26,7 +27,7 @@ void main() async {
     ChangeNotifierProvider(create: (_) => UsersProvider()),
     Provider(create: (_) => CategoryProvider()),
     ChangeNotifierProvider(create: (_) => AdvProvider()),
-    //Provider(create: (_) => ProductProvider()),
+    // Provider(create: (_) => ProductProvider()),
     ChangeNotifierProvider(create: (_) => ProductProvider()),
     Provider(create: (_) => CartProvider()),
   ], child: const MyApp()));
@@ -47,10 +48,12 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Nancy Shop',
-        theme: ThemeUtils.themeData,
-        home: const SplashPage());
+    return OverlaySupport.global(
+      child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Nancy Shop',
+          theme: ThemeUtils.themeData,
+          home: const SplashPage()),
+    );
   }
 }

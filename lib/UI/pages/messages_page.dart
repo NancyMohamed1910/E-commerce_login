@@ -40,6 +40,7 @@ class _MessagesPageState extends State<MessagesPage> {
                   const SizedBox(
                     height: 10,
                   ),
+                  const Center(child: Text('No Messages yet')),
                 ],
               ),
             ),

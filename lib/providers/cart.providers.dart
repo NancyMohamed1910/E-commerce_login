@@ -28,12 +28,10 @@ class CartProvider {
   void calculateTotalPrice(Cart cart) {
     _total = 0;
     for (var item in cart.items!) {
-      // print('=================item=====$item');
       if (products.isEmpty) return;
       var product =
           products.firstWhere((product) => product.id == item.productId);
       _total += (product.price ?? 0) * (item.quantity ?? 0);
-      // print('===============total${_total}');
     }
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {

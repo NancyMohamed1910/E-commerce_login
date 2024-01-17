@@ -48,13 +48,14 @@ class _MasterPageState extends State<MasterPage> {
                             ),
                         imageUrl:
                             'https://firebasestorage.googleapis.com/v0/b/nancy-shop-c87fe.appspot.com/o/products%2FMessages.png?alt=media&token=907fc7d9-0e79-4c03-a9ee-34b5073b4150')),
-                Positioned(
+/*const Positioned(
                     bottom: 6,
                     left: 10,
                     child: Badge(
-                      backgroundColor: ColorsUtil.badgeColor,
-                      label: const Text('5'),
-                    ))
+                       backgroundColor: ColorsUtil.badgeColor,
+                      label: const Text(''),
+                    )
+                    )*/
               ],
             ),
             Stack(

@@ -1,5 +1,6 @@
 import 'package:e_commerce/UI/pages/master_page.dart';
 import 'package:e_commerce/UI/pages/splash_page.dart';
+import 'package:e_commerce/services/notifications.sevices.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
@@ -145,6 +146,7 @@ class AuthenticationProvider extends ChangeNotifier {
     await FirebaseAuth.instance.signOut();
 
     await GetIt.I.get<SharedPreferences>().clear();
+    PushNotificationService.onPushNotificationClosed();
     if (context.mounted) {
       Navigator.pop(context);
       Navigator.pushReplacement(
