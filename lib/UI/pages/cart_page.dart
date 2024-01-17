@@ -9,7 +9,6 @@ import 'package:provider/provider.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
-
   @override
   State<CartPage> createState() => _CartPageState();
 }
@@ -36,7 +35,6 @@ class _CartPageState extends State<CartPage> {
           if (aSnapShot.hasData) {
             var cartdata = Cart.fromJson(
                 Map<String, dynamic>.from(aSnapShot.data?.data() ?? {}));
-            // print('==============cartdata====$cartdata');
             if (cartdata.items?.isEmpty ?? false) {
               return const Center(
                 child: Text(
@@ -66,7 +64,7 @@ class _CartPageState extends State<CartPage> {
                         scrollDirection: Axis.vertical,
                         physics: const ClampingScrollPhysics(),
                         shrinkWrap: true,
-                        itemCount: cartdata.items?.length ?? 0,
+                        itemCount: cartdata.items?.length ?? 1,
                         itemBuilder: (context, index) {
                           return FutureBuilder(
                               future: Provider.of<ProductProvider>(context)
@@ -75,17 +73,17 @@ class _CartPageState extends State<CartPage> {
                                           cartdata.items?[index].productId ??
                                               ''),
                               builder: (context, productDate) {
-                                if (productDate.hasData) {
-                                  if (productDate.data != null) {
-                                    Provider.of<CartProvider>(context,
-                                            listen: false)
-                                        .onAddProductToProductsList(
-                                            productDate.data!, cartdata);
+                                if (productDate.data != null) {
+                                  Provider.of<CartProvider>(context,
+                                          listen: false)
+                                      .onAddProductToProductsList(
+                                          productDate.data!, cartdata);
 
-                                    Provider.of<CartProvider>(
-                                      context,
-                                    ).calculateTotalPrice(cartdata);
-                                  }
+                                  Provider.of<CartProvider>(
+                                    context,
+                                  ).calculateTotalPrice(cartdata);
+                                }
+                                if (productDate.hasData) {
                                   return ListTile(
                                       leading: Container(
                                         height: 100,
@@ -273,7 +271,6 @@ class _CartPageState extends State<CartPage> {
                                         ],
                                       ));
                                 } else {
-                                  // return const Text('No data found');
                                   return const SizedBox.shrink();
                                 }
                               });

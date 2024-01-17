@@ -3,6 +3,7 @@ import 'package:e_commerce/providers/authentication.provider.dart';
 import 'package:e_commerce/providers/adv.providers.dart';
 import 'package:e_commerce/providers/categories.providers.dart';
 import 'package:e_commerce/providers/cart.providers.dart';
+import 'package:e_commerce/providers/notification.providers.dart';
 import 'package:e_commerce/providers/product.providers.dart';
 import 'package:e_commerce/UI/pages/splash_page.dart';
 import 'package:e_commerce/providers/userprofile.providers.dart';
@@ -27,7 +28,7 @@ void main() async {
     ChangeNotifierProvider(create: (_) => UsersProvider()),
     Provider(create: (_) => CategoryProvider()),
     ChangeNotifierProvider(create: (_) => AdvProvider()),
-    // Provider(create: (_) => ProductProvider()),
+    Provider(create: (_) => NotificationProvider()),
     ChangeNotifierProvider(create: (_) => ProductProvider()),
     Provider(create: (_) => CartProvider()),
   ], child: const MyApp()));

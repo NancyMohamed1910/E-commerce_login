@@ -1,5 +1,6 @@
-import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_commerce/utils/collections.utils.dart';
+import 'package:e_commerce/utils/colors.util.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -69,7 +70,7 @@ class PushNotificationService {
     // end of update user data
     debugPrint(
         '||||||||||||||||||||||||||||||||||||||||||||||||||| New Token : $userToken');
-    print('===========token=======$userToken');
+
     _isTokenInit = true;
   }
 
@@ -83,22 +84,27 @@ class PushNotificationService {
   static void handleOnNotificationReceived(RemoteMessage message,
       {bool isForground = false}) async {
     RemoteNotification? notification = message.notification;
-    var payLoad;
-    print(
-        '>>>>>>>>>>>>>>>>>>>>>>>> notification recieved ${message.data['payload']}');
-    if (message.data['payload'] != null) {
-      payLoad = jsonDecode(message.data['payload']);
-      try {
-        switch (payLoad["type"].toString()) {}
-      } catch (e) {
-        print('error ${e}');
-      }
+
+    final user = FirebaseAuth.instance.currentUser;
+    CollectionReference notificationRef = FirebaseFirestore.instance
+        .collection(CollectionsUtils.notifications.name);
+    try {
+      await notificationRef.add({
+        'id': message.messageId,
+        'userId': user?.email,
+        'title': message.notification?.title,
+        'description': message.notification?.body,
+        'time': message.sentTime
+      });
+    } catch (e) {
+      print('>>>>>>>>>>>errot>>>>>>$e');
     }
+
     if (notification != null) {
       if (isForground) {
         showSimpleNotification(Text('${message.notification?.title}'),
             subtitle: Text('${message.notification?.body}'),
-            background: Colors.blueAccent);
+            background: ColorsUtil.badgeColor);
       }
     }
   }
@@ -107,7 +113,7 @@ class PushNotificationService {
     try {
       switch (payLoad["type"].toString()) {}
     } catch (e) {
-      print('error ${e}');
+      print('error $e');
     }
   }
 
