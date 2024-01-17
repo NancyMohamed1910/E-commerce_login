@@ -16,19 +16,20 @@ class ForgotPasswordPage extends StatefulWidget {
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   @override
   void initState() {
-    Provider.of<AuthenticationProvider>(context, listen: false).initProvider();
+    Provider.of<AuthenticationProvider>(context, listen: false).initProviderF();
     super.initState();
   }
 
   @override
   void deactivate() {
     Provider.of<AuthenticationProvider>(context, listen: false)
-        .disposeProvider();
+        .disposeProviderF();
     super.deactivate();
   }
-  // void dispose() {
-  // Provider.of<AuthenticationProvider>(context, listen: false)
-  //   .disposeProvider();
+
+//void dispose() {
+  //  Provider.of<AuthenticationProvider>(context, listen: false)
+  //    .disposeProviderF();
   //super.dispose();
   // }
 
@@ -41,7 +42,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           body: Consumer<AuthenticationProvider>(
               builder: (context, authProvider, _) {
             return Form(
-              key: authProvider.formKey,
+              key: authProvider.formKeyF,
               child: SingleChildScrollView(
                 child: Center(
                   child: Column(
@@ -104,7 +105,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                                   ),
                                   textAlign: TextAlign.left,
                                   keyboardType: TextInputType.emailAddress,
-                                  controller: authProvider.emailController,
+                                  controller: authProvider.emailControllerF,
                                   validator: (value) {
                                     if (value == null || value == '') {
                                       return 'email is required';
@@ -143,13 +144,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                         ),
                         ElevatedButton(
                           onPressed: () async {
-                            try {
-                              await FirebaseAuth.instance
-                                  .sendPasswordResetEmail(
-                                      email: authProvider.emailController.text);
-                            } catch (e) {
-                              print('======error :$e');
-                            }
+                            await authProvider.resetPassord(context);
                           },
                           style: ElevatedButton.styleFrom(
                             shape: const StadiumBorder(),

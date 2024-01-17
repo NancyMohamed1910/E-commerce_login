@@ -15,20 +15,21 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
-    Provider.of<AuthenticationProvider>(context, listen: false).initProvider();
+    Provider.of<AuthenticationProvider>(context, listen: false)
+        .initProviderLogin();
     super.initState();
   }
 
   @override
-
-  //void dispose() {
-  //Provider.of<AuthenticationProvider>(context, listen: false)
-  //   .disposeProvider();
-  // super.dispose();
-  // }
+/*  void dispose() {
+    Provider.of<AuthenticationProvider>(context, listen: false)
+        .disposeProviderLogin();
+    super.dispose();
+  }
+*/
   void deactivate() {
     Provider.of<AuthenticationProvider>(context, listen: false)
-        .disposeProvider();
+        .disposeProviderLogin();
     super.deactivate();
   }
 
@@ -41,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
             body: Consumer<AuthenticationProvider>(
                 builder: (context, authProvider, _) {
               return Form(
-                key: authProvider.formKey,
+                key: authProvider.formKeyLogin,
                 child: SingleChildScrollView(
                   child: Center(
                     child: Column(
@@ -69,7 +70,8 @@ class _LoginPageState extends State<LoginPage> {
                                     ),
                                     textAlign: TextAlign.left,
                                     keyboardType: TextInputType.emailAddress,
-                                    controller: authProvider.emailController,
+                                    controller:
+                                        authProvider.emailControllerLogin,
                                     validator: (value) {
                                       if (value == null || value == '') {
                                         return 'email is required';
@@ -114,7 +116,8 @@ class _LoginPageState extends State<LoginPage> {
                                     ),
                                     textAlign: TextAlign.left,
                                     obscureText: authProvider.obscureText,
-                                    controller: authProvider.passwordController,
+                                    controller:
+                                        authProvider.passwordControllerLogin,
                                     validator: (value) {
                                       if (value == null || value == '') {
                                         return 'password is required';

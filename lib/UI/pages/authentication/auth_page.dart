@@ -1,7 +1,6 @@
 import 'package:e_commerce/seeder/widgetdata.seeder.dart';
 import 'package:e_commerce/utils/authenum.util.dart';
 import 'package:e_commerce/utils/colors.util.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

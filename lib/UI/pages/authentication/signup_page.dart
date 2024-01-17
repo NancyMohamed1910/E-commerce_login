@@ -26,12 +26,14 @@ class _SignupPageState extends State<SignupPage> {
         .disposeProvider();
     super.deactivate();
   }
-  // void dispose() {
-  // Provider.of<AuthenticationProvider>(context, listen: false)
-  //   .disposeProvider();
-  // super.dispose();
-  // }
 
+/*
+  void dispose() {
+    Provider.of<AuthenticationProvider>(context, listen: false)
+        .disposeProvider();
+    super.dispose();
+  }
+*/
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(

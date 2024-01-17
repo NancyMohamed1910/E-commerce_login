@@ -12,6 +12,15 @@ class AuthenticationProvider extends ChangeNotifier {
   late TextEditingController emailController;
   late TextEditingController passwordController;
   late TextEditingController userController;
+
+  ///-----------------------
+  late GlobalKey<FormState> formKeyLogin;
+  late TextEditingController emailControllerLogin;
+  late TextEditingController passwordControllerLogin;
+  //-------------------------
+  late GlobalKey<FormState> formKeyF;
+  late TextEditingController emailControllerF;
+
   bool obscureText = true;
   void initProvider() {
     formKey = GlobalKey<FormState>();
@@ -26,21 +35,39 @@ class AuthenticationProvider extends ChangeNotifier {
     userController.dispose();
   }
 
+  void disposeProviderLogin() {
+    emailControllerLogin.dispose();
+    passwordControllerLogin.dispose();
+  }
+
+  void initProviderLogin() {
+    formKeyLogin = GlobalKey<FormState>();
+    emailControllerLogin = TextEditingController();
+    passwordControllerLogin = TextEditingController();
+  }
+
+  void disposeProviderF() {
+    emailControllerF.dispose();
+  }
+
+  void initProviderF() {
+    formKeyF = GlobalKey<FormState>();
+    emailControllerF = TextEditingController();
+  }
+
   void toggleObscureText() {
     obscureText = !obscureText;
     notifyListeners();
   }
 
   Future<void> logIn(BuildContext context) async {
-    if ((formKey.currentState?.validate() ?? false)) {
+    if ((formKeyLogin.currentState?.validate() ?? false)) {
       try {
         QuickAlert.show(context: context, type: QuickAlertType.loading);
         var credintials = await FirebaseAuth.instance
             .signInWithEmailAndPassword(
-                email: emailController.text, password: passwordController.text);
-/*final user = FirebaseAuth.instance.currentUser;
-        var name = user?.displayName;
-        print('======name: $name');*/
+                email: emailControllerLogin.text,
+                password: passwordControllerLogin.text);
         if (context.mounted) {
           Navigator.pop(context);
           if (credintials.user != null) {
@@ -157,4 +184,28 @@ class AuthenticationProvider extends ChangeNotifier {
           title: 'You Logout Successfully');
     }
   }
+
+  //---------------------
+  Future<void> resetPassord(BuildContext context) async {
+    if ((formKeyF.currentState?.validate() ?? false)) {
+      try {
+        QuickAlert.show(context: context, type: QuickAlertType.loading);
+        await FirebaseAuth.instance
+            .sendPasswordResetEmail(email: emailControllerF.text);
+        if (context.mounted) {
+          Navigator.pop(context);
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (_) => const SplashPage()));
+          await QuickAlert.show(
+              context: context,
+              type: QuickAlertType.success,
+              title: 'Email sent Successfully');
+        }
+      } catch (e) {
+        print('======error :$e');
+      }
+    }
+  }
+
+  //---------------------
 }
